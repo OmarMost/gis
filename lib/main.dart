@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gis/loginScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -67,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
-  List<String>name=['shams','loay','semo','kahlf','gammal','zoom'];
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,8 +77,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(body: Center(child: ListView.builder(itemCount:name.length,itemBuilder:(context, index) => Text(name[index]),))
-      
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: loginScreen() ,
+    
     );
   }
 }
