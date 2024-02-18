@@ -4,6 +4,8 @@ import 'package:flutter/widgets.dart';
 
 class loginScreen extends StatelessWidget {
 
+var emailController= TextEditingController();
+var passwordController= TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class loginScreen extends StatelessWidget {
 
             
             TextFormField(
+              controller: emailController,
               onFieldSubmitted: (value) 
               {
         print(value);
@@ -48,6 +51,7 @@ class loginScreen extends StatelessWidget {
 
            
             TextFormField(
+              controller: passwordController,
 
               onFieldSubmitted: (value)
               {
@@ -67,6 +71,7 @@ class loginScreen extends StatelessWidget {
 
               ),
             ),
+        
          SizedBox(
           height: 15,
          ),
@@ -75,7 +80,11 @@ class loginScreen extends StatelessWidget {
               width: double.infinity,
               color: Colors.blue,
               child: MaterialButton(
-                onPressed:() {},
+                onPressed:() 
+                {
+                  print(emailController.text);
+                  print(passwordController.text);
+                },
                 
               child:  Text ('login',
               style: TextStyle
