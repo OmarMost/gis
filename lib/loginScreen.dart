@@ -49,7 +49,7 @@ var passwordController= TextEditingController();
               height:15 ,
             ),
 
-           
+    
             TextFormField(
               controller: passwordController,
 
@@ -71,8 +71,7 @@ var passwordController= TextEditingController();
 
               ),
             ),
-        
-         SizedBox(
+            SizedBox(
           height: 15,
          ),
 
@@ -97,7 +96,18 @@ var passwordController= TextEditingController();
               
               ),
             ),
-         
+          
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            children: [ Text('Don\'t have account'),
+            TextButton(onPressed: (){},
+             child: Text('Register now'),
+             ),
+            ],
+          ),
+          
           ],
 
 
