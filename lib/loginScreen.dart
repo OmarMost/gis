@@ -20,7 +20,11 @@ var passwordController= TextEditingController();
           children: [
           
             Text(
-              'Login'
+              'Login',
+              style: TextStyle(
+                fontSize: 32,
+                color: Colors.black,
+              ),
 
             ),
           
