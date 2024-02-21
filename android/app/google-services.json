@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "49208444861",
+    "project_id": "project-campus-8579a",
+    "storage_bucket": "project-campus-8579a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49208444861:android:10d5060ededa0033c234d4",
+        "android_client_info": {
+          "package_name": "com.example.gis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuvmUYEuQSegLDRP_TiAe38o4Wq52B0yQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
