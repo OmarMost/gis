@@ -5,7 +5,7 @@ import 'package:gis/Screens/home.dart';
 import 'package:gis/Screens/signup.dart';
 import 'package:gis/firebase_options.dart';
 import 'package:gis/Screens/loginScreen.dart';
-
+import 'Screens/on_boarding.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -19,6 +19,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: Auth_Page());
+        debugShowCheckedModeBanner: false, home: Onboarding());
   }
 }
