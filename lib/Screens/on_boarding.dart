@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'auth_page.dart';
+import 'on_boarding2.dart';
 
 class Onboarding extends StatelessWidget {
   final Key? key; // Named 'key' parameter added to the constructor
@@ -41,7 +40,7 @@ class Onboarding extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Auth_Page()));
+                        MaterialPageRoute(builder: (context) => Onboarding2()));
                   },
                   child: Text(
                     'Get Started',
