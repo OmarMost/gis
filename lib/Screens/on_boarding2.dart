@@ -17,21 +17,25 @@ class Onboarding2 extends StatelessWidget {
             height: 50,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              GestureDetector(
-                child: const Text(
-                  'Skip',
-                  style: TextStyle(
-                      color: Colors.yellowAccent,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GestureDetector(
+                  child: const Text(
+                    'Skip',
+                    style: TextStyle(
+                        color: Colors.yellowAccent,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Auth_Page()));
+                  },
                 ),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Auth_Page()));
-                },
               ),
             ],
           ),

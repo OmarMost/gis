@@ -28,7 +28,7 @@ class Onboarding4 extends StatelessWidget {
             ),
           ),
           const Text(
-            "Report A  Problem",
+            "Report a Problem",
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontSize: 55),
           ),

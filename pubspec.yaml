@@ -55,7 +55,10 @@ flutter:
      - assets/sos.png
      - assets/problem.png
 
-
+  fonts:
+     - family: Didact_Gothic
+       fonts:
+         - asset: fonts/Didact_Gothic/DidactGothic-Regular.ttf
 
      
   # To add assets to your application, add an assets section, like this:
