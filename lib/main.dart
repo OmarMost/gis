@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gis/Screens/auth_page.dart';
 import 'package:gis/Screens/home.dart';
 import 'package:gis/Screens/signup.dart';
+import 'package:gis/Screens/student_home.dart'; //My Page [StudentHome]..Elgammal
 import 'package:gis/firebase_options.dart';
 import 'package:gis/Screens/loginScreen.dart';
 import 'Screens/on_boarding.dart';
