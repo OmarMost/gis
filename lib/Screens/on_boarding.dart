@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'student_home.dart'; //By Elgammal
 import 'on_boarding2.dart';
 
 class Onboarding extends StatelessWidget {
@@ -48,6 +49,19 @@ class Onboarding extends StatelessWidget {
                         color: Colors.blue, fontWeight: FontWeight.bold),
                   ),
                 ),
+                //Changes by Elgammal to test StudentHomePage----------------------------
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => StudentHome()));
+                  },
+                  child: Text(
+                    'Test Button -- To StudentHomePage',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                //-----------------------------------------------------------------------
               ],
             ),
           ),

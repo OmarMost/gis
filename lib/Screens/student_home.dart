@@ -43,6 +43,7 @@ class _StudentHomeState extends State<StudentHome> {
                         color: Colors.black, // Change text color to black
                       ),
                     ),
+                    //اسم الطالب دا مؤقتا لغاية ما نشتغل بال Back-End ----------------->
                   ],
                 ),
                 decoration: BoxDecoration(
