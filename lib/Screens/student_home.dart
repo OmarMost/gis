@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/location_details.dart';
 
 class StudentHome extends StatefulWidget {
   const StudentHome({super.key});
@@ -131,10 +132,11 @@ class _StudentHomeState extends State<StudentHome> {
           ),
           const SizedBox(height: 6.0), //Add Space
 
-          //First Rectangular Button
+          //First Rectangular Button [SOS]
           GestureDetector(
             onTap: () {
-              //add Here
+              Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LocationDetailsPage()));
             },
             child: Container(
               width: double.infinity, // 100% width
@@ -169,7 +171,8 @@ class _StudentHomeState extends State<StudentHome> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    // Add your onTap functionality here
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LocationDetailsPage()));
                   },
                   child: Container(
                     color: Colors.blue, // Blue color
@@ -201,7 +204,8 @@ class _StudentHomeState extends State<StudentHome> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    // Add your onTap functionality here
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LocationDetailsPage()));
                   },
                   child: Container(
                     color: Colors.green, // Green color
