@@ -4,9 +4,12 @@ import 'package:gis/Screens/auth_page.dart';
 import 'package:gis/Screens/home.dart';
 import 'package:gis/Screens/signup.dart';
 import 'package:gis/Screens/student_home.dart'; //My Page [StudentHome]..Elgammal
+import 'package:gis/Screens/location_details.dart'; // ..Elgammal
+import 'package:gis/Screens/sos_page.dart'; // ..Elgammal
+import 'package:gis/Screens/report_problem_page.dart'; // ..Elgammal
 import 'package:gis/firebase_options.dart';
 import 'package:gis/Screens/loginScreen.dart';
-import 'Screens/on_boarding.dart';
+import 'Screens/on_boarding.dart'; //Main
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Onboarding(),
+      home: Onboarding(), //Put Onboarding to normal Start.
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
     );
   }
