@@ -18,13 +18,13 @@ class _Log_Or_Register_PageState extends State<Log_Or_Register_Page> {
       showlogin = !showlogin;
     });
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     if (showlogin) {
       return Login_Screen(ontap: togglepage);
     } else {
-      return Sign_Up(ontap: togglepage);
+      return Sign_up(onPressed: togglepage);
     }
   }
 }
