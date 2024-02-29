@@ -50,13 +50,13 @@ class _SOSPageState extends State<SOSPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 450.0),
+            SizedBox(height: 441.0), //Last 491 - 50
             Center(
               child: SizedBox(
                 width: 300, // width of button
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle 'Next' button click
+                    // Handle 'Call Security' button click
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

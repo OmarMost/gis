@@ -19,7 +19,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
           },
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView( // Wrap with SingleChildScrollView
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -42,20 +42,36 @@ class _ReportAProblemState extends State<ReportAProblem> {
               ),
             ),
             SizedBox(height: 16.0),
-            TextField(
-              maxLines: 5, // Num. of the lines
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: '',
+            Container(
+              color: Colors.grey[300], // Background color to gray
+              child: TextField(
+                maxLines: 5,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: '',
+                ),
               ),
             ),
-            SizedBox(height: 300.0),
+            SizedBox(height: 25.0),
+            Row(
+              children: [
+                Icon(Icons.camera_alt, size: 30.0),
+                SizedBox(width: 8.0),
+                Text(
+                  'Attach an Image',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 240.0), //Last 290 - 50 
             Center(
               child: SizedBox(
                 width: 300, // width of button
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle 'Next' button click
+                    // Handle 'Submit' button click
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
