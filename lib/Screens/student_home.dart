@@ -25,7 +25,7 @@ class _StudentHomeState extends State<StudentHome> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
