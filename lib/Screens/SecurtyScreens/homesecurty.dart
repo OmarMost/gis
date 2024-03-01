@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/SecurtyScreens/repoty.dart';
 
-int itemNUM = 5;
+int itemNUM = 16;
 
 class Home_Sec extends StatefulWidget {
   const Home_Sec({Key? key}) : super(key: key);
@@ -111,21 +112,38 @@ class _Home_SecState extends State<Home_Sec> {
             child: ListView.builder(
               itemCount: itemNUM,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius:
-                        BorderRadius.circular(20), 
-                  ),
-                  margin: const EdgeInsets.all(10),
-                  child: Center(
-                    child: Text(
-                      'Item $index',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Report(
+                                  reportName: 'تسريييييب ميه ',
+                                  reportId: 7777,
+                                  name: 'Mo Ozma',
+                                  id: '101010',
+                                  phoneNumber: '01288910489',
+                                  buildingNumber: '2',
+                                  floorNumber: '3',
+                                  time: '12:30 PM',
+                                )));
+                  },
+                  child: Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    margin: const EdgeInsets.all(10),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Report $index',
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
