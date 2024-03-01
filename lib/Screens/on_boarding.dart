@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
 import 'student_home.dart'; //By Elgammal
 import 'on_boarding2.dart';
 
@@ -53,7 +54,7 @@ class Onboarding extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => StudentHome()));
+                        MaterialPageRoute(builder: (context) => Home_Sec()));
                   },
                   child: Text(
                     'Test Button -- To StudentHomePage',
