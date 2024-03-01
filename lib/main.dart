@@ -9,6 +9,8 @@ import 'package:gis/Screens/sos_page.dart'; // ..Elgammal
 import 'package:gis/Screens/report_problem_page.dart'; // ..Elgammal
 import 'package:gis/Screens/first_aid_page.dart'; // .. Elgammal
 import 'package:gis/firebase_options.dart';
+import 'package:gis/Screens/profile.dart'; 
+import 'package:gis/Screens/profile_Help.dart'; 
 import 'package:gis/Screens/loginScreen.dart';
 import 'Screens/on_boarding.dart'; //Main
 
