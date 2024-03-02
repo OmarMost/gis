@@ -118,7 +118,7 @@ class _Home_SecState extends State<Home_Sec> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => Report(
-                                  reportName: 'تسريييييب ميه ',
+                                  reportName: 'اي حوارر ',
                                   reportId: 7777,
                                   name: 'Mo Ozma',
                                   id: '101010',
