@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
@@ -11,15 +13,16 @@ class Sign_up extends StatefulWidget {
 }
 
 class _Sign_upState extends State<Sign_up> {
-  // final nameController = TextEditingController();
-  //  final collegeIdController = TextEditingController();
+  final nameController = TextEditingController();
+  final collegeIdController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confpasswordController = TextEditingController();
+  final phoneController = TextEditingController();
   bool _isSecurePassword1 = true;
   bool _isSecurePassword2 = true;
 
-  void signup() async {
+  Future signup() async {
     if (passwordController.text == confpasswordController.text) {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
@@ -28,9 +31,17 @@ class _Sign_upState extends State<Sign_up> {
           MaterialPageRoute(
             builder: (context) => StudentHome(),
           ));
+      addData(nameController.text, collegeIdController.text,
+          phoneController.text, emailController.text);
     } else {
       print('Password doesnt match');
     }
+  }
+
+  Future addData(String name, id, phone, email) async {
+    await FirebaseFirestore.instance
+        .collection('Users')
+        .add({'Name': name, 'ID': id, 'Phone': phone, 'Email': email});
   }
 
   @override
@@ -48,7 +59,7 @@ class _Sign_upState extends State<Sign_up> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   'Sign up',
                   style: TextStyle(
                     fontSize: 40.0,
@@ -61,19 +72,20 @@ class _Sign_upState extends State<Sign_up> {
               height: 30.0,
             ),
             TextFormField(
-                //controller: nameController,
+                controller: nameController,
                 decoration: InputDecoration(
-              labelText: 'Name',
-              prefixIcon: Icon(Icons.person),
-              enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange),
-                  borderRadius: BorderRadius.circular(15)),
-            )),
+                  labelText: 'Name',
+                  prefixIcon: Icon(Icons.person),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.orange),
+                      borderRadius: BorderRadius.circular(15)),
+                )),
             const SizedBox(
               height: 30.0,
             ),
             TextFormField(
-                keyboardType: TextInputType.phone, //controller: nameController,
+                keyboardType: TextInputType.phone,
+                controller: phoneController,
                 decoration: InputDecoration(
                   labelText: 'Phone Number',
                   prefixIcon: Icon(Icons.phone),
@@ -85,7 +97,7 @@ class _Sign_upState extends State<Sign_up> {
               height: 20.0,
             ),
             TextFormField(
-              //controller: collegeIdController,
+              controller: collegeIdController,
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 labelText: 'College Id',

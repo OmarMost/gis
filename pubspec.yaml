@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cloud_firestore: ^4.15.6
   cupertino_icons: ^1.0.2
   firebase_auth: ^4.2.8
   firebase_core: ^2.25.4
@@ -49,18 +50,16 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-     - assets/Logo1.jpg
-     - assets/name.jpg
-     - assets/firstaid.png
-     - assets/sos.png
-     - assets/problem.png
+    - assets/Logo1.jpg
+    - assets/name.jpg
+    - assets/firstaid.png
+    - assets/sos.png
+    - assets/problem.png
 
   fonts:
-     - family: Didact_Gothic
-       fonts:
-         - asset: fonts/Didact_Gothic/DidactGothic-Regular.ttf
-
-     
+    - family: Didact_Gothic
+      fonts:
+        - asset: fonts/Didact_Gothic/DidactGothic-Regular.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

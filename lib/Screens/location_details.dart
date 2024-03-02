@@ -17,7 +17,6 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
           },
         ),
       ),
-      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -63,7 +62,7 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                    ), 
+                    ),
                     backgroundColor: Colors.grey,
                     minimumSize: Size(137, 74), //Width and height
                   ),
@@ -82,7 +81,7 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                    ), 
+                    ),
                     backgroundColor: Colors.grey,
                     minimumSize: Size(137, 74), //Width and height
                   ),
@@ -106,7 +105,7 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                    ), 
+                    ),
                     backgroundColor: Colors.grey,
                     minimumSize: Size(137, 74), //Width and height
                   ),
@@ -125,7 +124,7 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                    ), 
+                    ),
                     backgroundColor: Colors.grey,
                     minimumSize: Size(137, 74), //Width and height
                   ),
@@ -138,7 +137,7 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                   ),
                 ),
               ],
-            ),            
+            ),
             SizedBox(height: 30.0),
             Text(
               'Floor',
@@ -158,7 +157,7 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
             Center(
               child: Container(
                 width: 300.0, // width of the frame
-                padding: EdgeInsets.all(0.0), 
+                padding: EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(15.0),
@@ -169,35 +168,51 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.orange, backgroundColor: Colors.transparent,
+                        foregroundColor: Colors.orange,
+                        backgroundColor: Colors.transparent,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(15),
+                              topLeft: Radius.circular(15)),
                         ),
                         minimumSize: Size(300.0, 60.0), // Width and height
                       ),
-                      child: Text('3', style: TextStyle(fontSize: 40.0),),
+                      child: Text(
+                        '3',
+                        style: TextStyle(fontSize: 40.0),
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.orange, backgroundColor: Colors.transparent,
+                        foregroundColor: Colors.orange,
+                        backgroundColor: Colors.transparent,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(1.0), 
+                          borderRadius: BorderRadius.circular(1.0),
                         ),
                         minimumSize: Size(300.0, 60.0), // Width and height
                       ),
-                      child: Text('2', style: TextStyle(fontSize: 40.0),),
+                      child: Text(
+                        '2',
+                        style: TextStyle(fontSize: 40.0),
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.orange, backgroundColor: Colors.transparent,
+                        foregroundColor: Colors.orange,
+                        backgroundColor: Colors.transparent,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0), 
+                          borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(15),
+                              bottomLeft: Radius.circular(15)),
                         ),
                         minimumSize: Size(300.0, 60.0), // Width and height
                       ),
-                      child: Text('1', style: TextStyle(fontSize: 40.0),),
+                      child: Text(
+                        '1',
+                        style: TextStyle(fontSize: 40.0),
+                      ),
                     ),
                   ],
                 ),
@@ -212,11 +227,9 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                     // Handle 'Next' button click
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7.0)
-                    )
-                  ),
+                      backgroundColor: Colors.orange,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(7.0))),
                   child: Text(
                     'Next',
                     style: TextStyle(
