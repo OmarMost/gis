@@ -52,6 +52,7 @@ class Help extends StatelessWidget {
                   color: Colors.grey,
                   fontWeight: FontWeight.bold),
             ),
+            SizedBox(height: 24.0),
             Text(
               'Report A  Problem',
               style: TextStyle(
