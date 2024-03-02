@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/SecurtyScreens/repoty.dart';
+import 'package:gis/Screens/SecurtyScreens/report.dart';
 
 int itemNUM = 16;
 
