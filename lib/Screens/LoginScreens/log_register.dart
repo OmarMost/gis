@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/loginScreen.dart';
-import 'package:gis/Screens/signup.dart';
+import 'package:gis/Screens/LoginScreens/loginScreen.dart';
+import 'package:gis/Screens/LoginScreens/signup.dart';
 
 class Log_Or_Register_Page extends StatefulWidget {
   const Log_Or_Register_Page({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
-import 'package:gis/Screens/help.dart';
-import '../student_home.dart'; //By Elgammal
+import 'package:gis/Screens/StudentScreens/help.dart';
+import '../StudentScreens/student_home.dart'; //By Elgammal
 import 'on_boarding2.dart';
 
 class Onboarding extends StatelessWidget {
