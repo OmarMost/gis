@@ -50,7 +50,8 @@ class ProfileScreen extends StatelessWidget {
                 labelText: 'Username',
                 hintText: 'Enter your username',
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0), 
+                  borderRadius: BorderRadius.circular(15.0), // 
+                ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.orange),
                   borderRadius: BorderRadius.circular(15.0),
@@ -74,7 +75,8 @@ class ProfileScreen extends StatelessWidget {
                   labelText: 'College ID',
                   hintText: 'Enter your college ID',
                    border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0), // بيخلي الحفه مستديره
+                  borderRadius: BorderRadius.circular(15.0), // 
+                ),
                   
                 ),
               ),
@@ -100,8 +102,7 @@ class ProfileScreen extends StatelessWidget {
                   hintText: 'Enter your email',
                   
                    border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0),// بيخلي الحفه مستديره
-                  
+                  borderRadius: BorderRadius.circular(15.0), // 
                 ),
                 ),
               ),
