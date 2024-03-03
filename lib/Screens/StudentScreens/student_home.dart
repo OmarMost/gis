@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/LoginScreens/loginScreen.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import 'package:gis/Screens/StudentScreens/location_details.dart';
 import 'package:gis/Screens/StudentScreens/profile.dart';
@@ -61,13 +62,12 @@ class _StudentHomeState extends State<StudentHome> {
                       ),
                     ),
                     Text(
-                      'Student',
+                      'Student', //اسم الطالب دا مؤقتا لغاية ما نشتغل بال Back-End ----------------->
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.black, // Change text color to black
                       ),
                     ),
-                    //اسم الطالب دا مؤقتا لغاية ما نشتغل بال Back-End ----------------->
                   ],
                 ),
                 decoration: BoxDecoration(
@@ -126,6 +126,11 @@ class _StudentHomeState extends State<StudentHome> {
                 onTap: () {
                   // Handle logout action
                   FirebaseAuth.instance.signOut();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Login_Screen(ontap: () {  },),
+                      ));
                 },
               ),
             ],
