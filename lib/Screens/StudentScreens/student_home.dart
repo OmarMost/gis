@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/help.dart';
-import 'package:gis/Screens/location_details.dart';
-import 'package:gis/Screens/profile.dart';
+import 'package:gis/Screens/StudentScreens/help.dart';
+import 'package:gis/Screens/StudentScreens/location_details.dart';
+import 'package:gis/Screens/StudentScreens/profile.dart';
 
 class StudentHome extends StatefulWidget {
   const StudentHome({super.key});
@@ -42,7 +42,6 @@ class _StudentHomeState extends State<StudentHome> {
           backgroundColor: Colors.white,
         ),
         drawer: Drawer(
-            // Customize the drawer here
             child: Container(
           color: Colors.grey[300], // Set background color to a lighter gray
           child: ListView(
@@ -54,7 +53,7 @@ class _StudentHomeState extends State<StudentHome> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      ' ${user.email}',
+                      '${data['Name']}',
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -62,7 +61,7 @@ class _StudentHomeState extends State<StudentHome> {
                       ),
                     ),
                     Text(
-                      '${data['Phone']}',
+                      'Student',
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.black, // Change text color to black
@@ -76,7 +75,6 @@ class _StudentHomeState extends State<StudentHome> {
                 ),
               ),
               Divider(
-                // Add divider with desired color
                 color:
                     Colors.grey[200], // Set slightly lighter gray for divider
                 thickness: 0.0, // Adjust thickness as needed
@@ -85,7 +83,7 @@ class _StudentHomeState extends State<StudentHome> {
                 leading: Icon(
                   Icons.home,
                   color: Colors.black,
-                ), // Add home icon
+                ),
                 title: Text('Home Page',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black)),
@@ -93,7 +91,7 @@ class _StudentHomeState extends State<StudentHome> {
               ),
               ListTile(
                 leading:
-                    Icon(Icons.person, color: Colors.black), // Add profile icon
+                    Icon(Icons.person, color: Colors.black), // profile icon
                 title: Text('Profile',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black)),
@@ -107,7 +105,7 @@ class _StudentHomeState extends State<StudentHome> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.help, color: Colors.black), // Add help icon
+                leading: Icon(Icons.help, color: Colors.black), // help icon
                 title: Text('Help',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black)),
@@ -121,19 +119,19 @@ class _StudentHomeState extends State<StudentHome> {
               ),
               ListTile(
                 leading:
-                    Icon(Icons.logout, color: Colors.black), // Add logout icon
+                    Icon(Icons.logout, color: Colors.black), // logout icon
                 title: Text('Log Out',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black)),
                 onTap: () {
-                  FirebaseAuth.instance.signOut();
                   // Handle logout action
+                  FirebaseAuth.instance.signOut();
                 },
               ),
             ],
           ),
         )),
-        backgroundColor: Colors.white, //Set body white
+        backgroundColor: Colors.white, //Set body of Home Screen white
 
         body: Column(
           crossAxisAlignment: CrossAxisAlignment
@@ -159,9 +157,7 @@ class _StudentHomeState extends State<StudentHome> {
             //   ),
             // ),
 
-            const SizedBox(
-                height: 15.0), // Add some space between image and other content
-            // Add other content here
+            const SizedBox(height: 15.0), // Add some space between image and other content
             Padding(
               padding: EdgeInsets.only(left: 10.0),
               child: Text(
@@ -181,7 +177,6 @@ class _StudentHomeState extends State<StudentHome> {
               ),
             ),
             const SizedBox(height: 6.0), //Add Space
-
             //First Rectangular Button [SOS]
             GestureDetector(
               onTap: () {
@@ -294,6 +289,7 @@ class _StudentHomeState extends State<StudentHome> {
               ],
             ),
           ],
-        ));
+        )
+    );
   }
 }
