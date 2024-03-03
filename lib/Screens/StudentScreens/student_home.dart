@@ -54,6 +54,7 @@ class _StudentHomeState extends State<StudentHome> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
+                      // '${user.email}',
                       '${data['Name']}',
                       style: TextStyle(
                         fontSize: 24.0,

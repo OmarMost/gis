@@ -68,9 +68,7 @@ class _Sign_upState extends State<Sign_up> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 30.0,
-            ),
+            const SizedBox(height: 30.0),
             TextFormField(
                 controller: nameController,
                 decoration: InputDecoration(
