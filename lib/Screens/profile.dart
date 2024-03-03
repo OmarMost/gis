@@ -1,4 +1,6 @@
 
+
+
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -15,7 +17,6 @@ class ProfileScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
         elevation: 0.0,
-        
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
@@ -48,12 +49,12 @@ class ProfileScreen extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: 'Username',
                 hintText: 'Enter your username',
-                border: OutlineInputBorder(),
-
-              enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.orange),
-                      borderRadius: BorderRadius.circular(15)),
-
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0), 
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.orange),
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
               ),
             ),
             SizedBox(height: 11.5),
@@ -72,7 +73,9 @@ class ProfileScreen extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'College ID',
                   hintText: 'Enter your college ID',
-                  border: OutlineInputBorder(),
+                   border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0), // بيخلي الحفه مستديره
+                  
                 ),
               ),
             ),
@@ -95,7 +98,11 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   labelText: 'Email',
                   hintText: 'Enter your email',
-                  border: OutlineInputBorder(),
+                  
+                   border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0),// بيخلي الحفه مستديره
+                  
+                ),
                 ),
               ),
             ),
@@ -105,4 +112,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
