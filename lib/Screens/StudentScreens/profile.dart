@@ -45,6 +45,7 @@ class ProfileScreen extends StatelessWidget {
             TextFormField(
               enabled: false,
               decoration: InputDecoration(
+                prefixIcon: Icon(Icons.person),
                 labelText: 'Username',
                 hintText: 'Enter your username',
                 border: OutlineInputBorder(
@@ -62,19 +63,15 @@ class ProfileScreen extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // Bold text
             ),
             SizedBox(height: 11.5),
-            Theme(
-              data: ThemeData(
-                primaryColor: Colors.orange,
-                hintColor: Colors.orange,
-              ),
-              child: TextFormField(
-                enabled: false,
-                decoration: InputDecoration(
-                  labelText: 'College ID',
-                  hintText: 'Enter your college ID',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
+            TextFormField(
+              enabled: false,
+              decoration: InputDecoration(
+                 prefixIcon: Icon(Icons.credit_card),
+                
+                labelText: 'College ID',
+                hintText: 'Enter your college ID',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
               ),
             ),
@@ -84,30 +81,36 @@ class ProfileScreen extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), // Bold text
             ),
             SizedBox(height: 11.5),
-            Theme(
-              data: ThemeData(
-                primaryColor: Colors.orange,
-                hintColor: Colors.orange,
-              ),
-              child: TextFormField(
-                enabled: false,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.email,
-                  ),
-                  labelText: 'Email',
-                  hintText: 'Enter your email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
+            TextFormField(
+              enabled: false,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.email),
+                labelText: 'Email',
+                hintText: 'Enter your email',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
               ),
             ),
-           
+            SizedBox(height: 8.0), // Add some space between the TextFormField and the FloatingActionButton
           ],
         ),
       ),
+
+
+
+
+
+      //دا عشان  لو الطالب عايز يعمل تعديل للمعلومات بتعتو و ممكن نعملو بشكل تاني 
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Add functionality to edit profile
+        },
+        label: Text('Edit Profile'),
+        icon: Icon(Icons.edit),
+        backgroundColor: Colors.orange,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat, // Center the FloatingActionButton horizontally
     );
   }
 }
-
