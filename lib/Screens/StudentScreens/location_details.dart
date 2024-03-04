@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
+import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
+import 'package:gis/Screens/StudentScreens/sos_page.dart';
 
 class LocationDetailsPage extends StatefulWidget {
   @override
@@ -241,6 +244,82 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                 ),
               ),
             ),
+//====================================================Delete later==========================================
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Adjust the alignment as per your preference
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FirstAid(),
+                      ));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7.0),
+                    ),
+                  ),
+                  child: Text(
+                    'Test1',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30.0,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ReportAProblem(),
+                      ));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7.0),
+                    ),
+                  ),
+                  child: Text(
+                    'Test2',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30.0,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SOSPage(),
+                      ));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7.0),
+                    ),
+                  ),
+                  child: Text(
+                    'Test3',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30.0,
+                    ),
+                  ),
+                ),
+              ],
+            )
+//====================================================Delete later==========================================
           ],
         ),
       ),

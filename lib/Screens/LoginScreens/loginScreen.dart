@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gis/Screens/LoginScreens/signup.dart';
 import 'package:gis/Screens/home.dart';
+import 'package:gis/Screens/StudentScreens/student_home.dart';
+import 'package:gis/Screens/LoginScreens/signup.dart';
 
 class Login_Screen extends StatefulWidget {
   final Function()? ontap;
@@ -15,6 +18,7 @@ class _Login_ScreenState extends State<Login_Screen> {
   // any variable will be decalared in the state
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool _isSecurePassword = true;
   //any function will be written in the state
   void login() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -22,7 +26,7 @@ class _Login_ScreenState extends State<Login_Screen> {
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => Home(),
+          builder: (context) => StudentHome(),
         ));
   }
 
@@ -46,16 +50,14 @@ class _Login_ScreenState extends State<Login_Screen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               TextFormField(
                 controller: emailController,
                 onFieldSubmitted: (value) {
                   print(value);
                 },
                 decoration: InputDecoration(
-                  labelText: 'email address',
+                  labelText: 'Email address',
                   prefixIcon: Icon(
                     Icons.email,
                   ),
@@ -65,23 +67,17 @@ class _Login_ScreenState extends State<Login_Screen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 15,
-              ),
+              SizedBox(height: 15,),
               TextFormField(
                 controller: passwordController,
                 onFieldSubmitted: (value) {
                   print(value);
                 },
-                obscureText: true,
+                obscureText: _isSecurePassword,
                 decoration: InputDecoration(
-                  labelText: 'password',
-                  suffix: Icon(
-                    Icons.remove_red_eye,
-                  ),
-                  prefixIcon: Icon(
-                    Icons.lock,
-                  ),
+                  labelText: 'Password',
+                  prefixIcon: Icon(Icons.lock_open),
+                  suffix: togglePassword(),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.orange),
                     borderRadius: BorderRadius.circular(15),
@@ -90,7 +86,7 @@ class _Login_ScreenState extends State<Login_Screen> {
               ),
               SizedBox(
                 height: 40,
-                width: 20.0,
+                // width: 20.0,
               ),
               Center(
                 child: SizedBox(
@@ -98,6 +94,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                   child: ElevatedButton(
                     onPressed: () {
                       // Handle 'Login' button click
+                      login();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
@@ -121,7 +118,9 @@ class _Login_ScreenState extends State<Login_Screen> {
                 children: [
                   Text('Don\'t have an account'),
                   TextButton(
-                    onPressed: widget.ontap!,
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Sign_up(onPressed: () {  },)));
+                    },
                     child: Text(
                       'Sign Up',
                       style: TextStyle(
@@ -136,6 +135,20 @@ class _Login_ScreenState extends State<Login_Screen> {
           ),
         ),
       ),
+    );
+  }
+  
+  Widget togglePassword() {
+    return IconButton(
+      onPressed: () {
+        setState(() {
+          _isSecurePassword = !_isSecurePassword;
+        });
+      },
+      icon: _isSecurePassword
+          ? Icon(Icons.visibility)
+          : Icon(Icons.visibility_off),
+      color: Colors.grey,
     );
   }
 }
