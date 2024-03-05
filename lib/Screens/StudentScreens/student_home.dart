@@ -63,7 +63,7 @@ class _StudentHomeState extends State<StudentHome> {
                       ),
                     ),
                     Text(
-                      'Student', //اسم الطالب دا مؤقتا لغاية ما نشتغل بال Back-End ----------------->
+                      'Student', 
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.black, // Change text color to black
