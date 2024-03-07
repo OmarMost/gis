@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gis/Screens/LoginScreens/privacy.dart';
 import 'package:gis/Screens/home.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 
@@ -21,6 +22,7 @@ class _Sign_upState extends State<Sign_up> {
   final phoneController = TextEditingController();
   bool _isSecurePassword1 = true;
   bool _isSecurePassword2 = true;
+  bool status = false;
 
   Future signup() async {
     if (passwordController.text == confpasswordController.text) {
@@ -163,6 +165,7 @@ class _Sign_upState extends State<Sign_up> {
                       backgroundColor: Colors.orange,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(7.0))),
+                          
                   child: Text(
                     'Sign Up',
                     style: TextStyle(
@@ -180,19 +183,29 @@ class _Sign_upState extends State<Sign_up> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Checkbox(
+                  value: status,
+                  onChanged: (val){
+                    setState(() {
+                      status = val!;
+                    });
+                  },
+                ),
                 Text(
                   'I have read & agreed to DayTask',
                   style: TextStyle(
-                    fontSize: 11.5,
+                    fontSize: 10.0,
                     color: Colors.blueAccent,
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Privacy(onPressed: () {  },)));
+                    },
                   child: Text(
                     'Privacy Policy" Terms & Condition',
                     style: TextStyle(
-                      fontSize: 11.5,
+                      fontSize: 10.0,
                       color: Colors.orange,
                     ),
                   ),

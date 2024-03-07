@@ -67,7 +67,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                   ),
                 ),
               ),
-              SizedBox(height: 15,),
+              SizedBox(height: 20,),
               TextFormField(
                 controller: passwordController,
                 onFieldSubmitted: (value) {
@@ -77,7 +77,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                 decoration: InputDecoration(
                   labelText: 'Password',
                   prefixIcon: Icon(Icons.lock_open),
-                  suffix: togglePassword(),
+                  suffixIcon: togglePassword(),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.orange),
                     borderRadius: BorderRadius.circular(15),
@@ -116,7 +116,7 @@ class _Login_ScreenState extends State<Login_Screen> {
               SizedBox(height: 15),
               Row(
                 children: [
-                  Text('Don\'t have an account'),
+                  Text('Don\'t have an account ?'),
                   TextButton(
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => Sign_up(onPressed: () {  },)));
@@ -124,7 +124,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                     child: Text(
                       'Sign Up',
                       style: TextStyle(
-                        fontSize: 11.5,
+                        fontSize: 15,
                         color: Colors.orange,
                       ),
                     ),
