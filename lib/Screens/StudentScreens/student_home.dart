@@ -17,8 +17,9 @@ class StudentHome extends StatefulWidget {
 class _StudentHomeState extends State<StudentHome> {
   final user = FirebaseAuth.instance.currentUser!;
   Map<String, dynamic> data = {};
-  void getdata() {
-    FirebaseFirestore.instance
+  Future getdata() async {
+    data.clear();
+    await FirebaseFirestore.instance
         .collection('Users')
         .where('Email', isEqualTo: user.email)
         .get()
@@ -42,118 +43,122 @@ class _StudentHomeState extends State<StudentHome> {
         appBar: AppBar(
           backgroundColor: Colors.white,
         ),
-        drawer: Drawer(
-            child: data['Name'] != null
-                ? Container(
-                    color: Colors
-                        .grey[300], // Set background color to a lighter gray
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      children: [
-                        DrawerHeader(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+        drawer: FutureBuilder(
+            future: getdata(),
+            builder: (context, snapshot) {
+              return Drawer(
+                  child: data['Name'] != null
+                      ? Container(
+                          color: Colors.grey[
+                              300], // Set background color to a lighter gray
+                          child: ListView(
+                            padding: EdgeInsets.zero,
                             children: [
-                              Text(
-                                // '${user.email}',
-                                '${data['Name']}',
-                                style: TextStyle(
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors
-                                      .black, // Change text color to black
+                              DrawerHeader(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      // '${user.email}',
+                                      '${data['Name']}',
+                                      style: TextStyle(
+                                        fontSize: 24.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors
+                                            .black, // Change text color to black
+                                      ),
+                                    ),
+                                    Text(
+                                      'Student',
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: Colors
+                                            .black, // Change text color to black
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[
+                                      300], // Change background color to gray
                                 ),
                               ),
-                              Text(
-                                'Student',
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors
-                                      .black, // Change text color to black
+                              Divider(
+                                color: Colors.grey[
+                                    200], // Set slightly lighter gray for divider
+                                thickness: 0.0, // Adjust thickness as needed
+                              ),
+                              ListTile(
+                                leading: Icon(
+                                  Icons.home,
+                                  color: Colors.black,
                                 ),
+                                title: Text('Home Page',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black)),
+                                onTap: () => Navigator.pop(
+                                    context), // Close the drawer on tap
+                              ),
+                              ListTile(
+                                leading: Icon(Icons.person,
+                                    color: Colors.black), // profile icon
+                                title: Text('Profile',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black)),
+                                onTap: () {
+                                  // Handle profile action
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ProfileScreen(),
+                                      ));
+                                },
+                              ),
+                              ListTile(
+                                leading: Icon(Icons.help,
+                                    color: Colors.black), // help icon
+                                title: Text('Help',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black)),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Help(),
+                                      ));
+                                },
+                              ),
+                              ListTile(
+                                leading: Icon(Icons.logout,
+                                    color: Colors.black), // logout icon
+                                title: Text('Log Out',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black)),
+                                onTap: () {
+                                  // Handle logout action
+                                  FirebaseAuth.instance.signOut();
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Login_Screen(
+                                          ontap: () {},
+                                        ),
+                                      ));
+                                },
                               ),
                             ],
                           ),
-                          decoration: BoxDecoration(
-                            color: Colors
-                                .grey[300], // Change background color to gray
-                          ),
-                        ),
-                        Divider(
-                          color: Colors.grey[
-                              200], // Set slightly lighter gray for divider
-                          thickness: 0.0, // Adjust thickness as needed
-                        ),
-                        ListTile(
-                          leading: Icon(
-                            Icons.home,
-                            color: Colors.black,
-                          ),
-                          title: Text('Home Page',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black)),
-                          onTap: () =>
-                              Navigator.pop(context), // Close the drawer on tap
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.person,
-                              color: Colors.black), // profile icon
-                          title: Text('Profile',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black)),
-                          onTap: () {
-                            // Handle profile action
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ProfileScreen(),
-                                ));
-                          },
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.help,
-                              color: Colors.black), // help icon
-                          title: Text('Help',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black)),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Help(),
-                                ));
-                          },
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.logout,
-                              color: Colors.black), // logout icon
-                          title: Text('Log Out',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black)),
-                          onTap: () {
-                            // Handle logout action
-                            FirebaseAuth.instance.signOut();
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Login_Screen(
-                                    ontap: () {},
-                                  ),
-                                ));
-                          },
-                        ),
-                      ],
-                    ),
-                  )
-                : Center(
-                    child: CircularProgressIndicator(
-                        color: Colors.blue, strokeWidth: 8),
-                  )),
+                        )
+                      : Center(
+                          child: CircularProgressIndicator(
+                              color: Colors.blue, strokeWidth: 8),
+                        ));
+            }),
         backgroundColor: Colors.white, //Set body of Home Screen white
 
         body: Column(
