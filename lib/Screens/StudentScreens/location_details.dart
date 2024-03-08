@@ -4,6 +4,9 @@ import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
 import 'package:gis/Screens/StudentScreens/sos_page.dart';
 
 class LocationDetailsPage extends StatefulWidget {
+  final String type;
+  LocationDetailsPage({super.key, required this.type});
+
   @override
   _LocationDetailsPageState createState() => _LocationDetailsPageState();
 }
@@ -228,6 +231,26 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle 'Next' button click
+                    if (widget.type == 'sos') {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SOSPage(),
+                          ));
+                    } else if (widget.type == 'problem') {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ReportAProblem(),
+                          ));
+                    }
+                    if (widget.type == 'first aid') {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FirstAid(),
+                          ));
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
@@ -246,15 +269,16 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
             ),
 //====================================================Delete later==========================================
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Adjust the alignment as per your preference
+              mainAxisAlignment: MainAxisAlignment
+                  .spaceEvenly, // Adjust the alignment as per your preference
               children: [
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FirstAid(),
-                      ));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FirstAid(),
+                        ));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -274,10 +298,10 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ReportAProblem(),
-                      ));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ReportAProblem(),
+                        ));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -297,10 +321,10 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SOSPage(),
-                      ));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SOSPage(),
+                        ));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
