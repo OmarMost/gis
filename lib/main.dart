@@ -6,7 +6,6 @@ import 'package:gis/Screens/LoginScreens/privacy.dart';
 import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
 import 'package:gis/Screens/SecurtyScreens/report.dart';
 import 'package:gis/Screens/StudentScreens/choose_bulding.dart';
-import 'package:gis/Screens/home.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart'; //My Page [StudentHome]..Elgammal
 import 'package:gis/Screens/StudentScreens/location_details.dart'; // ..Elgammal
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Building(), //Put Onboarding to normal Start.
+      home: Onboarding(), //Put Onboarding to normal Start.
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
     );
   }

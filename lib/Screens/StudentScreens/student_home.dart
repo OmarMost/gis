@@ -295,7 +295,7 @@ class _StudentHomeState extends State<StudentHome> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      LocationDetailsPage(type: 'first aid')));
+                                   LocationDetailsPage(type: 'first aid')));
                         },
                         child: Container(
                           color: Colors.green, // Green color
@@ -329,6 +329,6 @@ class _StudentHomeState extends State<StudentHome> {
               ),
             ],
           ),
-        ));
+         ));
   }
 }

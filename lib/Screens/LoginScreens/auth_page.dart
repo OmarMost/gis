@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/home.dart';
+import 'package:gis/Screens/StudentScreens/student_home.dart';
 import 'package:gis/Screens/LoginScreens/log_register.dart';
 
 class Auth_Page extends StatelessWidget {
@@ -14,7 +14,7 @@ class Auth_Page extends StatelessWidget {
       builder: (context, snapshot) {
         //user logged in
         if (snapshot.hasData) {
-          return Home();
+          return StudentHome();
         }
         //user not logged in
         else {
