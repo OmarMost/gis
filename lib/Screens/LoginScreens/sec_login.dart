@@ -5,15 +5,15 @@ import 'package:gis/Screens/LoginScreens/signup.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
 
-class Login_Screen extends StatefulWidget {
+class SecLogin extends StatefulWidget {
   final Function()? ontap;
 
-  const Login_Screen({super.key, required this.ontap});
+  const SecLogin({super.key, required this.ontap});
   @override
-  State<Login_Screen> createState() => _Login_ScreenState();
+  State<SecLogin> createState() => _SecLoginState();
 }
 
-class _Login_ScreenState extends State<Login_Screen> {
+class _SecLoginState extends State<SecLogin> {
   // any variable will be decalared in the state
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -64,7 +64,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                     Icons.email,
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
+                    borderSide: BorderSide(color: Colors.blue),
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
@@ -81,7 +81,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                   prefixIcon: Icon(Icons.lock_open),
                   suffixIcon: togglePassword(),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
+                    borderSide: BorderSide(color: Colors.blue),
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
@@ -99,7 +99,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                       login();
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
+                      backgroundColor: Colors.blueGrey,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(7.0),
                       ),
@@ -118,19 +118,6 @@ class _Login_ScreenState extends State<Login_Screen> {
               SizedBox(height: 15),
               Row(
                 children: [
-                  Text('Don\'t have an account ?'),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Sign_up(onPressed: () {  },)));
-                    },
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.orange,
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ],
