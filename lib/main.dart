@@ -4,6 +4,7 @@ import 'package:gis/Screens/LoginScreens/auth_page.dart';
 import 'package:gis/Screens/LoginScreens/privacy.dart';
 import 'package:gis/Screens/LoginScreens/privacy.dart';
 import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
+import 'package:gis/Screens/SecurtyScreens/robbery.dart';
 import 'package:gis/Screens/SecurtyScreens/report.dart';
 import 'package:gis/Screens/StudentScreens/choose_bulding.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SecLogin(ontap: () {    },), //Put Onboarding to normal Start.
+      home: Security_robbery(), //Put Onboarding to normal Start.
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
     
     );
