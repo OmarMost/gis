@@ -34,7 +34,11 @@ dependencies:
   firebase_core: ^2.25.4
   flutter:
     sdk: flutter
-  video_player: ^2.4.0 #Add with Elgammal
+#<<<<<<< HEAD
+  #video_player: ^2.4.0 #Add with Elgammal
+
+  fluttertoast: ^8.2.4
+#>>>>>>> dfe309305b474e30070b1c66ad72843a10c37bbe
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -56,6 +60,16 @@ flutter:
     - assets/firstaid.png
     - assets/sos.png
     - assets/problem.png
+    - assets/Buld1.jpg
+    - assets/buld2.jpg
+    - assets/buld3.jpg
+    - assets/buld4.jpg
+    - assets/buld5.jpg
+    - assets/buld6.jpg
+    - assets/buld7.jpg
+    - assets/buld8.jpg
+    - assets/buld9.jpg
+    
 
   fonts:
     - family: Didact_Gothic

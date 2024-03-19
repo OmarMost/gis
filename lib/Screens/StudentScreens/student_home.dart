@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gis/Screens/LoginScreens/loginScreen.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import 'package:gis/Screens/StudentScreens/location_details.dart';
@@ -160,166 +161,173 @@ class _StudentHomeState extends State<StudentHome> {
             }),
         backgroundColor: Colors.white, //Set body of Home Screen white
 
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment
-              .start, // Align children to the start (left) side
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 55.0), // Adjust the value as needed
-              child: Center(
-                child: Image.asset(
-                  'assets/Logo1.jpg',
+        body: Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment
+                .start, // Align children to the start (left) side
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 55.0), // Adjust the value as needed
+                child: Center(
+                  child: Image.asset(
+                    'assets/Logo1.jpg',
+                  ),
                 ),
               ),
-            ),
 
-            //With Image.network
-            // Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 55.0), // Adjust the value as needed
-            //   child: Image.network(
-            //     'https://lh3.googleusercontent.com/proxy/hg2zLHy6pToDdFdRgOPqokkx7aQPbm8qfB0AiDCabquCtOvU4yq4_mDKlD4YukK4BUxGu8Vl7Yp7S92S-tDINAj6rB0RMwSMWJUg',
-            //     width: 300,
-            //     height: 300,
-            //   ),
-            // ),
+              //With Image.network
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 55.0), // Adjust the value as needed
+              //   child: Image.network(
+              //     'https://lh3.googleusercontent.com/proxy/hg2zLHy6pToDdFdRgOPqokkx7aQPbm8qfB0AiDCabquCtOvU4yq4_mDKlD4YukK4BUxGu8Vl7Yp7S92S-tDINAj6rB0RMwSMWJUg',
+              //     width: 300,
+              //     height: 300,
+              //   ),
+              // ),
 
-            const SizedBox(
-                height: 15.0), // Add some space between image and other content
-            Padding(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Text(
-                "What do you want to Report?",
-                style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey, // Set text color to gray
-                  shadows: [
-                    Shadow(
-                      color: Colors.black, // Shadow color
-                      offset: Offset(2, 2), // Offset of the shadow
-                      blurRadius: 4, // Blur radius of the shadow
-                    ),
-                  ],
+              const SizedBox(
+                  height:
+                      15.0), // Add some space between image and other content
+              Padding(
+                padding: EdgeInsets.only(left: 10.0),
+                child: Text(
+                  "What do you want to Report?",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey, // Set text color to gray
+                    shadows: [
+                      Shadow(
+                        color: Colors.black, // Shadow color
+                        offset: Offset(2, 2), // Offset of the shadow
+                        blurRadius: 4, // Blur radius of the shadow
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 6.0), //Add Space
-            //First Rectangular Button [SOS]
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            LocationDetailsPage(type: 'sos')));
-              },
-              child: Container(
-                width: double.infinity, // 100% width
-                color: Colors.red, // Red color
+              const SizedBox(height: 6.0), //Add Space
+              //First Rectangular Button [SOS]
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              LocationDetailsPage(type: 'sos')));
+                },
+                child: Container(
+                  width: double.infinity, // 100% width
+                  color: Colors.red, // Red color
 
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/sos.png',
+                        width: 130,
+                        height: 130,
+                      ),
+                      const SizedBox(
+                          height: 8.0), // Add space between image and text
+                      Text(
+                        "Emergency | SOS",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 20.0), //Add Space
+                    ],
+                  ),
+                ),
+              ),
+
+              // Two Buttons [ Report A Problem & First Aid ]
+              Expanded(
+                child: Row(
                   children: [
-                    Image.asset(
-                      'assets/sos.png',
-                      width: 130,
-                      height: 130,
-                    ),
-                    const SizedBox(
-                        height: 8.0), // Add space between image and text
-                    Text(
-                      "Emergency | SOS",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                    // First Button
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      LocationDetailsPage(type: 'problem')));
+                        },
+                        child: Container(
+                          color: Colors.blue, // Blue color
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SizedBox(height: 20.0), // Add space
+                              Image.asset(
+                                'assets/problem.png',
+                                width: 100, // Adjust the image size as needed
+                                height: 100,
+                              ),
+                              const SizedBox(
+                                  height:
+                                      20.0), // Add space between image and text
+                              Text(
+                                "Report A Problem",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 11.5), //Add Space
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 20.0), //Add Space
+
+                    // Second Button
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                   LocationDetailsPage(type: 'first aid')));
+                        },
+                        child: Container(
+                          color: Colors.green, // Green color
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SizedBox(height: 20.0), // Add space
+                              Image.asset(
+                                'assets/firstaid.png',
+                                width: 100, // Adjust the image size as needed
+                                height: 100,
+                              ),
+                              const SizedBox(
+                                  height:
+                                      20.0), // Add space between image and text
+                              Text(
+                                "First Aid",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 11.5), //Add Space
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-            ),
-
-            // Two Buttons [ Report A Problem & First Aid ]
-            Row(
-              children: [
-                // First Button
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  LocationDetailsPage(type: 'problem')));
-                    },
-                    child: Container(
-                      color: Colors.blue, // Blue color
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(height: 20.0), // Add space
-                          Image.asset(
-                            'assets/problem.png',
-                            width: 100, // Adjust the image size as needed
-                            height: 100,
-                          ),
-                          const SizedBox(
-                              height: 20.0), // Add space between image and text
-                          Text(
-                            "Report A Problem",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 11.5), //Add Space
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-
-                // Second Button
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  LocationDetailsPage(type: 'first aid')));
-                    },
-                    child: Container(
-                      color: Colors.green, // Green color
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(height: 20.0), // Add space
-                          Image.asset(
-                            'assets/firstaid.png',
-                            width: 100, // Adjust the image size as needed
-                            height: 100,
-                          ),
-                          const SizedBox(
-                              height: 20.0), // Add space between image and text
-                          Text(
-                            "First Aid",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 11.5), //Add Space
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ));
+            ],
+          ),
+         ));
   }
 }
