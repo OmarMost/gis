@@ -85,8 +85,7 @@ class _StudentHomeState extends State<StudentHome> {
                                 ),
                               ),
                               Divider(
-                                color: Colors.grey[
-                                    200], // Set slightly lighter gray for divider
+                                color: Colors.grey[200], // Set slightly lighter gray for divider
                                 thickness: 0.0, // Adjust thickness as needed
                               ),
                               ListTile(

@@ -36,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     FirebaseFirestore.instance
         .collection('Users')
         .where('Email', isEqualTo: user!.email)
-        .get() //study assigmnet
+        .get() 
         .then((value) => value.docs.forEach((element) {
               profiledoc = element.reference.id;
 
@@ -46,7 +46,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future senddata() async {
-    //study assigmnet
     await FirebaseFirestore.instance.collection('Users').doc(profiledoc).update(
       {
         'Name': emailcontoller.text,
@@ -62,8 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   @override
-  void initState() {
-    //study assigmnet
+  void initState() { //الحالة البدائية
     getprofiledoc();
     super.initState();
   }
