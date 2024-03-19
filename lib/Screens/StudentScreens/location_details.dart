@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
 import 'package:gis/Screens/StudentScreens/sos_page.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
 
 class LocationDetailsPage extends StatefulWidget {
   final String type;
@@ -76,14 +76,7 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                 // Button 2
                 ElevatedButton(
                   onPressed: () {
-                    Fluttertoast.showToast(
-                        msg: "This is Center Short Toast",
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.TOP,
-                        timeInSecForIosWeb: 2,
-                        backgroundColor: Colors.red,
-                        textColor: Colors.white,
-                        fontSize: 16.0);
+                   
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
