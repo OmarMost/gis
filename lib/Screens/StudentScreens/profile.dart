@@ -4,6 +4,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+//Elgammal
+
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+// import 'package:about.dart';
+//____________________________________________________
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -16,6 +25,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final phonecontoller = TextEditingController();
   bool edit = false;
   final user = FirebaseAuth.instance.currentUser;
+  //Elgammal
+  //To hold img
+  File? imageprofile; //Online
+  //To handle all the function of the lib(Image picker)
+  final profileimagepicker = ImagePicker(); //Online
+  //To store the url of the uploaded image
+  var image_profile_url; //Online
+  //____________________________________________________
+
   Map<String, dynamic> data = {};
   Future getdata() async {
     data.clear();
@@ -59,6 +77,56 @@ class _ProfileScreenState extends State<ProfileScreen> {
     phonecontoller.clear();
     idcontoller.clear();
   }
+
+  //Elgammal---------------------------------------------------------------------------------------
+  Future uploadProfileImage() async {
+    // getprofile();
+    //To open the camera
+    var pickedimage = await profileimagepicker.pickImage(source: ImageSource.camera);
+
+    if (pickedimage != null) {
+      setState(() {
+
+      imageprofile = File(pickedimage.path);
+      
+      });
+      
+      var imagesprofilename = basename(pickedimage.path);
+      
+      var profileimagerefstorage = FirebaseStorage.instance.ref().child(imagesprofilename);
+
+      var uploadTask = profileimagerefstorage.putFile(imageprofile!);
+      await uploadTask.whenComplete(() async {
+        setState(() async {
+          image_profile_url = await profileimagerefstorage.getDownloadURL();
+        });
+        CollectionReference currentprofile = FirebaseFirestore.instance.collection('Users');
+        currentprofile.doc(profiledoc).update({'Profile Image': image_profile_url});
+      });
+      
+      
+    } else {}
+  }
+  // Future uploadProfileImage() async {
+  //   // getprofile();
+  //   //To open the camera
+  //   var pickedimage = await profileimagepicker.pickImage(source: ImageSource.camera);
+
+  //   if (pickedimage != null) {
+  //     //Image path
+  //     imageprofile = File(pickedimage.path);
+  //     //To remove unnesscary paths
+  //     var imagesprofilename = basename(pickedimage.path);
+  //     //To upload the img to fire storage (ref)
+  //     var profileimagerefstorage = FirebaseStorage.instance.ref(imagesprofilename);
+  //     //To wait when uploading the img to get the url for the img
+  //     await profileimagerefstorage.putFile(imageprofile!);
+  //     image_profile_url = await profileimagerefstorage.getDownloadURL();
+  //     CollectionReference currentprofile = FirebaseFirestore.instance.collection('Users');
+  //     currentprofile.doc(profiledoc).update({'Profile Image': image_profile_url});
+  //   } else {}
+  // }
+  //---------------------------------------------------------------------------------------------
 
   @override
   void initState() { //الحالة البدائية
@@ -104,8 +172,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Center(
                       child: CircleAvatar(
                         radius: 60,
-                        backgroundImage: NetworkImage(
-                            'https://th.bing.com/th/id/OIP.dnqjsjLH1kcLTAf1M9NvlQAAAA?rs=1&pid=ImgDetMain'),
+                        backgroundImage: image_profile_url != null //Gammal !!
+                        ? NetworkImage(image_profile_url!) //Gammal !!
+                          : NetworkImage(
+                              'https://firebasestorage.googleapis.com/v0/b/project-campus-8579a.appspot.com/o/DefaultImageProfile.jpg?alt=media&token=e1b04a1d-0c2f-4730-b433-5936e02ef1b4'),
                       ),
                     ),
                     SizedBox(height: 48.0),
@@ -192,6 +262,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     SizedBox(height: 11.5),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -215,6 +286,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             onPressed: () {
                               setState(() {
                                 senddata();
+                                uploadProfileImage(); //Elgammal
                                 edit = !edit;
                               });
                             },
