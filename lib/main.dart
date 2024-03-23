@@ -11,15 +11,15 @@ import 'package:gis/Screens/SecurtyScreens/report.dart';
 import 'package:gis/Screens/StudentScreens/choose_bulding.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
 
-import 'package:gis/Screens/StudentScreens/student_home.dart'; 
-import 'package:gis/Screens/StudentScreens/location_details.dart'; 
-import 'package:gis/Screens/StudentScreens/sos_page.dart'; 
-import 'package:gis/Screens/StudentScreens/report_problem_page.dart'; 
-import 'package:gis/Screens/StudentScreens/first_aid_page.dart'; 
+import 'package:gis/Screens/StudentScreens/student_home.dart';
+import 'package:gis/Screens/StudentScreens/location_details.dart';
+import 'package:gis/Screens/StudentScreens/sos_page.dart';
+import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
+import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
 
 import 'package:gis/Screens/StudentScreens/student_home.dart'; //My Page [StudentHome]..Elgammal
-import 'package:gis/Screens/StudentScreens/location_details.dart'; 
-import 'package:gis/Screens/LoginScreens/sec_login.dart';// ..Elgammal
+import 'package:gis/Screens/StudentScreens/location_details.dart';
+import 'package:gis/Screens/LoginScreens/sec_login.dart'; // ..Elgammal
 import 'package:gis/Screens/StudentScreens/sos_page.dart'; // ..Elgammal
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart'; // ..Elgammal
 import 'package:gis/Screens/StudentScreens/first_aid_page.dart'; // .. Elgammal
@@ -49,9 +49,7 @@ class MyApp extends StatelessWidget {
 
       home: Onboarding(), //Put Onboarding to normal Start.
 
-    
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
-    
     );
   }
 }

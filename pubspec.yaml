@@ -67,6 +67,10 @@ flutter:
     - assets/buld7.jpg
     - assets/buld8.jpg
     - assets/buld9.jpg
+    - assets/not_finshed.png
+    - assets/finshed.png
+
+
     
 
   fonts:
