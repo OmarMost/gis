@@ -32,9 +32,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_auth: ^4.2.8
   firebase_core: ^2.25.4
+  firebase_storage: ^11.6.10 #Elgammal
   flutter:
     sdk: flutter
   fluttertoast: ^8.2.4
+  image_picker: ^1.0.7 #Elgammal
+  pull_to_refresh: ^2.0.0 #Elgammal
 
 
 
