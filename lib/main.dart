@@ -30,7 +30,7 @@ import 'package:gis/firebase_options.dart';
 import 'package:gis/Screens/StudentScreens/profile.dart';
 import 'package:gis/Screens/StudentScreens/profile_Help.dart';
 import 'package:gis/Screens/LoginScreens/loginScreen.dart';
-import 'package:gis/Screens/SecurtyScreens/report.dart'; //Main
+import 'package:gis/Screens/LoginScreens/sec_login.dart'; //Main
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Onboarding(), //Put Onboarding to normal Start.
+      home: SecLogin(), //Put Onboarding to normal Start.
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
     );
   }
