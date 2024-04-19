@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      home: SecLogin(), //Put Onboarding to normal Start.
+      home: Onboarding(), //Put Onboarding to normal Start.
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
     );
   }
