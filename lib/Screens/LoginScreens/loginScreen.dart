@@ -69,7 +69,9 @@ class _Login_ScreenState extends State<Login_Screen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 controller: passwordController,
                 onFieldSubmitted: (value) {
@@ -121,7 +123,12 @@ class _Login_ScreenState extends State<Login_Screen> {
                   Text('Don\'t have an account ?'),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Sign_up(onPressed: () {  },)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Sign_up(
+                                    onPressed: () {},
+                                  )));
                     },
                     child: Text(
                       'Sign Up',
@@ -139,7 +146,7 @@ class _Login_ScreenState extends State<Login_Screen> {
       ),
     );
   }
-  
+
   Widget togglePassword() {
     return IconButton(
       onPressed: () {

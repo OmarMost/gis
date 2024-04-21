@@ -24,6 +24,7 @@ import 'package:gis/Screens/StudentScreens/sos_page.dart'; // ..Elgammal
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart'; // ..Elgammal
 import 'package:gis/Screens/StudentScreens/first_aid_page.dart'; // .. Elgammal
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
+import 'package:gis/Screens/onboarding_Screens/type_selection.dart';
 
 import 'package:gis/firebase_options.dart';
 
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      home: SecLogin(), //Put Onboarding to normal Start.
+      home: Select_type(), //Put Onboarding to normal Start.
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
     );
   }
