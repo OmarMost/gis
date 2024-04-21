@@ -6,10 +6,10 @@ import 'package:gis/Screens/LoginScreens/auth_page.dart';
 import 'package:gis/Screens/LoginScreens/privacy.dart';
 import 'package:gis/Screens/LoginScreens/privacy.dart';
 import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
-import 'package:gis/Screens/SecurtyScreens/robbery.dart';
 import 'package:gis/Screens/SecurtyScreens/report.dart';
 import 'package:gis/Screens/StudentScreens/choose_bulding.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
+import 'package:gis/Screens/StudentScreens/old_reports.dart';
 
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 import 'package:gis/Screens/StudentScreens/location_details.dart';
@@ -47,8 +47,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      home: Student_Reports(),
 
-      home: SecLogin(), //Put Onboarding to normal Start.
+      // home: Report(
+      //   buildingNumber: '5',
+      //   floorNumber: '5',
+      //   id: '7',
+      //   name: 'g',
+      //   phoneNumber: '888',
+      //   reportName: 'ggg',
+      //   time: '55',
+      //   reportId: 55,
+      // ),
+
+      // home: Onboarding(), //Put Onboarding to normal Start.
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
     );
   }

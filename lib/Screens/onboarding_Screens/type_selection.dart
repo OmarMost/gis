@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/LoginScreens/loginScreen.dart';
+import 'package:gis/Screens/LoginScreens/auth_page.dart';
+
 import 'package:gis/Screens/LoginScreens/sec_login.dart';
 
 class Select_type extends StatelessWidget {
@@ -16,10 +17,10 @@ class Select_type extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Please select User Type :',
+                    'You Are a :',
                     style: TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 25,
+                      fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -29,7 +30,7 @@ class Select_type extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SecLogin()));
+                    MaterialPageRoute(builder: (context) => Auth_Page()));
               },
               child: Container(
                 width: 300,
@@ -79,7 +80,7 @@ class Select_type extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/sec_Logo.jpg',
+                      'assets/sec_Logo2.jpg',
                       width: 130,
                       height: 130,
                     ),

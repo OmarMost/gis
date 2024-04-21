@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/onboarding_Screens/type_selection.dart';
 import '../LoginScreens/auth_page.dart';
 import 'on_boarding4.dart';
 
@@ -33,7 +34,7 @@ class Onboarding3 extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Auth_Page()));
+                            builder: (context) => Select_type()));
                   },
                 ),
               ),
