@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Student_Reports(),
+      home: Onboarding(),
 
       // home: Report(
       //   buildingNumber: '5',
