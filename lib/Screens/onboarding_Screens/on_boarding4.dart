@@ -1,3 +1,5 @@
+import 'package:gis/Screens/onboarding_Screens/type_selection.dart';
+
 import '../LoginScreens/auth_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +18,6 @@ class Onboarding4 extends StatelessWidget {
             height: 50,
           ),
           Expanded(
-            //   flex: 2,
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -51,10 +52,8 @@ class Onboarding4 extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Auth_Page()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Select_type()));
                   },
                   child: const Text(
                     'Login',

@@ -1,4 +1,10 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/StudentScreens/student_home.dart';
 
 class SOSPage extends StatefulWidget {
   const SOSPage({Key? key}) : super(key: key);
@@ -8,6 +14,38 @@ class SOSPage extends StatefulWidget {
 }
 
 class _SOSPageState extends State<SOSPage> {
+
+  Future addDat(String username, phonenum) async {
+    await FirebaseFirestore.instance
+      .collection('Reports')
+      .add({'Username': username, 'PhoneNum': phonenum});
+  }
+
+  final userr = FirebaseAuth.instance.currentUser!;
+  Map<String, dynamic> dat = {};
+  Future getdat() async {
+    dat.clear();
+    await FirebaseFirestore.instance
+      .collection('Reports')
+      .where('Email', isEqualTo: userr.email)
+      .get()
+      .then((value) => value.docs.forEach((element) {
+        dat.addAll(element.data());
+
+        print("-------------------------------------");
+        print(dat);
+      }));
+  }  
+
+  Future createReport() async {
+    Navigator.push(
+      context, 
+      MaterialPageRoute(
+        builder: (context) => StudentHome(), //مؤقتا
+      ));
+    addDat(dat['Username'], dat['PhoneNum']);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +95,7 @@ class _SOSPageState extends State<SOSPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle 'Call Security' button click
+                    createReport();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

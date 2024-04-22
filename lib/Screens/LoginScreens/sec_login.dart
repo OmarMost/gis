@@ -7,9 +7,9 @@ import 'package:gis/Screens/StudentScreens/student_home.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
 
 class SecLogin extends StatefulWidget {
-  final Function()? ontap;
+  //final Function()? ontap;
 
-  const SecLogin({super.key, required this.ontap});
+  //const SecLogin({super.key, required this.ontap});
   @override
   State<SecLogin> createState() => _SecLoginState();
 }
@@ -70,7 +70,9 @@ class _SecLoginState extends State<SecLogin> {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 controller: passwordController,
                 onFieldSubmitted: (value) {
@@ -118,8 +120,7 @@ class _SecLoginState extends State<SecLogin> {
               ),
               SizedBox(height: 15),
               Row(
-                children: [
-                ],
+                children: [],
               ),
             ],
           ),
@@ -127,7 +128,7 @@ class _SecLoginState extends State<SecLogin> {
       ),
     );
   }
-  
+
   Widget togglePassword() {
     return IconButton(
       onPressed: () {

@@ -80,7 +80,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   //Elgammal---------------------------------------------------------------------------------------
   Future uploadProfileImage() async {
-    // getprofile();
+   getprofiledoc();
+  
     //To open the camera
     var pickedimage = await profileimagepicker.pickImage(source: ImageSource.camera);
 
@@ -97,11 +98,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       var uploadTask = profileimagerefstorage.putFile(imageprofile!);
       await uploadTask.whenComplete(() async {
-        setState(() async {
+     
           image_profile_url = await profileimagerefstorage.getDownloadURL();
-        });
-        CollectionReference currentprofile = FirebaseFirestore.instance.collection('Users');
-        currentprofile.doc(profiledoc).update({'Profile Image': image_profile_url});
+          print(image_profile_url);
+        
+       await  FirebaseFirestore.instance.collection('Users').doc(profiledoc).update({'Profile_Image': image_profile_url});
       });
       
       
@@ -170,12 +171,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 15,
                     ),
                     Center(
-                      child: CircleAvatar(
-                        radius: 60,
-                        backgroundImage: image_profile_url != null //Gammal !!
-                        ? NetworkImage(image_profile_url!) //Gammal !!
-                          : NetworkImage(
-                              'https://firebasestorage.googleapis.com/v0/b/project-campus-8579a.appspot.com/o/DefaultImageProfile.jpg?alt=media&token=e1b04a1d-0c2f-4730-b433-5936e02ef1b4'),
+                      child: GestureDetector(onDoubleTap: uploadProfileImage,
+                        child: CircleAvatar(
+                          radius: 60,
+                          backgroundImage: data['Profile_Image'] != null //Gammal !!
+                          ? NetworkImage(data['Profile_Image']) //Gammal !!
+                            : NetworkImage(
+                                'https://firebasestorage.googleapis.com/v0/b/project-campus-8579a.appspot.com/o/DefaultImageProfile.jpg?alt=media&token=e1b04a1d-0c2f-4730-b433-5936e02ef1b4'),
+                        ),
                       ),
                     ),
                     SizedBox(height: 48.0),
@@ -284,9 +287,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           visible: edit,
                           child: FloatingActionButton.extended(
                             onPressed: () {
-                              setState(() {
                                 senddata();
-                                uploadProfileImage(); //Elgammal
+                               
+                              setState(() {
                                 edit = !edit;
                               });
                             },
