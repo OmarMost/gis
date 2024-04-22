@@ -3,6 +3,7 @@ import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
 import 'package:gis/Screens/StudentScreens/sos_page.dart';
 
+
 class LocationDetailsPage extends StatefulWidget {
   final String type;
   LocationDetailsPage({super.key, required this.type});
@@ -63,27 +64,20 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Button 1
-                ElevatedButton(
+                MaterialButton(
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    backgroundColor: Colors.grey,
-                    minimumSize: Size(137, 74), //Width and height
-                  ),
-                  child: Text(
-                    '1',
-                    style: TextStyle(
-                      color: Colors.orange,
-                      fontSize: 40.0,
-                    ),
+                  child: Container(
+                    child: Image.network(
+                        height: 50,
+                        'https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg'),
                   ),
                 ),
                 SizedBox(width: 16.0),
                 // Button 2
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                   
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
@@ -224,44 +218,46 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                 ),
               ),
             ),
-            SizedBox(height: 50.0),
+
             Center(
               child: SizedBox(
-                width: 300, // width of button
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle 'Next' button click
-                    if (widget.type == 'sos') {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SOSPage(),
-                          ));
-                    } else if (widget.type == 'problem') {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ReportAProblem(),
-                          ));
-                    }
-                    if (widget.type == 'first aid') {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FirstAid(),
-                          ));
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(7.0))),
-                  child: Text(
-                    'Next',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30.0,
+                // width of button
+                child: Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Handle 'Next' button click
+                      if (widget.type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SOSPage(),
+                            ));
+                      } else if (widget.type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(),
+                            ));
+                      }
+                      if (widget.type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstAid(),
+                            ));
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7.0))),
+                    child: Text(
+                      'Next',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30.0,
+                      ),
                     ),
                   ),
                 ),

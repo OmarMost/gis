@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
-import 'package:gis/Screens/home.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
 
@@ -33,7 +32,10 @@ class _Login_ScreenState extends State<Login_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: const BackButton(),
+        centerTitle: false,
+      ),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(16.0),
@@ -67,7 +69,9 @@ class _Login_ScreenState extends State<Login_Screen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 controller: passwordController,
                 onFieldSubmitted: (value) {
@@ -119,7 +123,12 @@ class _Login_ScreenState extends State<Login_Screen> {
                   Text('Don\'t have an account ?'),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Sign_up(onPressed: () {  },)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Sign_up(
+                                    onPressed: () {},
+                                  )));
                     },
                     child: Text(
                       'Sign Up',
@@ -137,7 +146,7 @@ class _Login_ScreenState extends State<Login_Screen> {
       ),
     );
   }
-  
+
   Widget togglePassword() {
     return IconButton(
       onPressed: () {

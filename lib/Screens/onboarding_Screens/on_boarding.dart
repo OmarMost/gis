@@ -1,4 +1,8 @@
+import 'dart:math';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/LoginScreens/loginScreen.dart';
 import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import '../StudentScreens/student_home.dart'; //By Elgammal
@@ -54,11 +58,19 @@ class Onboarding extends StatelessWidget {
                 //Changes by Elgammal to test StudentHomePage----------------------------
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Help()));
+                    FirebaseAuth.instance.signOut();
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Login_Screen(
+                                          ontap: () {},
+                                        ),
+                                      ));
+                   // Navigator.push(context,
+                     //   MaterialPageRoute(builder: (context) => log));
                   },
                   child: Text(
-                    'Test Button -- To StudentHomePage',
+                    'Test Button -- Logout',
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
