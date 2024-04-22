@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
+import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
 
@@ -25,7 +26,7 @@ class _SecLoginState extends State<SecLogin> {
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => StudentHome(),
+          builder: (context) => Home_Sec(),
         ));
   }
 
@@ -46,7 +47,7 @@ class _SecLoginState extends State<SecLogin> {
                 height: 400,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/Logo1.jpg'),
+                    image: AssetImage('assets/sec_Logo.jpg'),
                     fit: BoxFit.contain,
                     alignment: Alignment.topCenter,
                   ),
