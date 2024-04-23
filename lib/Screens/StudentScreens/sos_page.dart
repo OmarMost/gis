@@ -14,37 +14,43 @@ class SOSPage extends StatefulWidget {
 }
 
 class _SOSPageState extends State<SOSPage> {
-
-  Future addDat(String username, phonenum) async {
-    await FirebaseFirestore.instance
-      .collection('Reports')
-      .add({'Username': username, 'PhoneNum': phonenum});
+  Future addDat() async {
+    FirebaseFirestore.instance
+        .collection('Reports')
+        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone']});
   }
 
   final userr = FirebaseAuth.instance.currentUser!;
   Map<String, dynamic> dat = {};
-  Future getdat() async {
+  getdat() {
     dat.clear();
-    await FirebaseFirestore.instance
-      .collection('Reports')
-      .where('Email', isEqualTo: userr.email)
-      .get()
-      .then((value) => value.docs.forEach((element) {
-        dat.addAll(element.data());
+    FirebaseFirestore.instance
+        .collection('Users')
+        .where('Email', isEqualTo: userr.email)
+        .get()
+        .then((value) => value.docs.forEach((element) {
+              dat.addAll(element.data());
 
-        print("-------------------------------------");
-        print(dat);
-      }));
-  }  
-
-  Future createReport() async {
-    Navigator.push(
-      context, 
-      MaterialPageRoute(
-        builder: (context) => StudentHome(), //مؤقتا
-      ));
-    addDat(dat['Username'], dat['PhoneNum']);
+              print("-------------------------------------");
+              print(dat);
+              print('data usersssssssssssssssss');
+            }));
   }
+
+  @override
+  void initState() {
+    getdat();
+    super.initState();
+  }
+
+  // Future createReport() async {
+  //   Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => StudentHome(), //مؤقتا
+  //       ));
+  //   addDat(dat['Name'], dat['Phone']);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +69,7 @@ class _SOSPageState extends State<SOSPage> {
           children: [
             SizedBox(height: 30.0),
             Text(
-              'Emergency | SOS',
+              'Emergency | SOS ',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30.0,
@@ -95,14 +101,13 @@ class _SOSPageState extends State<SOSPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle 'Call Security' button click
-                    createReport();
+                    addDat();
+                    print('Senttttttttttttt');
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7.0)
-                    )
-                  ),
+                      backgroundColor: Colors.orange,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(7.0))),
                   child: Text(
                     'Call Security',
                     style: TextStyle(
