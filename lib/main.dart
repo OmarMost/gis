@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Onboarding(),
+      home: Onboarding(),//Put Onboarding to normal Start.
 
       // home: Report(
       //   buildingNumber: '5',
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
       //   reportId: 55,
       // ),
 
-      // home: Onboarding(), //Put Onboarding to normal Start.
+      // home: Onboarding(), 
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
     );
   }
