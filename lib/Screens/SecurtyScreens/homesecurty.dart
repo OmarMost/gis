@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/SecurtyScreens/report.dart';
+import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 
 int itemNUM = 16;
 
@@ -88,7 +90,14 @@ class _Home_SecState extends State<Home_Sec> {
                 title: const Text('Log Out',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black)),
-                onTap: () {},
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Onboarding(),
+                            ));
+                },
               ),
             ],
           ),

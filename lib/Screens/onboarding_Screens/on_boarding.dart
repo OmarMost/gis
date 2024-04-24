@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/LoginScreens/loginScreen.dart';
+import 'package:gis/Screens/SecurtyScreens/home_manger.dart';
 import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import '../StudentScreens/student_home.dart'; //By Elgammal
@@ -62,9 +63,7 @@ class Onboarding extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => Login_Screen(
-                                          ontap: () {},
-                                        ),
+                                        builder: (context) => Home_Manger(),
                                       ));
                    // Navigator.push(context,
                      //   MaterialPageRoute(builder: (context) => log));

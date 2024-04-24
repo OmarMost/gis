@@ -8,6 +8,7 @@ import 'package:gis/Screens/StudentScreens/choose_bulding.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import 'package:gis/Screens/StudentScreens/location_details.dart';
 import 'package:gis/Screens/StudentScreens/profile.dart';
+import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 
 class StudentHome extends StatefulWidget {
   const StudentHome({super.key});
@@ -146,9 +147,7 @@ class _StudentHomeState extends State<StudentHome> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => Login_Screen(
-                                          ontap: () {},
-                                        ),
+                                        builder: (context) => Onboarding(),
                                       ));
                                 },
                               ),
