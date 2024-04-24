@@ -56,7 +56,25 @@ class Onboarding extends StatelessWidget {
                         color: Colors.blue, fontWeight: FontWeight.bold),
                   ),
                 ),
-                //Changes by Elgammal to test StudentHomePage----------------------------
+                //Changes by Elgammal to test StudentHomePage---------------------------
+
+                ElevatedButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Home_Manger(),
+                        ));
+                    // Navigator.push(context,
+                    //   MaterialPageRoute(builder: (context) => log));
+                  },
+                  child: Text(
+                    'Test Button -- Logout',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ),
 
                 //-----------------------------------------------------------------------
               ],
