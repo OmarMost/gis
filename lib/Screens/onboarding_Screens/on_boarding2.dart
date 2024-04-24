@@ -31,10 +31,8 @@ class Onboarding2 extends StatelessWidget {
                         fontSize: 20),
                   ),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>  Select_type()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Select_type()));
                   },
                 ),
               ),

@@ -17,7 +17,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
   Future addDat() async {
     FirebaseFirestore.instance
         .collection('Reports')
-        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID});
+        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID, });
 
         setState(() {
           RID++;

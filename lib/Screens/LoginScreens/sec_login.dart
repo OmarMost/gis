@@ -14,14 +14,15 @@ class SecLogin extends StatefulWidget {
   State<SecLogin> createState() => _SecLoginState();
 }
 
+// await    async
 class _SecLoginState extends State<SecLogin> {
   // any variable will be decalared in the state
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool _isSecurePassword = true;
   //any function will be written in the state
-  void login() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
+  void login() {
+    FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text, password: passwordController.text);
     Navigator.pushReplacement(
         context,
