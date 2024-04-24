@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/StudentScreens/choose_floore.dart';
+import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
+import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
+import 'package:gis/Screens/StudentScreens/sos_page.dart';
 
 class Building extends StatelessWidget {
+  final String type;
+  Building({super.key, required this.type}); //LAST EDIT GAMMAL
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,9 +22,27 @@ class Building extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => floor()));
+                onTap: () { //LAST EDIT GAMMAL
+                      if (type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'sos',),
+                            ));
+                      } else if (type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'problem',),
+                            ));
+                      }
+                      if (type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'first aid',),
+                            ));
+                      }
                 },
                 child: Container(
                   height: 276,
@@ -43,9 +67,27 @@ class Building extends StatelessWidget {
               ),
               // مبني السكاشن
               GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => floor()));
+                onTap: () { //LAST EDIT GAMMAL
+                      if (type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'sos',),
+                            ));
+                      } else if (type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'problem',),
+                            ));
+                      }
+                      if (type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'first aid',),
+                            ));
+                      }
                 },
                 child: Container(
                   height: 289,
@@ -64,11 +106,27 @@ class Building extends StatelessWidget {
                 children: [
                   // كافتريا 1
                   GestureDetector(
-                    onTap: () {
-                      //   Navigator.push(
-                      //  context,
-                      ////  MaterialPageRoute(
-                      // builder: (context) => const floor()));
+                    onTap: () { //LAST EDIT GAMMAL
+                      if (type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SOSPage(),
+                            ));
+                      } else if (type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(),
+                            ));
+                      }
+                      if (type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstAid(),
+                            ));
+                      }
                       // هنا مفيش ادوار
                     },
                     child: Container(
@@ -85,12 +143,29 @@ class Building extends StatelessWidget {
                   ),
                   SizedBox(height: 1),
                   // كافتريا 2
-                  GestureDetector(
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //   MaterialPageRoute(
-//builder: (context) => const floor()));
+                  GestureDetector( 
+                    onTap: () { //LAST EDIT GAMMAL
+                      if (type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SOSPage(),
+                            ));
+                      } else if (type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(),
+                            ));
+                      }
+                      if (type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstAid(),
+                            ));
+                      }
+                      // هنا مفيش ادوار
                     },
                     child: Container(
                       height: 158,
@@ -110,11 +185,28 @@ class Building extends StatelessWidget {
                 children: [
                   // حرم الجامعه
                   GestureDetector(
-                    onTap: () {
-                      //     Navigator.push(
-                      //          context,
-                      /////       MaterialPageRoute(
-                      //         builder: (context) => const floor()));
+                    onTap: () { //LAST EDIT GAMMAL
+                      if (type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SOSPage(),
+                            ));
+                      } else if (type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(),
+                            ));
+                      }
+                      if (type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstAid(),
+                            ));
+                      }
+                      // هنا مفيش ادوار
                     },
                     child: Container(
                       height: 295,
@@ -134,11 +226,28 @@ class Building extends StatelessWidget {
                 children: [
                   // كافتريا 3
                   GestureDetector(
-                    onTap: () {
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //    builder: (context) => const floor()));
+                    onTap: () { //LAST EDIT GAMMAL
+                      if (type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SOSPage(),
+                            ));
+                      } else if (type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(),
+                            ));
+                      }
+                      if (type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstAid(),
+                            ));
+                      }
+                      // هنا مفيش ادوار
                     },
                     child: Container(
                       height: 158,
@@ -156,11 +265,28 @@ class Building extends StatelessWidget {
 
                   //كافتريا 4
                   GestureDetector(
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      ////   MaterialPageRoute(
-                      //       builder: (context) => const floor()));
+                    onTap: () { //LAST EDIT GAMMAL
+                      if (type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SOSPage(),
+                            ));
+                      } else if (type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(),
+                            ));
+                      }
+                      if (type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstAid(),
+                            ));
+                      }
+                      // هنا مفيش ادوار
                     },
                     child: Container(
                       height: 126,
@@ -179,9 +305,27 @@ class Building extends StatelessWidget {
 
               // مبني اللابات
               GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => floor()));
+                onTap: () { //LAST EDIT GAMMAL
+                      if (type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'sos',),
+                            ));
+                      } else if (type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'problem',),
+                            ));
+                      }
+                      if (type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'first aid',),
+                            ));
+                      }
                 },
                 child: Container(
                   height: 287,
@@ -203,9 +347,27 @@ class Building extends StatelessWidget {
             children: [
               // المبني الاداري
               GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => floor()));
+                onTap: () { //LAST EDIT GAMMAL
+                      if (type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'sos',),
+                            ));
+                      } else if (type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'problem',),
+                            ));
+                      }
+                      if (type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => floor(type: 'first aid',),
+                            ));
+                      }
                 },
                 child: Container(
                   height: 183,

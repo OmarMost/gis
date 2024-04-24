@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gis/Screens/LoginScreens/loginScreen.dart';
+import 'package:gis/Screens/StudentScreens/choose_bulding.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import 'package:gis/Screens/StudentScreens/location_details.dart';
 import 'package:gis/Screens/StudentScreens/profile.dart';
@@ -212,10 +213,10 @@ class _StudentHomeState extends State<StudentHome> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              LocationDetailsPage(type: 'sos')));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Building(type: 'sos'),
+                            ));
                 },
                 child: Container(
                   width: double.infinity, // 100% width
@@ -256,7 +257,7 @@ class _StudentHomeState extends State<StudentHome> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      LocationDetailsPage(type: 'problem')));
+                                      Building(type: 'problem')));
                         },
                         child: Container(
                           color: Colors.blue, // Blue color
@@ -294,7 +295,7 @@ class _StudentHomeState extends State<StudentHome> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                   LocationDetailsPage(type: 'first aid')));
+                                   Building(type: 'first aid')));
                         },
                         child: Container(
                           color: Colors.green, // Green color

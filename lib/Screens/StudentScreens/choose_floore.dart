@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
+import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
+import 'package:gis/Screens/StudentScreens/sos_page.dart';
 
 class floor extends StatefulWidget {
-  const floor({super.key});
+  final String type;
+  floor({super.key, required this.type}); //LAST EDIT GAMMAL
+
+  //const floor({super.key});
 
   @override
   State<floor> createState() => _floorState();
@@ -49,7 +55,28 @@ class _floorState extends State<floor> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () { //LAST EDIT GAMMAL
+                      if (widget.type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SOSPage(),
+                            ));
+                      } else if (widget.type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(),
+                            ));
+                      }
+                      if (widget.type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstAid(),
+                            ));
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.orange,
                       backgroundColor: Colors.transparent,
@@ -66,7 +93,28 @@ class _floorState extends State<floor> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () { //LAST EDIT GAMMAL
+                      if (widget.type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SOSPage(),
+                            ));
+                      } else if (widget.type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(),
+                            ));
+                      }
+                      if (widget.type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstAid(),
+                            ));
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.orange,
                       backgroundColor: Colors.white,
@@ -81,7 +129,28 @@ class _floorState extends State<floor> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () { //LAST EDIT GAMMAL
+                      if (widget.type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SOSPage(),
+                            ));
+                      } else if (widget.type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(),
+                            ));
+                      }
+                      if (widget.type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstAid(),
+                            ));
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.orange,
                       backgroundColor: Colors.transparent,
@@ -96,7 +165,28 @@ class _floorState extends State<floor> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () { //LAST EDIT GAMMAL
+                      if (widget.type == 'sos') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SOSPage(),
+                            ));
+                      } else if (widget.type == 'problem') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(),
+                            ));
+                      }
+                      if (widget.type == 'first aid') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstAid(),
+                            ));
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.orange,
                       backgroundColor: Colors.white,

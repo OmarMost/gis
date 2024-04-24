@@ -14,6 +14,7 @@ class SOSPage extends StatefulWidget {
 }
 
 class _SOSPageState extends State<SOSPage> {
+  
   Future addDat() async {
     FirebaseFirestore.instance
         .collection('Reports')

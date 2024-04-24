@@ -226,26 +226,28 @@ class _LocationDetailsPageState extends State<LocationDetailsPage> {
                   child: ElevatedButton(
                     onPressed: () {
                       // Handle 'Next' button click
-                      if (widget.type == 'sos') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SOSPage(),
-                            ));
-                      } else if (widget.type == 'problem') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ReportAProblem(),
-                            ));
-                      }
-                      if (widget.type == 'first aid') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => FirstAid(),
-                            ));
-                      }
+                      
+
+                      // if (widget.type == 'sos') {
+                      //   Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //         builder: (context) => SOSPage(),
+                      //       ));
+                      // } else if (widget.type == 'problem') {
+                      //   Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //         builder: (context) => ReportAProblem(),
+                      //       ));
+                      // }
+                      // if (widget.type == 'first aid') {
+                      //   Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //         builder: (context) => FirstAid(),
+                      //       ));
+                      // }
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
