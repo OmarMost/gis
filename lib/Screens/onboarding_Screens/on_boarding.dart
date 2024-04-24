@@ -60,11 +60,11 @@ class Onboarding extends StatelessWidget {
 
                 ElevatedButton(
                   onPressed: () {
-                    FirebaseAuth.instance.signOut();
+                    // FirebaseAuth.instance.signOut();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Home_Manger(),
+                          builder: (context) => Home_Sec(),
                         ));
                     // Navigator.push(context,
                     //   MaterialPageRoute(builder: (context) => log));
