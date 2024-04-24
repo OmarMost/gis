@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ReportAProblem extends StatefulWidget {
@@ -8,6 +10,43 @@ class ReportAProblem extends StatefulWidget {
 }
 
 class _ReportAProblemState extends State<ReportAProblem> {
+  get type => "Report A Problem";
+  int RID = 1;
+  // get RID => '1';
+
+  Future addDat() async {
+    FirebaseFirestore.instance
+        .collection('Reports')
+        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID});
+
+        setState(() {
+          RID++;
+        });
+  }
+
+  final userr = FirebaseAuth.instance.currentUser!;
+  Map<String, dynamic> dat = {};
+  getdat() {
+    dat.clear();
+    FirebaseFirestore.instance
+        .collection('Users')
+        .where('Email', isEqualTo: userr.email)
+        .get()
+        .then((value) => value.docs.forEach((element) {
+              dat.addAll(element.data());
+
+              print("-------------------------------------");
+              print(dat);
+              print('data usersssssssssssssssss');
+            }));
+  }
+
+  @override
+  void initState() {
+    getdat();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +111,8 @@ class _ReportAProblemState extends State<ReportAProblem> {
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle 'Submit' button click
+                    addDat();
+                    print('Senttttttttttttt');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

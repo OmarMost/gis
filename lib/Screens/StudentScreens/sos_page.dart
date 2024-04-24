@@ -15,11 +15,17 @@ class SOSPage extends StatefulWidget {
 
 class _SOSPageState extends State<SOSPage> {
   get type => "SOS";
+  int RID = 1;
+  // get RID => '1';
 
   Future addDat() async {
     FirebaseFirestore.instance
         .collection('Reports')
-        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type});
+        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID});
+
+        setState(() {
+          RID++;
+        });
   }
 
   final userr = FirebaseAuth.instance.currentUser!;
