@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/SecurtyScreens/profilesec.dart';
 import 'package:gis/Screens/SecurtyScreens/report.dart';
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 
@@ -18,6 +20,7 @@ class Home_Sec extends StatefulWidget {
 }
 
 class _Home_SecState extends State<Home_Sec> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,8 +29,9 @@ class _Home_SecState extends State<Home_Sec> {
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
       ),
       drawer: Drawer(
-        child: Container(
-          color: Colors.grey[300],
+        child: //data['Name'] != null? 
+        Container(
+          color: Colors.grey,
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -35,9 +39,9 @@ class _Home_SecState extends State<Home_Sec> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
-                      'Mohamed',
+                      'My Drawer',
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -45,7 +49,7 @@ class _Home_SecState extends State<Home_Sec> {
                       ),
                     ),
                     Text(
-                      'Securty',
+                      'Security',
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.black,
@@ -72,11 +76,20 @@ class _Home_SecState extends State<Home_Sec> {
                 onTap: () => Navigator.pop(context),
               ),
               ListTile(
-                leading: const Icon(Icons.person, color: Colors.black),
+                leading: const Icon(
+                  Icons.person,
+                  color: Colors.black,
+                ),
                 title: const Text('Profile',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black)),
-                onTap: () {},
+                onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileSec(),
+                          ));
+                    },
               ),
               ListTile(
                 leading:
@@ -109,32 +122,16 @@ class _Home_SecState extends State<Home_Sec> {
               ),
             ],
           ),
-        ),
+        )
+      // : Center(
+      //       child: CircularProgressIndicator(
+      //           color: Colors.blue, strokeWidth: 8),
+      //     )
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            Container(
-                // decoration: BoxDecoration(
-                //   borderRadius: BorderRadius.circular(5),
-                // color: Color.fromARGB(33, 1, 1, 1),
-                //),
-                //child: Row(
-                //children: [
-                //Icon(
-                // Icons.search,
-                //),
-                //SizedBox(
-                //width: 10,
-                //),
-                //Text(
-                //'search for report ',
-                //style: TextStyle(),
-                //),
-                // ],
-                //),
-                ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
