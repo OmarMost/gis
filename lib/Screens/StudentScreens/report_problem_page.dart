@@ -5,26 +5,34 @@ import 'package:flutter/material.dart';
 class ReportAProblem extends StatefulWidget {
   // const ReportAProblem({Key? key}) : super(key: key);
   final String BuildingName, FloorNum;
-  ReportAProblem({super.key, required this.BuildingName, required this.FloorNum});
+  ReportAProblem(
+      {super.key, required this.BuildingName, required this.FloorNum});
 
   @override
   State<ReportAProblem> createState() => _ReportAProblemState();
 }
 
 class _ReportAProblemState extends State<ReportAProblem> {
+  final description_Controller = TextEditingController();
+
   int RID = 1;
   // get RID => '1';
   get type => "Report A Problem";
-  String Description = "";
 
   Future addDat() async {
-    FirebaseFirestore.instance
-        .collection('Reports')
-        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID, 'BuildingName': widget.BuildingName, 'FloorNum': widget.FloorNum, 'Description': Description});
+    FirebaseFirestore.instance.collection('Reports').add({
+      'Username': dat['Name'],
+      'PhoneNum': dat['Phone'],
+      'Type': type,
+      'RID': RID,
+      'BuildingName': widget.BuildingName,
+      'FloorNum': widget.FloorNum,
+      'Description': description_Controller.text
+    });
 
-        setState(() {
-          RID++;
-        });
+    setState(() {
+      RID++;
+    });
   }
 
   final userr = FirebaseAuth.instance.currentUser!;
@@ -61,7 +69,8 @@ class _ReportAProblemState extends State<ReportAProblem> {
           },
         ),
       ),
-      body: SingleChildScrollView( // Wrap with SingleChildScrollView
+      body: SingleChildScrollView(
+        // Wrap with SingleChildScrollView
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -87,6 +96,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
             Container(
               color: Colors.grey[300], // Background color to gray
               child: TextField(
+                controller: description_Controller,
                 maxLines: 5,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -107,7 +117,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
                 ),
               ],
             ),
-            SizedBox(height: 240.0), //Last 290 - 50 
+            SizedBox(height: 240.0), //Last 290 - 50
             Center(
               child: SizedBox(
                 width: 300, // width of button

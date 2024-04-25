@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/SecurtyScreens/home_sec2.dart';
 import 'package:gis/Screens/SecurtyScreens/profilesec.dart';
 import 'package:gis/Screens/SecurtyScreens/report.dart';
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
@@ -13,14 +12,14 @@ String? sec_name;
 
 int itemNUM = 16;
 
-class Home_Sec extends StatefulWidget {
-  const Home_Sec({Key? key}) : super(key: key);
+class Home_Sec2 extends StatefulWidget {
+  const Home_Sec2({Key? key}) : super(key: key);
 
   @override
-  State<Home_Sec> createState() => _Home_SecState();
+  State<Home_Sec2> createState() => _Home_SecState();
 }
 
-class _Home_SecState extends State<Home_Sec> {
+class _Home_SecState extends State<Home_Sec2> {
   
   @override
   Widget build(BuildContext context) {
@@ -168,7 +167,6 @@ class _Home_SecState extends State<Home_Sec> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    
                     showDialog(
                       context: context,
                       builder: (context) {
@@ -184,8 +182,6 @@ class _Home_SecState extends State<Home_Sec> {
                         );
                       },
                     );
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Home_Sec2()));
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.greenAccent),
@@ -236,7 +232,7 @@ class _Home_SecState extends State<Home_Sec> {
 
                       // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
                       final filteredReports = reports
-                          .where((report) => report['Type'] == 'SOS')
+                          .where((report) => report['Type'] == 'First Aid')
                           .toList();
 
                       return ListView.builder(
