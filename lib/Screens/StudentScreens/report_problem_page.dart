@@ -3,21 +3,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ReportAProblem extends StatefulWidget {
-  const ReportAProblem({Key? key}) : super(key: key);
+  // const ReportAProblem({Key? key}) : super(key: key);
+  final String BuildingName, FloorNum;
+  ReportAProblem({super.key, required this.BuildingName, required this.FloorNum});
 
   @override
   State<ReportAProblem> createState() => _ReportAProblemState();
 }
 
 class _ReportAProblemState extends State<ReportAProblem> {
-  get type => "Report A Problem";
   int RID = 1;
   // get RID => '1';
+  get type => "Report A Problem";
+  String Description = "";
 
   Future addDat() async {
     FirebaseFirestore.instance
         .collection('Reports')
-        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID, 'Building Num': "", 'Floor Num': ""});
+        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID, 'BuildingName': widget.BuildingName, 'FloorNum': widget.FloorNum, 'Description': Description});
 
         setState(() {
           RID++;

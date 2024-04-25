@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class FirstAid extends StatefulWidget {
-  const FirstAid({super.key});
+  // const FirstAid({super.key});
+  final String BuildingName, FloorNum;
+  FirstAid({super.key, required this.BuildingName, required this.FloorNum});
 
   @override
   State<FirstAid> createState() => _FirstAidState();
@@ -14,14 +16,15 @@ class _FirstAidState extends State<FirstAid> {
   bool isReportingForSelf = true; // Default is "For Me"
   bool hasChronicDiseases = false; // Default is "No"
 
-  get type => "First Aid";
   int RID = 1;
   // get RID => '1';
+  get type => "First Aid";
+  String Description = "";
 
   Future addDat() async {
     FirebaseFirestore.instance
         .collection('Reports')
-        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID, 'Building Num': "", 'Floor Num': ""});
+        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID, 'BuildingName': widget.BuildingName, 'FloorNum': widget.FloorNum, 'Description': Description});
 
         setState(() {
           RID++;

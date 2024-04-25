@@ -9,14 +9,14 @@ import 'package:gis/Screens/StudentScreens/sos_page.dart';
 class Building extends StatefulWidget {
   final String type;
   Building({super.key, required this.type}); //LAST EDIT GAMMAL
-  
-  //const Building({super.key});
 
   @override
   State<Building> createState() => _BuildingState();
 }
 
 class _BuildingState extends State<Building> {
+
+  String BuildingName = "";
 
   int RIDSOS = 1;
   // get RID => '1';
@@ -26,7 +26,7 @@ class _BuildingState extends State<Building> {
   Future addDat() async {
     FirebaseFirestore.instance
         .collection('Reports')
-        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': typeReport, 'RID': RIDSOS, 'BuildingName': "", 'FloorNum': "", 'Description': Description}); //without ( 'Floor Num': "" )
+        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': typeReport, 'RID': RIDSOS, 'BuildingName': BuildingName, 'FloorNum': "", 'Description': Description}); //without ( 'Floor Num': "" )
 
         setState(() {
           RIDSOS++;
@@ -76,20 +76,20 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'sos',),
+                              builder: (context) => floor(type: 'sos', BuildingName: 'Lectures'),
                             ));
                       } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'problem',),
+                              builder: (context) => floor(type: 'problem', BuildingName: 'Lectures'),
                             ));
                       }
                       if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'first aid',),
+                              builder: (context) => floor(type: 'first aid', BuildingName: 'Lectures'),
                             ));
                       }
                 },
@@ -121,20 +121,20 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'sos',),
+                              builder: (context) => floor(type: 'sos', BuildingName: 'Sections'),
                             ));
                       } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'problem',),
+                              builder: (context) => floor(type: 'problem',  BuildingName: 'Sections'),
                             ));
                       }
                       if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'first aid',),
+                              builder: (context) => floor(type: 'first aid',  BuildingName: 'Sections'),
                             ));
                       }
                 },
@@ -157,6 +157,7 @@ class _BuildingState extends State<Building> {
                   GestureDetector(
                     onTap: () { //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
+                        BuildingName = "Cafe 1";
                         addDat();//=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
@@ -165,17 +166,19 @@ class _BuildingState extends State<Building> {
                               builder: (context) => SOSPage(),
                             ));
                       } else if (widget.type == 'problem') {
+                        BuildingName = "Cafe 1";
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(),
+                              builder: (context) => ReportAProblem(BuildingName: 'Cafe 1', FloorNum: '',),
                             ));
                       }
                       if (widget.type == 'first aid') {
+                        BuildingName = "Cafe 1";
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(),
+                              builder: (context) => FirstAid(BuildingName: 'Cafe 1', FloorNum: '',),
                             ));
                       }
                       // هنا مفيش ادوار
@@ -197,6 +200,7 @@ class _BuildingState extends State<Building> {
                   GestureDetector( 
                     onTap: () { //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
+                        BuildingName = "Cafe 2";
                         addDat();//=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
@@ -205,17 +209,19 @@ class _BuildingState extends State<Building> {
                               builder: (context) => SOSPage(),
                             ));
                       } else if (widget.type == 'problem') {
+                        BuildingName = "Cafe 2";
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(),
+                              builder: (context) => ReportAProblem(BuildingName: 'Cafe 2', FloorNum: '',),
                             ));
                       }
                       if (widget.type == 'first aid') {
+                        BuildingName = "Cafe 2";
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(),
+                              builder: (context) => FirstAid(BuildingName: 'Cafe 2', FloorNum: '',),
                             ));
                       }
                       // هنا مفيش ادوار
@@ -240,6 +246,7 @@ class _BuildingState extends State<Building> {
                   GestureDetector(
                     onTap: () { //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
+                        BuildingName = "Campus";
                         addDat();//=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
@@ -248,17 +255,19 @@ class _BuildingState extends State<Building> {
                               builder: (context) => SOSPage(),
                             ));
                       } else if (widget.type == 'problem') {
+                        BuildingName = "Campus";
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(),
+                              builder: (context) => ReportAProblem(BuildingName: 'Campus', FloorNum: '',),
                             ));
                       }
                       if (widget.type == 'first aid') {
+                        BuildingName = "Campus";
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(),
+                              builder: (context) => FirstAid(BuildingName: 'Campus', FloorNum: '',),
                             ));
                       }
                       // هنا مفيش ادوار
@@ -283,6 +292,7 @@ class _BuildingState extends State<Building> {
                   GestureDetector(
                     onTap: () { //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
+                        BuildingName = "Cafe 3";
                         addDat();//=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
@@ -291,17 +301,19 @@ class _BuildingState extends State<Building> {
                               builder: (context) => SOSPage(),
                             ));
                       } else if (widget.type == 'problem') {
+                        BuildingName = "Cafe 3";
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(),
+                              builder: (context) => ReportAProblem(BuildingName: 'Cafe 3', FloorNum: '',),
                             ));
                       }
                       if (widget.type == 'first aid') {
+                        BuildingName = "Cafe 3";
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(),
+                              builder: (context) => FirstAid(BuildingName: 'Cafe 3', FloorNum: '',),
                             ));
                       }
                       // هنا مفيش ادوار
@@ -324,6 +336,7 @@ class _BuildingState extends State<Building> {
                   GestureDetector(
                     onTap: () { //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
+                        BuildingName = "Cafe 4";
                         addDat();//=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
@@ -332,17 +345,19 @@ class _BuildingState extends State<Building> {
                               builder: (context) => SOSPage(),
                             ));
                       } else if (widget.type == 'problem') {
+                        BuildingName = "Cafe 4";
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(),
+                              builder: (context) => ReportAProblem(BuildingName: 'Cafe 4', FloorNum: '',),
                             ));
                       }
                       if (widget.type == 'first aid') {
+                        BuildingName = "Cafe 4";
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(),
+                              builder: (context) => FirstAid(BuildingName: 'Cafe 4', FloorNum: '',),
                             ));
                       }
                       // هنا مفيش ادوار
@@ -369,20 +384,20 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'sos',),
+                              builder: (context) => floor(type: 'sos', BuildingName: 'Labs'),
                             ));
                       } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'problem',),
+                              builder: (context) => floor(type: 'problem', BuildingName: 'Labs'),
                             ));
                       }
                       if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'first aid',),
+                              builder: (context) => floor(type: 'first aid',  BuildingName: 'Labs'),
                             ));
                       }
                 },
@@ -411,20 +426,20 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'sos',),
+                              builder: (context) => floor(type: 'sos', BuildingName: 'Main'),
                             ));
                       } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'problem',),
+                              builder: (context) => floor(type: 'problem', BuildingName: 'Main'),
                             ));
                       }
                       if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => floor(type: 'first aid',),
+                              builder: (context) => floor(type: 'first aid', BuildingName: 'Main'),
                             ));
                       }
                 },
