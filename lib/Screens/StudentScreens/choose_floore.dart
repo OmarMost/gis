@@ -247,7 +247,7 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(BuildingName: widget.BuildingName, FloorNum: 'Ground floor'),
+                                builder: (context) => FirstAid(BuildingName: widget.BuildingName, FloorNum: 'Ground floor'),
                             ));
                       }
                     },
