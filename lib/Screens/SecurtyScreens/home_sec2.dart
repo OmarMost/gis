@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/SecurtyScreens/home_sec3.dart';
+import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
 import 'package:gis/Screens/SecurtyScreens/profilesec.dart';
 import 'package:gis/Screens/SecurtyScreens/report.dart';
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
@@ -24,8 +26,14 @@ class _Home_SecState extends State<Home_Sec2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: Color.fromARGB(255, 133, 148, 161),
-      appBar: AppBar(
+      appBar: AppBar(title: Text(
+                            'Reports of First Aid',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
       ),
       drawer: Drawer(
@@ -140,6 +148,7 @@ class _Home_SecState extends State<Home_Sec2> {
                     ButtonBar(
               alignment: MainAxisAlignment.start,
               children: [
+
                 ElevatedButton(
                   onPressed: () {
                     showDialog(
@@ -156,7 +165,10 @@ class _Home_SecState extends State<Home_Sec2> {
                           ],
                         );
                       },
-                    );
+                    );Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home_Sec()));
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   child: Text(
@@ -165,6 +177,11 @@ class _Home_SecState extends State<Home_Sec2> {
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
+
+
+
+
+
                 ElevatedButton(
                   onPressed: () {
                     showDialog(
@@ -181,7 +198,10 @@ class _Home_SecState extends State<Home_Sec2> {
                           ],
                         );
                       },
-                    );
+                    );Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home_Sec2()));
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.greenAccent),
@@ -191,6 +211,9 @@ class _Home_SecState extends State<Home_Sec2> {
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
+
+
+
                 ElevatedButton(
                   onPressed: () {
                     // Handle Second button press
@@ -208,7 +231,10 @@ class _Home_SecState extends State<Home_Sec2> {
                           ],
                         );
                       },
-                    );
+                    );Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home_Sec3()));
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                   child: Text(

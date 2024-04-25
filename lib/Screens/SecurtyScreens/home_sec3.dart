@@ -27,6 +27,10 @@ class _Home_SecState extends State<Home_Sec3> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 133, 148, 161),
       appBar: AppBar(
+        title: Text(
+          'Reports of problems',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
       ),
       drawer: Drawer(
@@ -157,6 +161,10 @@ class _Home_SecState extends State<Home_Sec3> {
                                 );
                               },
                             );
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home_Sec()));
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.red),
@@ -169,7 +177,6 @@ class _Home_SecState extends State<Home_Sec3> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            
                             showDialog(
                               context: context,
                               builder: (context) {
@@ -188,7 +195,7 @@ class _Home_SecState extends State<Home_Sec3> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Home_Sec()));
+                                    builder: (context) => Home_Sec2()));
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.greenAccent),
@@ -201,7 +208,6 @@ class _Home_SecState extends State<Home_Sec3> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            // Handle Second button press
                             showDialog(
                               context: context,
                               builder: (context) {
