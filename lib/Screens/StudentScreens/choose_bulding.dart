@@ -21,11 +21,12 @@ class _BuildingState extends State<Building> {
   int RIDSOS = 1;
   // get RID => '1';
   get typeReport => "SOS";
+  String Description = "";
 
   Future addDat() async {
     FirebaseFirestore.instance
         .collection('Reports')
-        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': typeReport, 'RID': RIDSOS, 'Building Name': ""}); //without ( 'Floor Num': "" )
+        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': typeReport, 'RID': RIDSOS, 'BuildingName': "", 'FloorNum': "", 'Description': Description}); //without ( 'Floor Num': "" )
 
         setState(() {
           RIDSOS++;
