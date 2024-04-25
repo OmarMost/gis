@@ -1,12 +1,60 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/StudentScreens/choose_floore.dart';
 import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
 import 'package:gis/Screens/StudentScreens/sos_page.dart';
 
-class Building extends StatelessWidget {
+class Building extends StatefulWidget {
   final String type;
   Building({super.key, required this.type}); //LAST EDIT GAMMAL
+  
+  //const Building({super.key});
+
+  @override
+  State<Building> createState() => _BuildingState();
+}
+
+class _BuildingState extends State<Building> {
+
+  int RIDSOS = 1;
+  // get RID => '1';
+  get typeReport => "SOS";
+
+  Future addDat() async {
+    FirebaseFirestore.instance
+        .collection('Reports')
+        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': typeReport, 'RID': RIDSOS, 'Building Name': ""}); //without ( 'Floor Num': "" )
+
+        setState(() {
+          RIDSOS++;
+        });
+  }
+
+  final userr = FirebaseAuth.instance.currentUser!;
+  Map<String, dynamic> dat = {};
+  getdat() {
+    dat.clear();
+    FirebaseFirestore.instance
+        .collection('Users')
+        .where('Email', isEqualTo: userr.email)
+        .get()
+        .then((value) => value.docs.forEach((element) {
+              dat.addAll(element.data());
+
+              print("-------------------------------------");
+              print(dat);
+              print('data usersssssssssssssssss');
+            }));
+  }
+
+  @override
+  void initState() {
+    getdat();
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +71,20 @@ class Building extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () { //LAST EDIT GAMMAL
-                      if (type == 'sos') {
+                      if (widget.type == 'sos') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => floor(type: 'sos',),
                             ));
-                      } else if (type == 'problem') {
+                      } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => floor(type: 'problem',),
                             ));
                       }
-                      if (type == 'first aid') {
+                      if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -68,20 +116,20 @@ class Building extends StatelessWidget {
               // مبني السكاشن
               GestureDetector(
                 onTap: () { //LAST EDIT GAMMAL
-                      if (type == 'sos') {
+                      if (widget.type == 'sos') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => floor(type: 'sos',),
                             ));
-                      } else if (type == 'problem') {
+                      } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => floor(type: 'problem',),
                             ));
                       }
-                      if (type == 'first aid') {
+                      if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -107,20 +155,22 @@ class Building extends StatelessWidget {
                   // كافتريا 1
                   GestureDetector(
                     onTap: () { //LAST EDIT GAMMAL
-                      if (type == 'sos') {
+                      if (widget.type == 'sos') {
+                        addDat();//=========================================
+                        print('Senttttttttttttt');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SOSPage(),
                             ));
-                      } else if (type == 'problem') {
+                      } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ReportAProblem(),
                             ));
                       }
-                      if (type == 'first aid') {
+                      if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -145,20 +195,22 @@ class Building extends StatelessWidget {
                   // كافتريا 2
                   GestureDetector( 
                     onTap: () { //LAST EDIT GAMMAL
-                      if (type == 'sos') {
+                      if (widget.type == 'sos') {
+                        addDat();//=========================================
+                        print('Senttttttttttttt');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SOSPage(),
                             ));
-                      } else if (type == 'problem') {
+                      } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ReportAProblem(),
                             ));
                       }
-                      if (type == 'first aid') {
+                      if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -186,20 +238,22 @@ class Building extends StatelessWidget {
                   // حرم الجامعه
                   GestureDetector(
                     onTap: () { //LAST EDIT GAMMAL
-                      if (type == 'sos') {
+                      if (widget.type == 'sos') {
+                        addDat();//=========================================
+                        print('Senttttttttttttt');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SOSPage(),
                             ));
-                      } else if (type == 'problem') {
+                      } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ReportAProblem(),
                             ));
                       }
-                      if (type == 'first aid') {
+                      if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -227,20 +281,22 @@ class Building extends StatelessWidget {
                   // كافتريا 3
                   GestureDetector(
                     onTap: () { //LAST EDIT GAMMAL
-                      if (type == 'sos') {
+                      if (widget.type == 'sos') {
+                        addDat();//=========================================
+                        print('Senttttttttttttt');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SOSPage(),
                             ));
-                      } else if (type == 'problem') {
+                      } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ReportAProblem(),
                             ));
                       }
-                      if (type == 'first aid') {
+                      if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -266,20 +322,22 @@ class Building extends StatelessWidget {
                   //كافتريا 4
                   GestureDetector(
                     onTap: () { //LAST EDIT GAMMAL
-                      if (type == 'sos') {
+                      if (widget.type == 'sos') {
+                        addDat();//=========================================
+                        print('Senttttttttttttt');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SOSPage(),
                             ));
-                      } else if (type == 'problem') {
+                      } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ReportAProblem(),
                             ));
                       }
-                      if (type == 'first aid') {
+                      if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -306,20 +364,20 @@ class Building extends StatelessWidget {
               // مبني اللابات
               GestureDetector(
                 onTap: () { //LAST EDIT GAMMAL
-                      if (type == 'sos') {
+                      if (widget.type == 'sos') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => floor(type: 'sos',),
                             ));
-                      } else if (type == 'problem') {
+                      } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => floor(type: 'problem',),
                             ));
                       }
-                      if (type == 'first aid') {
+                      if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -348,20 +406,20 @@ class Building extends StatelessWidget {
               // المبني الاداري
               GestureDetector(
                 onTap: () { //LAST EDIT GAMMAL
-                      if (type == 'sos') {
+                      if (widget.type == 'sos') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => floor(type: 'sos',),
                             ));
-                      } else if (type == 'problem') {
+                      } else if (widget.type == 'problem') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => floor(type: 'problem',),
                             ));
                       }
-                      if (type == 'first aid') {
+                      if (widget.type == 'first aid') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(

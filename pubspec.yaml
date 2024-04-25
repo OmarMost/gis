@@ -38,6 +38,7 @@ dependencies:
   fluttertoast: ^8.2.4
   image_picker: ^1.0.7 #Elgammal
   pull_to_refresh: ^2.0.0 #Elgammal
+  url_launcher: ^6.1.0 #Elgammal
 
 
 

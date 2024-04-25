@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
+import 'package:url_launcher/url_launcher.dart'; //to Handle 'Call Security' button click
 
 class SOSPage extends StatefulWidget {
   const SOSPage({Key? key}) : super(key: key);
@@ -14,60 +15,56 @@ class SOSPage extends StatefulWidget {
 }
 
 class _SOSPageState extends State<SOSPage> {
-  get type => "SOS";
-  int RID = 1;
-  // get RID => '1';
+  // get type => "SOS";
+  // int RID = 1;
+  // // get RID => '1';
 
-  Future addDat() async {
-    FirebaseFirestore.instance
-        .collection('Reports')
-        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID});
+  // Future addDat() async {
+  //   FirebaseFirestore.instance
+  //       .collection('Reports')
+  //       .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID});
 
-        setState(() {
-          RID++;
-        });
-  }
-
-  final userr = FirebaseAuth.instance.currentUser!;
-  Map<String, dynamic> dat = {};
-  getdat() {
-    dat.clear();
-    FirebaseFirestore.instance
-        .collection('Users')
-        .where('Email', isEqualTo: userr.email)
-        .get()
-        .then((value) => value.docs.forEach((element) {
-              dat.addAll(element.data());
-
-              print("-------------------------------------");
-              print(dat);
-              print('data usersssssssssssssssss');
-            }));
-  }
-
-  @override
-  void initState() {
-    getdat();
-    super.initState();
-  }
-
-  // Future createReport() async {
-  //   Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) => StudentHome(), //مؤقتا
-  //       ));
-  //   addDat(dat['Name'], dat['Phone']);
+  //       setState(() {
+  //         RID++;
+  //       });
   // }
+
+  // final userr = FirebaseAuth.instance.currentUser!;
+  // Map<String, dynamic> dat = {};
+  // getdat() {
+  //   dat.clear();
+  //   FirebaseFirestore.instance
+  //       .collection('Users')
+  //       .where('Email', isEqualTo: userr.email)
+  //       .get()
+  //       .then((value) => value.docs.forEach((element) {
+  //             dat.addAll(element.data());
+
+  //             print("-------------------------------------");
+  //             print(dat);
+  //             print('data usersssssssssssssssss');
+  //           }));
+  // }
+
+  // @override
+  // void initState() {
+  //   getdat();
+  //   super.initState();
+  // }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.home),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => StudentHome()));
+            //Navigator.of(context).pushReplacement(StudentHome as Route<Object?>);
           },
         ),
       ),
@@ -109,8 +106,7 @@ class _SOSPageState extends State<SOSPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle 'Call Security' button click
-                    addDat();
-                    print('Senttttttttttttt');
+                    _callSecurity();
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
@@ -131,5 +127,15 @@ class _SOSPageState extends State<SOSPage> {
         ),
       ),
     );
+  }
+
+  // Function to Handle 'Call Security' button click
+  void _callSecurity() async {
+    const url = 'tel:+201067426719'; 
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

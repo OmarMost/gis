@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
@@ -6,7 +8,6 @@ import 'package:gis/Screens/StudentScreens/sos_page.dart';
 class floor extends StatefulWidget {
   final String type;
   floor({super.key, required this.type}); //LAST EDIT GAMMAL
-
   //const floor({super.key});
 
   @override
@@ -14,6 +15,46 @@ class floor extends StatefulWidget {
 }
 
 class _floorState extends State<floor> {
+
+  int RIDSOS = 1;
+  // get RID => '1';
+  get typeReport => "SOS";
+
+  Future addDat() async {
+  FirebaseFirestore.instance
+      .collection('Reports')
+      .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': typeReport, 'RID': RIDSOS, 'Building Num': "", 'Floor Num': ""});
+
+      setState(() {
+        RIDSOS++;
+      });
+  }
+
+  final userr = FirebaseAuth.instance.currentUser!;
+  Map<String, dynamic> dat = {};
+  getdat() {
+    dat.clear();
+    FirebaseFirestore.instance
+        .collection('Users')
+        .where('Email', isEqualTo: userr.email)
+        .get()
+        .then((value) => value.docs.forEach((element) {
+              dat.addAll(element.data());
+
+              print("-------------------------------------");
+              print(dat);
+              print('data usersssssssssssssssss');
+            }));
+  }
+
+  @override
+  void initState() {
+    getdat();
+    super.initState();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +98,8 @@ class _floorState extends State<floor> {
                   ElevatedButton(
                     onPressed: () { //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
+                        addDat();//=========================================
+                        print('Senttttttttttttt');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -95,6 +138,8 @@ class _floorState extends State<floor> {
                   ElevatedButton(
                     onPressed: () { //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
+                        addDat();//=========================================
+                        print('Senttttttttttttt');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -131,6 +176,8 @@ class _floorState extends State<floor> {
                   ElevatedButton(
                     onPressed: () { //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
+                        addDat();//=========================================
+                        print('Senttttttttttttt');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -167,6 +214,8 @@ class _floorState extends State<floor> {
                   ElevatedButton(
                     onPressed: () { //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
+                        addDat();//=========================================
+                        print('Senttttttttttttt');
                         Navigator.push(
                             context,
                             MaterialPageRoute(

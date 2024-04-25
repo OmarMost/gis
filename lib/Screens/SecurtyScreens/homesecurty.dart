@@ -94,7 +94,7 @@ class _Home_SecState extends State<Home_Sec> {
               ListTile(
                 leading:
                     const Icon(Icons.video_camera_back, color: Colors.black),
-                title: const Text('Live Cameras',
+                title: const Text('Live Cameras .. SOON',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black)),
                 onTap: () {},

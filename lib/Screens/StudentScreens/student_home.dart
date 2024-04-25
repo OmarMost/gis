@@ -175,20 +175,7 @@ class _StudentHomeState extends State<StudentHome> {
                   ),
                 ),
               ),
-
-              //With Image.network
-              // Padding(
-              //   padding: EdgeInsets.symmetric(horizontal: 55.0), // Adjust the value as needed
-              //   child: Image.network(
-              //     'https://lh3.googleusercontent.com/proxy/hg2zLHy6pToDdFdRgOPqokkx7aQPbm8qfB0AiDCabquCtOvU4yq4_mDKlD4YukK4BUxGu8Vl7Yp7S92S-tDINAj6rB0RMwSMWJUg',
-              //     width: 300,
-              //     height: 300,
-              //   ),
-              // ),
-
-              const SizedBox(
-                  height:
-                      15.0), // Add some space between image and other content
+              const SizedBox(height: 15.0), // Add some space between image and other content
               Padding(
                 padding: EdgeInsets.only(left: 10.0),
                 child: Text(
