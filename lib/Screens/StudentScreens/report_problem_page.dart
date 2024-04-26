@@ -100,7 +100,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
                 maxLines: 5,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: '',
+                  hintText: 'Description',
                 ),
               ),
             ),
