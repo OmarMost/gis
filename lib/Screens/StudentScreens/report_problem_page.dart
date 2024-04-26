@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/StudentScreens/last_report_problem.dart';
 
 class ReportAProblem extends StatefulWidget {
   // const ReportAProblem({Key? key}) : super(key: key);
@@ -126,6 +127,12 @@ class _ReportAProblemState extends State<ReportAProblem> {
                     // Handle 'Submit' button click
                     addDat();
                     print('Senttttttttttttt');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ReportProblemPage(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

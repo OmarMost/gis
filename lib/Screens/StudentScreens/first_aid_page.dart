@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
 
 class FirstAid extends StatefulWidget {
   // const FirstAid({super.key});
@@ -211,6 +212,12 @@ class _FirstAidState extends State<FirstAid> {
                     // Handle 'Submit' button click
                     addDat();
                     print('Senttttttttttttt');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FirstAidpage(),
+              ),
+            );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

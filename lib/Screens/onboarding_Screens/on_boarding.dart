@@ -6,6 +6,7 @@ import 'package:gis/Screens/LoginScreens/loginScreen.dart';
 import 'package:gis/Screens/SecurtyScreens/home_manger.dart';
 import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
+import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
 import '../StudentScreens/student_home.dart'; //By Elgammal
 import 'on_boarding2.dart';
 
@@ -64,13 +65,13 @@ class Onboarding extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Home_Sec(),
+                          builder: (context) => FirstAidpage(),
                         ));
                     // Navigator.push(context,
                     //   MaterialPageRoute(builder: (context) => log));
                   },
                   child: Text(
-                    'Test Button -- Logout',
+                    'Test Button',
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
