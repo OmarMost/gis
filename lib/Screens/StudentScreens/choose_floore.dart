@@ -262,7 +262,7 @@ class _floorState extends State<floor> {
                       minimumSize: Size(300.0, 60.0), // Width and height
                     ),
                     child: Text(
-                      '0',
+                      'Ground floor',
                       style: TextStyle(fontSize: 40.0),
                     ),
                   ),
