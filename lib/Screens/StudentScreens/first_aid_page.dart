@@ -25,7 +25,8 @@ class _FirstAidState extends State<FirstAid> {
   Future addDat() async {
     FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'], 
-      'PhoneNum': dat['Phone'], 
+      'PhoneNum': dat['Phone'],
+      'UserID': dat['ID'], 
       'Type': type, 
       'RID': RID, 
       'BuildingName': widget.BuildingName, 

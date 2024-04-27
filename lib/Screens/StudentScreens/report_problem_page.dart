@@ -42,6 +42,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
     FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'],
       'PhoneNum': dat['Phone'],
+      'UserID': dat['ID'],
       'Type': type,
       'RID': RID,
       'BuildingName': widget.BuildingName,

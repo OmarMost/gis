@@ -26,7 +26,7 @@ class _floorState extends State<floor> {
   Future addDat() async {
   FirebaseFirestore.instance
       .collection('Reports')
-      .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': typeReport, 'RID': RIDSOS, 'BuildingName': widget.BuildingName, 'FloorNum': FloorNum, 'Description': Description});
+      .add({'Username': dat['Name'], 'UserID': dat['ID'], 'PhoneNum': dat['Phone'], 'Type': typeReport, 'RID': RIDSOS, 'BuildingName': widget.BuildingName, 'FloorNum': FloorNum, 'Description': Description});
 
       setState(() {
         RIDSOS++;
