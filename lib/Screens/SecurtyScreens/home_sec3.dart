@@ -257,6 +257,7 @@ class _Home_SecState extends State<Home_Sec3> {
                                   .toList();
 
                               return ListView.builder(
+                                reverse: true,
                                 itemCount: filteredReports.length,
                                 scrollDirection: Axis.vertical,
                                 itemBuilder: (context, index) {
@@ -289,9 +290,11 @@ class _Home_SecState extends State<Home_Sec3> {
                                             ],
                                           ),
                                           Text(
-                                            'Type: ${report['Type']}',
+                                            '${report['Type']}',
                                             style: TextStyle(
-                                                fontSize: 20,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                fontSize: 25,
                                                 color: Colors.blue,
                                                 fontWeight: FontWeight.bold),
                                           ),

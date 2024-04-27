@@ -9,7 +9,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart'; //to turn on basename
 //_________________________________________________
 
-
 class ReportAProblem extends StatefulWidget {
   // const ReportAProblem({Key? key}) : super(key: key);
   final String BuildingName, FloorNum;
@@ -22,7 +21,7 @@ class ReportAProblem extends StatefulWidget {
 
 class _ReportAProblemState extends State<ReportAProblem> {
   final description_Controller = TextEditingController();
-  
+
   //image
   final user = FirebaseAuth.instance.currentUser;
   //To hold img
@@ -32,7 +31,6 @@ class _ReportAProblemState extends State<ReportAProblem> {
   //To store the url of the uploaded image
   var image_report_url;
   //____________________________________________________
-
 
   int RID = 1;
   // get RID => '1';
@@ -81,19 +79,19 @@ class _ReportAProblemState extends State<ReportAProblem> {
         .where('Email', isEqualTo: user!.email)
         .get()
         .then((value) => value.docs.forEach((element) {
-          profiledoc = element.reference.id;
+              profiledoc = element.reference.id;
 
-          print("---------------------------------------");
-          print(profiledoc);
-        }));
+              print("---------------------------------------");
+              print(profiledoc);
+            }));
   }
-
 
   Future uploadReportImage() async {
     getprofiledoc();
 
     //To open the camera
-    var pickedimage = await reportimagepicker.pickImage(source: ImageSource.camera);
+    var pickedimage =
+        await reportimagepicker.pickImage(source: ImageSource.camera);
 
     if (pickedimage != null) {
       setState(() {
@@ -102,17 +100,19 @@ class _ReportAProblemState extends State<ReportAProblem> {
 
       var imagesreportname = basename(pickedimage.path);
 
-      var reportimagerefstorage = FirebaseStorage.instance.ref().child(imagesreportname);
+      var reportimagerefstorage =
+          FirebaseStorage.instance.ref().child(imagesreportname);
 
       var uploadTask = reportimagerefstorage.putFile(imageReport!);
       await uploadTask.whenComplete(() async {
-
         image_report_url = await reportimagerefstorage.getDownloadURL();
         print(image_report_url);
 
-        await FirebaseFirestore.instance.collection('Reports').doc(profiledoc).update({'ReportImage': image_report_url});
+        await FirebaseFirestore.instance
+            .collection('Reports')
+            .doc(profiledoc)
+            .update({'ReportImage': image_report_url});
       });
-      
     } else {}
   }
   //_____________________________________________________

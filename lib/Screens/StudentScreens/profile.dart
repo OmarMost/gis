@@ -32,7 +32,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final profileimagepicker = ImagePicker(); //Online
   //To store the url of the uploaded image
   var image_profile_url; //Online
-  
 
   Map<String, dynamic> data = {};
   Future getdata() async {
@@ -54,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     FirebaseFirestore.instance
         .collection('Users')
         .where('Email', isEqualTo: user!.email)
-        .get() 
+        .get()
         .then((value) => value.docs.forEach((element) {
               profiledoc = element.reference.id;
 
@@ -80,32 +79,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   //Elgammal---------------------------------------------------------------------------------------
   Future uploadProfileImage() async {
-   getprofiledoc();
-  
+    getprofiledoc();
+
     //To open the camera
-    var pickedimage = await profileimagepicker.pickImage(source: ImageSource.camera);
+    var pickedimage =
+        await profileimagepicker.pickImage(source: ImageSource.camera);
 
     if (pickedimage != null) {
       setState(() {
-
-      imageprofile = File(pickedimage.path);
-      
+        imageprofile = File(pickedimage.path);
       });
-      
+
       var imagesprofilename = basename(pickedimage.path);
-      
-      var profileimagerefstorage = FirebaseStorage.instance.ref().child(imagesprofilename);
+
+      var profileimagerefstorage =
+          FirebaseStorage.instance.ref().child(imagesprofilename);
 
       var uploadTask = profileimagerefstorage.putFile(imageprofile!);
       await uploadTask.whenComplete(() async {
-     
-          image_profile_url = await profileimagerefstorage.getDownloadURL();
-          print(image_profile_url);
-        
-       await  FirebaseFirestore.instance.collection('Users').doc(profiledoc).update({'Profile_Image': image_profile_url});
+        image_profile_url = await profileimagerefstorage.getDownloadURL();
+        print(image_profile_url);
+
+        await FirebaseFirestore.instance
+            .collection('Users')
+            .doc(profiledoc)
+            .update({'Profile_Image': image_profile_url});
       });
-      
-      
     } else {}
   }
   // Future uploadProfileImage() async {
@@ -130,7 +129,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   //---------------------------------------------------------------------------------------------
 
   @override
-  void initState() { //الحالة البدائية
+  void initState() {
+    //الحالة البدائية
     getprofiledoc();
     super.initState();
   }
@@ -171,13 +171,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 15,
                     ),
                     Center(
-                      child: GestureDetector(onDoubleTap: uploadProfileImage,
+                      child: GestureDetector(
+                        onDoubleTap: uploadProfileImage,
                         child: CircleAvatar(
                           radius: 60,
-                          backgroundImage: data['Profile_Image'] != null //Gammal !!
-                          ? NetworkImage(data['Profile_Image']) //Gammal !!
-                            : NetworkImage(
-                                'https://firebasestorage.googleapis.com/v0/b/project-campus-8579a.appspot.com/o/DefaultImageProfile.jpg?alt=media&token=e1b04a1d-0c2f-4730-b433-5936e02ef1b4'),
+                          backgroundImage: data['Profile_Image'] !=
+                                  null //Gammal !!
+                              ? NetworkImage(data['Profile_Image']) //Gammal !!
+                              : NetworkImage(
+                                  'https://firebasestorage.googleapis.com/v0/b/project-campus-8579a.appspot.com/o/DefaultImageProfile.jpg?alt=media&token=e1b04a1d-0c2f-4730-b433-5936e02ef1b4'),
                         ),
                       ),
                     ),
@@ -287,8 +289,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           visible: edit,
                           child: FloatingActionButton.extended(
                             onPressed: () {
-                                senddata();
-                               
+                              senddata();
+
                               setState(() {
                                 edit = !edit;
                               });
