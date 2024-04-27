@@ -13,6 +13,8 @@ class FirstAid extends StatefulWidget {
 }
 
 class _FirstAidState extends State<FirstAid> {
+  final description_Controller = TextEditingController();
+
   // Variables of radio buttons
   bool isReportingForSelf = true; // Default is "For Me"
   bool hasChronicDiseases = false; // Default is "No"
@@ -23,13 +25,21 @@ class _FirstAidState extends State<FirstAid> {
   String Description = "";
 
   Future addDat() async {
-    FirebaseFirestore.instance
-        .collection('Reports')
-        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID, 'BuildingName': widget.BuildingName, 'FloorNum': widget.FloorNum, 'Description': Description});
+    FirebaseFirestore.instance.collection('Reports').add({
+      'Username': dat['Name'], 
+      'PhoneNum': dat['Phone'], 
+      'Type': type, 
+      'RID': RID, 
+      'BuildingName': widget.BuildingName, 
+      'FloorNum': widget.FloorNum, 
+      'Description': description_Controller.text,
+      'isReportingForSelf' : isReportingForSelf,
+      'hasChronicDiseases' : hasChronicDiseases
+      });
 
-        setState(() {
-          RID++;
-        });
+      setState(() {
+        RID++;
+      });
   }
 
   final userr = FirebaseAuth.instance.currentUser!;
@@ -197,6 +207,7 @@ class _FirstAidState extends State<FirstAid> {
             Container(
               color: Colors.grey[300],
               child: TextField(
+                controller: description_Controller,
                 maxLines: 4,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
