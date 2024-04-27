@@ -140,13 +140,15 @@ class Home_Manger extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => Report(
-                                                      buildingNumber: '2',
+                                                      Descriotion: "l",
+                                                      Photo: "l",
+                                                      buildingName: '2',
                                                       floorNumber: "4",
-                                                      id: "457785",
+                                                      userid: "457785",
                                                       name: 'OZ',
                                                       phoneNumber: "012",
                                                       reportId: "77",
-                                                      reportName: "Rname",
+                                                      reporttype: "Rname",
                                                       time: '22:00',
                                                     )));
                                       },

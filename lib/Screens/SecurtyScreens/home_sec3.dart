@@ -146,25 +146,25 @@ class _Home_SecState extends State<Home_Sec3> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text('SOS Reports'),
-                                  content: Text('Ther is 4 reports'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec()));
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (context) {
+                            //     return AlertDialog(
+                            //       title: Text('SOS Reports'),
+                            //  //     content: Text('Ther is 4 reports'),
+                            //       actions: [
+                            //         TextButton(
+                            //           onPressed: () => Navigator.pop(context),
+                            //           child: Text('OK'),
+                            //         ),
+                            //       ],
+                            //     );
+                            //   },
+                            // );
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.red),
@@ -177,25 +177,25 @@ class _Home_SecState extends State<Home_Sec3> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text('First Aid Reports'),
-                                  // content: Text('First button is pressed.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec2()));
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (context) {
+                            //     return AlertDialog(
+                            //       title: Text('First Aid Reports'),
+                            //       // content: Text('First button is pressed.'),
+                            //       actions: [
+                            //         TextButton(
+                            //           onPressed: () => Navigator.pop(context),
+                            //           child: Text('OK'),
+                            //         ),
+                            //       ],
+                            //     );
+                            //   },
+                            // );
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.greenAccent),
@@ -208,25 +208,25 @@ class _Home_SecState extends State<Home_Sec3> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text('Reports of problems'),
-                                  //  content: Text('Ther is 22 Repots'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec3()));
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (context) {
+                            //     return AlertDialog(
+                            //       title: Text('Reports of problems'),
+                            //       //  content: Text('Ther is 22 Repots'),
+                            //       actions: [
+                            //         TextButton(
+                            //           onPressed: () => Navigator.pop(context),
+                            //           child: Text('OK'),
+                            //         ),
+                            //       ],
+                            //     );
+                            //   },
+                            // );
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue),
@@ -280,7 +280,7 @@ class _Home_SecState extends State<Home_Sec3> {
                                                 padding:
                                                     const EdgeInsets.all(10.0),
                                                 child: Text(
-                                                  '                                          Report ID : ${report['RID']}',
+                                                  'Report ID : ${report['RID']}',
                                                   style: TextStyle(
                                                     fontSize: 15,
                                                   ),
@@ -359,19 +359,25 @@ class _Home_SecState extends State<Home_Sec3> {
                                                     MaterialPageRoute(
                                                       builder: (context) =>
                                                           Report(
-                                                        buildingNumber:
-                                                            '${report['Username']}',
+                                                        buildingName:
+                                                            '${report['BuildingName']}',
                                                         floorNumber:
-                                                            '${report['Username']}',
-                                                        id: '${report['RID']}',
+                                                            '${report['FloorNum']}',
+                                                        userid:
+                                                            '${report['UserID']}',
                                                         name:
                                                             '${report['Username']}',
                                                         phoneNumber:
-                                                            '${report['Username']}',
-                                                        reportId:  '${report['Username']}',
-                                                        reportName:
-                                                            '${report['Username']}',
+                                                            '${report['PhoneNum']}',
+                                                        reportId:
+                                                            '${report['RID']}',
+                                                        reporttype:
+                                                            '${report['Type']}',
                                                         time: '22:00',
+                                                        Descriotion:
+                                                            '${report['Description']}',
+                                                        Photo:
+                                                            '${report['Type']}',
                                                       ),
                                                     ),
                                                   );

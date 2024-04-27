@@ -2,23 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Report extends StatelessWidget {
-  final String reportName;
-  final String reportId;
   final String name;
-  final String id;
+  final String userid;
   final String phoneNumber;
-  final String buildingNumber;
+  final String reporttype;
+  final String reportId;
+  final String Descriotion;
+  final String buildingName;
   final String floorNumber;
+  final String Photo;
   final String time;
 
   Report({
-    required this.reportName,
+    required this.reporttype,
     required this.reportId,
     required this.name,
-    required this.id,
+    required this.Descriotion,
+    required this.userid,
     required this.phoneNumber,
-    required this.buildingNumber,
+    required this.buildingName,
     required this.floorNumber,
+    required this.Photo,
     required this.time,
   });
 
@@ -35,7 +39,7 @@ class Report extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              reportName,
+              reporttype,
               style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
@@ -62,7 +66,7 @@ class Report extends StatelessWidget {
                 Icon(Icons.confirmation_number),
                 SizedBox(width: 8),
                 Text(
-                  id,
+                  userid,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -83,7 +87,7 @@ class Report extends StatelessWidget {
               children: [
                 Icon(Icons.business),
                 SizedBox(width: 8),
-                Text('Building Number : $buildingNumber',
+                Text('Building  $buildingName',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),

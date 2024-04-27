@@ -15,7 +15,6 @@ class Building extends StatefulWidget {
 }
 
 class _BuildingState extends State<Building> {
-
   String BuildingName = "";
 
   int RIDSOS = 1;
@@ -24,13 +23,20 @@ class _BuildingState extends State<Building> {
   String Description = "";
 
   Future addDat() async {
-    FirebaseFirestore.instance
-        .collection('Reports')
-        .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': typeReport, 'RID': RIDSOS, 'BuildingName': BuildingName, 'FloorNum': "", 'Description': Description}); //without ( 'Floor Num': "" )
+    FirebaseFirestore.instance.collection('Reports').add({
+      'Username': dat['Name'],
+      'UserID': dat['ID'],
+      'PhoneNum': dat['Phone'],
+      'Type': typeReport,
+      'RID': RIDSOS,
+      'BuildingName': BuildingName,
+      'FloorNum': "",
+      'Description': Description
+    }); //without ( 'Floor Num': "" )
 
-        setState(() {
-          RIDSOS++;
-        });
+    setState(() {
+      RIDSOS++;
+    });
   }
 
   final userr = FirebaseAuth.instance.currentUser!;
@@ -56,7 +62,6 @@ class _BuildingState extends State<Building> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,27 +76,31 @@ class _BuildingState extends State<Building> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
-                onTap: () { //LAST EDIT GAMMAL
-                      if (widget.type == 'sos') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'sos', BuildingName: 'Lectures'),
-                            ));
-                      } else if (widget.type == 'problem') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'problem', BuildingName: 'Lectures'),
-                            ));
-                      }
-                      if (widget.type == 'first aid') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'first aid', BuildingName: 'Lectures'),
-                            ));
-                      }
+                onTap: () {
+                  //LAST EDIT GAMMAL
+                  if (widget.type == 'sos') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              floor(type: 'sos', BuildingName: 'Lectures'),
+                        ));
+                  } else if (widget.type == 'problem') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              floor(type: 'problem', BuildingName: 'Lectures'),
+                        ));
+                  }
+                  if (widget.type == 'first aid') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => floor(
+                              type: 'first aid', BuildingName: 'Lectures'),
+                        ));
+                  }
                 },
                 child: Container(
                   height: 276,
@@ -116,27 +125,31 @@ class _BuildingState extends State<Building> {
               ),
               // مبني السكاشن
               GestureDetector(
-                onTap: () { //LAST EDIT GAMMAL
-                      if (widget.type == 'sos') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'sos', BuildingName: 'Sections'),
-                            ));
-                      } else if (widget.type == 'problem') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'problem',  BuildingName: 'Sections'),
-                            ));
-                      }
-                      if (widget.type == 'first aid') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'first aid',  BuildingName: 'Sections'),
-                            ));
-                      }
+                onTap: () {
+                  //LAST EDIT GAMMAL
+                  if (widget.type == 'sos') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              floor(type: 'sos', BuildingName: 'Sections'),
+                        ));
+                  } else if (widget.type == 'problem') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              floor(type: 'problem', BuildingName: 'Sections'),
+                        ));
+                  }
+                  if (widget.type == 'first aid') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => floor(
+                              type: 'first aid', BuildingName: 'Sections'),
+                        ));
+                  }
                 },
                 child: Container(
                   height: 289,
@@ -155,10 +168,11 @@ class _BuildingState extends State<Building> {
                 children: [
                   // كافتريا 1
                   GestureDetector(
-                    onTap: () { //LAST EDIT GAMMAL
+                    onTap: () {
+                      //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
                         BuildingName = "Cafe 1";
-                        addDat();//=========================================
+                        addDat(); //=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
                             context,
@@ -170,7 +184,10 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(BuildingName: 'Cafe 1', FloorNum: '',),
+                              builder: (context) => ReportAProblem(
+                                BuildingName: 'Cafe 1',
+                                FloorNum: '',
+                              ),
                             ));
                       }
                       if (widget.type == 'first aid') {
@@ -178,7 +195,10 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(BuildingName: 'Cafe 1', FloorNum: '',),
+                              builder: (context) => FirstAid(
+                                BuildingName: 'Cafe 1',
+                                FloorNum: '',
+                              ),
                             ));
                       }
                       // هنا مفيش ادوار
@@ -197,11 +217,12 @@ class _BuildingState extends State<Building> {
                   ),
                   SizedBox(height: 1),
                   // كافتريا 2
-                  GestureDetector( 
-                    onTap: () { //LAST EDIT GAMMAL
+                  GestureDetector(
+                    onTap: () {
+                      //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
                         BuildingName = "Cafe 2";
-                        addDat();//=========================================
+                        addDat(); //=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
                             context,
@@ -213,7 +234,10 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(BuildingName: 'Cafe 2', FloorNum: '',),
+                              builder: (context) => ReportAProblem(
+                                BuildingName: 'Cafe 2',
+                                FloorNum: '',
+                              ),
                             ));
                       }
                       if (widget.type == 'first aid') {
@@ -221,7 +245,10 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(BuildingName: 'Cafe 2', FloorNum: '',),
+                              builder: (context) => FirstAid(
+                                BuildingName: 'Cafe 2',
+                                FloorNum: '',
+                              ),
                             ));
                       }
                       // هنا مفيش ادوار
@@ -244,10 +271,11 @@ class _BuildingState extends State<Building> {
                 children: [
                   // حرم الجامعه
                   GestureDetector(
-                    onTap: () { //LAST EDIT GAMMAL
+                    onTap: () {
+                      //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
                         BuildingName = "Campus";
-                        addDat();//=========================================
+                        addDat(); //=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
                             context,
@@ -259,7 +287,10 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(BuildingName: 'Campus', FloorNum: '',),
+                              builder: (context) => ReportAProblem(
+                                BuildingName: 'Campus',
+                                FloorNum: '',
+                              ),
                             ));
                       }
                       if (widget.type == 'first aid') {
@@ -267,7 +298,10 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(BuildingName: 'Campus', FloorNum: '',),
+                              builder: (context) => FirstAid(
+                                BuildingName: 'Campus',
+                                FloorNum: '',
+                              ),
                             ));
                       }
                       // هنا مفيش ادوار
@@ -290,10 +324,11 @@ class _BuildingState extends State<Building> {
                 children: [
                   // كافتريا 3
                   GestureDetector(
-                    onTap: () { //LAST EDIT GAMMAL
+                    onTap: () {
+                      //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
                         BuildingName = "Cafe 3";
-                        addDat();//=========================================
+                        addDat(); //=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
                             context,
@@ -305,7 +340,10 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(BuildingName: 'Cafe 3', FloorNum: '',),
+                              builder: (context) => ReportAProblem(
+                                BuildingName: 'Cafe 3',
+                                FloorNum: '',
+                              ),
                             ));
                       }
                       if (widget.type == 'first aid') {
@@ -313,7 +351,10 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(BuildingName: 'Cafe 3', FloorNum: '',),
+                              builder: (context) => FirstAid(
+                                BuildingName: 'Cafe 3',
+                                FloorNum: '',
+                              ),
                             ));
                       }
                       // هنا مفيش ادوار
@@ -334,10 +375,11 @@ class _BuildingState extends State<Building> {
 
                   //كافتريا 4
                   GestureDetector(
-                    onTap: () { //LAST EDIT GAMMAL
+                    onTap: () {
+                      //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
                         BuildingName = "Cafe 4";
-                        addDat();//=========================================
+                        addDat(); //=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
                             context,
@@ -349,7 +391,10 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(BuildingName: 'Cafe 4', FloorNum: '',),
+                              builder: (context) => ReportAProblem(
+                                BuildingName: 'Cafe 4',
+                                FloorNum: '',
+                              ),
                             ));
                       }
                       if (widget.type == 'first aid') {
@@ -357,7 +402,10 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(BuildingName: 'Cafe 4', FloorNum: '',),
+                              builder: (context) => FirstAid(
+                                BuildingName: 'Cafe 4',
+                                FloorNum: '',
+                              ),
                             ));
                       }
                       // هنا مفيش ادوار
@@ -379,27 +427,31 @@ class _BuildingState extends State<Building> {
 
               // مبني اللابات
               GestureDetector(
-                onTap: () { //LAST EDIT GAMMAL
-                      if (widget.type == 'sos') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'sos', BuildingName: 'Labs'),
-                            ));
-                      } else if (widget.type == 'problem') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'problem', BuildingName: 'Labs'),
-                            ));
-                      }
-                      if (widget.type == 'first aid') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'first aid',  BuildingName: 'Labs'),
-                            ));
-                      }
+                onTap: () {
+                  //LAST EDIT GAMMAL
+                  if (widget.type == 'sos') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              floor(type: 'sos', BuildingName: 'Labs'),
+                        ));
+                  } else if (widget.type == 'problem') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              floor(type: 'problem', BuildingName: 'Labs'),
+                        ));
+                  }
+                  if (widget.type == 'first aid') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              floor(type: 'first aid', BuildingName: 'Labs'),
+                        ));
+                  }
                 },
                 child: Container(
                   height: 287,
@@ -421,27 +473,31 @@ class _BuildingState extends State<Building> {
             children: [
               // المبني الاداري
               GestureDetector(
-                onTap: () { //LAST EDIT GAMMAL
-                      if (widget.type == 'sos') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'sos', BuildingName: 'Main'),
-                            ));
-                      } else if (widget.type == 'problem') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'problem', BuildingName: 'Main'),
-                            ));
-                      }
-                      if (widget.type == 'first aid') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => floor(type: 'first aid', BuildingName: 'Main'),
-                            ));
-                      }
+                onTap: () {
+                  //LAST EDIT GAMMAL
+                  if (widget.type == 'sos') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              floor(type: 'sos', BuildingName: 'Main'),
+                        ));
+                  } else if (widget.type == 'problem') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              floor(type: 'problem', BuildingName: 'Main'),
+                        ));
+                  }
+                  if (widget.type == 'first aid') {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              floor(type: 'first aid', BuildingName: 'Main'),
+                        ));
+                  }
                 },
                 child: Container(
                   height: 183,
