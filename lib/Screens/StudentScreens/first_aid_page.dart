@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
 
 class FirstAid extends StatefulWidget {
-  // const FirstAid({super.key});
   final String BuildingName, FloorNum;
   FirstAid({super.key, required this.BuildingName, required this.FloorNum});
 
@@ -19,8 +18,7 @@ class _FirstAidState extends State<FirstAid> {
   bool isReportingForSelf = true; // Default is "For Me"
   bool hasChronicDiseases = false; // Default is "No"
 
-  int RID = 1;
-  // get RID => '1';
+  String? RID;
   get type => "First Aid";
   String Description = "";
 
@@ -35,20 +33,24 @@ class _FirstAidState extends State<FirstAid> {
       'Description': description_Controller.text,
       'isReportingForSelf' : isReportingForSelf,
       'hasChronicDiseases' : hasChronicDiseases
-      });
-
-      setState(() {
-        RID++;
+      })//Make ID
+      .then((documentReference) {
+        setState(() {
+          RID = documentReference.id;
+        });
+        print('Document added with ID: ${documentReference.id}');
+      }).catchError((error) {
+        print('Error adding document: $error');
       });
   }
 
-  final userr = FirebaseAuth.instance.currentUser!;
+  final user = FirebaseAuth.instance.currentUser!;
   Map<String, dynamic> dat = {};
   getdat() {
     dat.clear();
     FirebaseFirestore.instance
         .collection('Users')
-        .where('Email', isEqualTo: userr.email)
+        .where('Email', isEqualTo: user.email)
         .get()
         .then((value) => value.docs.forEach((element) {
               dat.addAll(element.data());
