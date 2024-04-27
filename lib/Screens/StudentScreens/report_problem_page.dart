@@ -1,7 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/StudentScreens/last_report_problem.dart';
+//image
+import 'dart:io'; //to turn File
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart'; //to turn on basename
+//_________________________________________________
+
 
 class ReportAProblem extends StatefulWidget {
   // const ReportAProblem({Key? key}) : super(key: key);
@@ -15,6 +22,17 @@ class ReportAProblem extends StatefulWidget {
 
 class _ReportAProblemState extends State<ReportAProblem> {
   final description_Controller = TextEditingController();
+  
+  //image
+  final user = FirebaseAuth.instance.currentUser;
+  //To hold img
+  File? imageReport;
+  //To handle all the function of the lib(Image picker)
+  final reportimagepicker = ImagePicker();
+  //To store the url of the uploaded image
+  var image_report_url;
+  //____________________________________________________
+
 
   int RID = 1;
   // get RID => '1';
@@ -28,7 +46,8 @@ class _ReportAProblemState extends State<ReportAProblem> {
       'RID': RID,
       'BuildingName': widget.BuildingName,
       'FloorNum': widget.FloorNum,
-      'Description': description_Controller.text
+      'Description': description_Controller.text,
+      'ReportImage': image_report_url
     });
 
     setState(() {
@@ -52,6 +71,50 @@ class _ReportAProblemState extends State<ReportAProblem> {
               print('data usersssssssssssssssss');
             }));
   }
+
+  //toImage
+  String? profiledoc;
+  getprofiledoc() {
+    FirebaseFirestore.instance
+        .collection('Users')
+        .where('Email', isEqualTo: user!.email)
+        .get()
+        .then((value) => value.docs.forEach((element) {
+          profiledoc = element.reference.id;
+
+          print("---------------------------------------");
+          print(profiledoc);
+        }));
+  }
+
+
+  Future uploadReportImage() async {
+    getprofiledoc();
+
+    //To open the camera
+    var pickedimage = await reportimagepicker.pickImage(source: ImageSource.camera);
+
+    if (pickedimage != null) {
+      setState(() {
+        imageReport = File(pickedimage.path);
+      });
+
+      var imagesreportname = basename(pickedimage.path);
+
+      var reportimagerefstorage = FirebaseStorage.instance.ref().child(imagesreportname);
+
+      var uploadTask = reportimagerefstorage.putFile(imageReport!);
+      await uploadTask.whenComplete(() async {
+
+        image_report_url = await reportimagerefstorage.getDownloadURL();
+        print(image_report_url);
+
+        await FirebaseFirestore.instance.collection('Reports').doc(profiledoc).update({'ReportImage': image_report_url});
+      });
+      
+    } else {}
+  }
+  //_____________________________________________________
 
   @override
   void initState() {
@@ -106,19 +169,34 @@ class _ReportAProblemState extends State<ReportAProblem> {
               ),
             ),
             SizedBox(height: 25.0),
-            Row(
-              children: [
-                Icon(Icons.camera_alt, size: 30.0),
-                SizedBox(width: 8.0),
-                Text(
-                  'Attach an Image',
-                  style: TextStyle(
-                    fontSize: 20.0,
+//====================================================================================================
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Attach An Image",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 10), // Adjust the height as needed
+                  GestureDetector(
+                    onDoubleTap: uploadReportImage,
+                    child: CircleAvatar(
+                      radius: 60,
+                      backgroundImage: dat['ReportImage'] != null
+                          ? NetworkImage(dat['ReportImage'])
+                          : NetworkImage(
+                              'https://firebasestorage.googleapis.com/v0/b/project-campus-8579a.appspot.com/o/Attach%20image%20here%20last.png?alt=media&token=1ace4ca2-ed06-4d2c-bd39-5e23726e85d6'),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 240.0), //Last 290 - 50
+//====================================================================================================
+            SizedBox(height: 120.0), //Last 290 - 50
             Center(
               child: SizedBox(
                 width: 300, // width of button
