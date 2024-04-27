@@ -22,120 +22,116 @@ class Home_Sec2 extends StatefulWidget {
 }
 
 class _Home_SecState extends State<Home_Sec2> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       backgroundColor: Color.fromARGB(255, 133, 148, 161),
-      appBar: AppBar(title: Text(
-                            'Reports of First Aid',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
+      appBar: AppBar(
+        title: Text(
+          'Reports of First Aid',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
       ),
       drawer: Drawer(
-        child: //data['Name'] != null? 
-        Container(
-          color: Colors.grey,
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'My Drawer',
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
+          child: //data['Name'] != null?
+              Container(
+        color: Colors.grey,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'My Drawer',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
-                    Text(
-                      'Security',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
+                  ),
+                  Text(
+                    'Security',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
                     ),
-                  ],
-                ),
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
-                ),
+                  ),
+                ],
               ),
-              const Divider(
+              decoration: const BoxDecoration(
                 color: Colors.grey,
-                thickness: 0.0,
               ),
-              ListTile(
-                leading: const Icon(
-                  Icons.home,
-                  color: Colors.black,
-                ),
-                title: const Text('Home Page',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-                onTap: () => Navigator.pop(context),
+            ),
+            const Divider(
+              color: Colors.grey,
+              thickness: 0.0,
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.home,
+                color: Colors.black,
               ),
-              ListTile(
-                leading: const Icon(
-                  Icons.person,
-                  color: Colors.black,
-                ),
-                title: const Text('Profile',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-                onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProfileSec(),
-                          ));
-                    },
+              title: const Text('Home Page',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black)),
+              onTap: () => Navigator.pop(context),
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.person,
+                color: Colors.black,
               ),
-              ListTile(
-                leading:
-                    const Icon(Icons.video_camera_back, color: Colors.black),
-                title: const Text('Live Camera .. SOON',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.map_outlined, color: Colors.black),
-                title: const Text('Map',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.logout, color: Colors.black),
-                title: const Text('Log Out',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-                onTap: () {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Onboarding(),
-                      ));
-                },
-              ),
-            ],
+              title: const Text('Profile',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black)),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileSec(),
+                    ));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.video_camera_back, color: Colors.black),
+              title: const Text('Live Camera .. SOON',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black)),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.map_outlined, color: Colors.black),
+              title: const Text('Map',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black)),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout, color: Colors.black),
+              title: const Text('Log Out',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black)),
+              onTap: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Onboarding(),
+                    ));
+              },
+            ),
+          ],
+        ),
+      )
+          // : Center(
+          //       child: CircularProgressIndicator(
+          //           color: Colors.blue, strokeWidth: 8),
+          //     )
           ),
-        )
-      // : Center(
-      //       child: CircularProgressIndicator(
-      //           color: Colors.blue, strokeWidth: 8),
-      //     )
-      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -146,250 +142,268 @@ class _Home_SecState extends State<Home_Sec2> {
                 child: Column(
                   children: [
                     ButtonBar(
-              alignment: MainAxisAlignment.start,
-              children: [
-
-                ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: Text('SOS Reports'),
-                          content: Text('Ther is 4 reports'),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: Text('OK'),
-                            ),
-                          ],
-                        );
-                      },
-                    );Navigator.push(
+                      alignment: MainAxisAlignment.start,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text('SOS Reports'),
+                                  content: Text('Ther is 4 reports'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec()));
-                  },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: Text(
-                    'SOS',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
-                ),
-
-
-
-
-
-                ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: Text('First Aid Reports'),
-                          // content: Text('First button is pressed.'),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: Text('OK'),
-                            ),
-                          ],
-                        );
-                      },
-                    );Navigator.push(
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red),
+                          child: Text(
+                            'SOS',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text('First Aid Reports'),
+                                  // content: Text('First button is pressed.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec2()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.greenAccent),
-                  child: Text(
-                    'First Aid',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
-                ),
-
-
-
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle Second button press
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: Text('Reports of problems'),
-                          //  content: Text('Ther is 22 Repots'),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: Text('OK'),
-                            ),
-                          ],
-                        );
-                      },
-                    );Navigator.push(
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.greenAccent),
+                          child: Text(
+                            'First Aid',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Handle Second button press
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text('Reports of problems'),
+                                  //  content: Text('Ther is 22 Repots'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec3()));
-                  },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: Text(
-                    'Reports of problems',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
-            ),      
-                    Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: FirebaseFirestore.instance
-                      .collection('Reports')
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      final reports = snapshot.data!.docs;
-
-                      // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
-                      final filteredReports = reports
-                          .where((report) => report['Type'] == 'First Aid')
-                          .toList();
-
-                      return ListView.builder(
-                        itemCount: filteredReports.length,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (context, index) {
-                          final report = reports[index];
-                          return Padding(
-                            padding: const EdgeInsets.all(1.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.0),
-                                color: Color.fromARGB(255, 255, 255, 255),
-                              ),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Text(
-                                          '                                          Report ID : ${report['RID']}',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: Text(
-                                          '${report['Username']}',
-                                          style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          '${report['Description']}',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'State',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Image(
-                                        width: 50,
-                                        height: 50,
-                                        image: AssetImage('assets/finshed.png'),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => Report(
-                                                buildingNumber: '2',
-                                                floorNumber: "4",
-                                                id: "457785",
-                                                name: 'OZ',
-                                                phoneNumber: "012",
-                                                reportId: 8,
-                                                reportName: "Rname",
-                                                time: '22:00',
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        child: Text(
-                                          'See More Details',
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    } else if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    } else {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.blue,
-                          strokeWidth: 8,
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue),
+                          child: Text(
+                            'Reports of problems',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
-                      );
-                    }
-                  },
-                ),
-              ),
-            ),
+                      ],
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: StreamBuilder<QuerySnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection('Reports')
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              final reports = snapshot.data!.docs;
+
+                              // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
+                              final filteredReports = reports
+                                  .where(
+                                      (report) => report['Type'] == 'First Aid')
+                                  .toList();
+
+                              return ListView.builder(
+                                itemCount: filteredReports.length,
+                                scrollDirection: Axis.vertical,
+                                itemBuilder: (context, index) {
+                                  final report = filteredReports[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.all(1.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(10.0),
+                                                child: Text(
+                                                  '                                          Report ID : ${report['RID']}',
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text(
+                                            'Type: ${report['Type']}',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.green,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.all(8),
+                                                child: Text(
+                                                  '${report['Username']}',
+                                                  style: TextStyle(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  '${report['Description']}',
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  'State',
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                              Image(
+                                                width: 50,
+                                                height: 50,
+                                                image: AssetImage(
+                                                    'assets/finshed.png'),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Report(
+                                                        buildingNumber: '2',
+                                                        floorNumber: "4",
+                                                        id: "457785",
+                                                        name: 'OZ',
+                                                        phoneNumber: "012",
+                                                        reportId:  '${report['Username']}',
+                                                        reportName: "Rname",
+                                                        time: '22:00',
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Text(
+                                                  'See More Details',
+                                                  style: TextStyle(
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                    fontSize: 15,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            } else if (snapshot.hasError) {
+                              return Text('Error: ${snapshot.error}');
+                            } else {
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.blue,
+                                  strokeWidth: 8,
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 class Report extends StatelessWidget {
   final String reportName;
-  final int reportId;
+  final String reportId;
   final String name;
   final String id;
   final String phoneNumber;

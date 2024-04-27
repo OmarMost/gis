@@ -260,7 +260,7 @@ class _Home_SecState extends State<Home_Sec3> {
                                 itemCount: filteredReports.length,
                                 scrollDirection: Axis.vertical,
                                 itemBuilder: (context, index) {
-                                  final report = reports[index];
+                                  final report = filteredReports[index];
                                   return Padding(
                                     padding: const EdgeInsets.all(1.0),
                                     child: Container(
@@ -287,6 +287,13 @@ class _Home_SecState extends State<Home_Sec3> {
                                                 ),
                                               ),
                                             ],
+                                          ),
+                                          Text(
+                                            'Type: ${report['Type']}',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.blue,
+                                                fontWeight: FontWeight.bold),
                                           ),
                                           Row(
                                             children: [
@@ -352,13 +359,18 @@ class _Home_SecState extends State<Home_Sec3> {
                                                     MaterialPageRoute(
                                                       builder: (context) =>
                                                           Report(
-                                                        buildingNumber: '2',
-                                                        floorNumber: "4",
-                                                        id: "457785",
-                                                        name: 'OZ',
-                                                        phoneNumber: "012",
-                                                        reportId: 8,
-                                                        reportName: "Rname",
+                                                        buildingNumber:
+                                                            '${report['Username']}',
+                                                        floorNumber:
+                                                            '${report['Username']}',
+                                                        id: '${report['RID']}',
+                                                        name:
+                                                            '${report['Username']}',
+                                                        phoneNumber:
+                                                            '${report['Username']}',
+                                                        reportId:  '${report['Username']}',
+                                                        reportName:
+                                                            '${report['Username']}',
                                                         time: '22:00',
                                                       ),
                                                     ),

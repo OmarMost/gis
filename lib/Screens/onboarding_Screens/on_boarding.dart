@@ -65,7 +65,7 @@ class Onboarding extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => FirstAidpage(),
+                          builder: (context) => Home_Sec(),
                         ));
                     // Navigator.push(context,
                     //   MaterialPageRoute(builder: (context) => log));
