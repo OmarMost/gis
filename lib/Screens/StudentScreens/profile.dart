@@ -32,7 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final profileimagepicker = ImagePicker(); //Online
   //To store the url of the uploaded image
   var image_profile_url; //Online
-  //____________________________________________________
+  
 
   Map<String, dynamic> data = {};
   Future getdata() async {
