@@ -63,10 +63,10 @@ class Report extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.confirmation_number),
+                Icon(Icons.quick_contacts_mail_outlined),
                 SizedBox(width: 8),
                 Text(
-                  userid,
+                  'ID : $userid',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -77,7 +77,7 @@ class Report extends StatelessWidget {
               children: [
                 Icon(Icons.phone),
                 SizedBox(width: 8),
-                Text(phoneNumber,
+                Text("Phone : $phoneNumber",
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -87,7 +87,7 @@ class Report extends StatelessWidget {
               children: [
                 Icon(Icons.business),
                 SizedBox(width: 8),
-                Text('Building  $buildingName',
+                Text('Building  : $buildingName',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -108,6 +108,14 @@ class Report extends StatelessWidget {
                 Icon(Icons.access_time),
                 SizedBox(width: 8),
                 Text(time, style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.layers),
+                SizedBox(width: 8),
+                Text(Photo, style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             Spacer(),

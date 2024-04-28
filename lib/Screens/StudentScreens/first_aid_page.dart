@@ -20,37 +20,29 @@ class _FirstAidState extends State<FirstAid> {
 
   String? RID;
   get type => "First Aid";
+  String Description = "";
 
-  Future<void> addDat() async {
-    try {
-      DocumentReference documentReference = await FirebaseFirestore.instance.collection('Reports').add({
+  Future addDat() async {
+    FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'], 
       'PhoneNum': dat['Phone'],
-      'UserID': dat['ID'], 
-      'Type': type, 
-      'RID': RID, 
-      'BuildingName': widget.BuildingName, 
-      'FloorNum': widget.FloorNum, 
+      'UserID': dat['ID'],
+      'Type': type,
+      'RID': RID,
+      'BuildingName': widget.BuildingName,
+      'FloorNum': widget.FloorNum,
       'Description': description_Controller.text,
       'isReportingForSelf' : isReportingForSelf,
       'hasChronicDiseases' : hasChronicDiseases
+      })//Make ID
+      .then((documentReference) {
+        setState(() {
+          RID = documentReference.id;
+        });
+        print('Document added with ID: ${documentReference.id}');
+      }).catchError((error) {
+        print('Error adding document: $error');
       });
-
-      setState(() {
-        RID = documentReference.id;
-      });
-      print('Document added with ID: ${documentReference.id}');
-
-      // Navigate to the next page here or handle next actions
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => FirstAidpage(),
-        ),
-      );
-    } catch (error) {
-      print('Error adding document: $error');
-    }
   }
 
   final user = FirebaseAuth.instance.currentUser!;
@@ -112,7 +104,8 @@ class _FirstAidState extends State<FirstAid> {
             SizedBox(height: 20.0),
             //First Question
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Align text to the left
               children: [
                 Text(
                   'Are you reporting for you or someone else?',
@@ -122,7 +115,7 @@ class _FirstAidState extends State<FirstAid> {
                   ),
                 ),
               ],
-            ), 
+            ),
             //End First Question, then Radio >>
             Column(
               children: [
@@ -159,7 +152,8 @@ class _FirstAidState extends State<FirstAid> {
             SizedBox(height: 16.0),
             //Second Question
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Align text to the left
               children: [
                 Text(
                   'Any Chronic Diseases?',
@@ -234,12 +228,12 @@ class _FirstAidState extends State<FirstAid> {
                     // Handle 'Submit' button click
                     await addDat();
                     print('Senttttttttttttt');
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => FirstAidpage(),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FirstAidpage(),
+              ),
+            );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

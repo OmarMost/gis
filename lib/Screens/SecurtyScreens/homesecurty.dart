@@ -28,7 +28,7 @@ class _Home_SecState extends State<Home_Sec> {
       backgroundColor: Color.fromARGB(255, 133, 148, 161),
       appBar: AppBar(
         title: Text(
-          'Reports of problems',
+          'Reports of Emergency',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
@@ -257,6 +257,7 @@ class _Home_SecState extends State<Home_Sec> {
                                   .toList();
 
                               return ListView.builder(
+                                reverse: true,
                                 itemCount: filteredReports.length,
                                 scrollDirection: Axis.vertical,
                                 itemBuilder: (context, index) {
@@ -289,9 +290,11 @@ class _Home_SecState extends State<Home_Sec> {
                                             ],
                                           ),
                                           Text(
-                                            'Type: ${report['Type']}',
+                                            '${report['Type']}',
                                             style: TextStyle(
-                                                fontSize: 20,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                fontSize: 25,
                                                 color: Colors.red,
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -377,7 +380,7 @@ class _Home_SecState extends State<Home_Sec> {
                                                         Descriotion:
                                                             '${report['Description']}',
                                                         Photo:
-                                                            '${report['Type']}',
+                                                            '${report['ReportImage']}',
                                                       ),
                                                     ),
                                                   );
