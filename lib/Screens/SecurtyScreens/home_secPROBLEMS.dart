@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/SecurtyScreens/home_sec2.dart';
-import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
+import 'package:gis/Screens/SecurtyScreens/home_secFIRSTAID.dart';
+import 'package:gis/Screens/SecurtyScreens/homesecurtySOS.dart';
 import 'package:gis/Screens/SecurtyScreens/profilesec.dart';
-import 'package:gis/Screens/SecurtyScreens/report.dart';
+import 'package:gis/Screens/SecurtyScreens/reportPROBLEMS.dart';
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 
 String? R_ID;
@@ -361,7 +361,7 @@ class _Home_SecState extends State<Home_Sec3> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          Report(
+                                                          ReportBROBLEMS(
                                                         buildingName:
                                                             '${report['BuildingName']}',
                                                         floorNumber:
@@ -374,13 +374,15 @@ class _Home_SecState extends State<Home_Sec3> {
                                                             '${report['PhoneNum']}',
                                                         reportId:
                                                             '${report['RID']}',
+                                                        State:
+                                                            '${report['State']}',
                                                         reporttype:
                                                             '${report['Type']}',
                                                         time: '22:00',
                                                         Descriotion:
                                                             '${report['Description']}',
                                                         Photo:
-                                                            '${report['Type']}',
+                                                            '${report['ReportImage']}',
                                                       ),
                                                     ),
                                                   );

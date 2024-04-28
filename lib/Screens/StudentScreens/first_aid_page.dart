@@ -17,31 +17,32 @@ class _FirstAidState extends State<FirstAid> {
   // Variables of radio buttons
   bool isReportingForSelf = true; // Default is "For Me"
   bool hasChronicDiseases = false; // Default is "No"
-
+  String State = "No Response Yet ..";
   String? RID;
   get type => "First Aid";
 
   Future addDat() async {
     FirebaseFirestore.instance.collection('Reports').add({
-      'Username': dat['Name'], 
+      'Username': dat['Name'],
       'PhoneNum': dat['Phone'],
       'UserID': dat['ID'],
       'Type': type,
       'RID': RID,
       'BuildingName': widget.BuildingName,
       'FloorNum': widget.FloorNum,
+      'State': State,
       'Description': description_Controller.text,
-      'isReportingForSelf' : isReportingForSelf,
-      'hasChronicDiseases' : hasChronicDiseases
-      })//Make ID
-      .then((documentReference) {
-        setState(() {
-          RID = documentReference.id;
-        });
-        print('Document added with ID: ${documentReference.id}');
-      }).catchError((error) {
-        print('Error adding document: $error');
+      'isReportingForSelf': isReportingForSelf,
+      'hasChronicDiseases': hasChronicDiseases
+    }) //Make ID
+        .then((documentReference) {
+      setState(() {
+        RID = documentReference.id;
       });
+      print('Document added with ID: ${documentReference.id}');
+    }).catchError((error) {
+      print('Error adding document: $error');
+    });
   }
 
   final user = FirebaseAuth.instance.currentUser!;
@@ -107,10 +108,10 @@ class _FirstAidState extends State<FirstAid> {
                   CrossAxisAlignment.start, // Align text to the left
               children: [
                 Text(
-                  'Are you reporting for you or someone else?',
+                  '- Are you reporting for you or someone else ?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
+                    fontSize: 15.0,
                   ),
                 ),
               ],
@@ -155,10 +156,10 @@ class _FirstAidState extends State<FirstAid> {
                   CrossAxisAlignment.start, // Align text to the left
               children: [
                 Text(
-                  'Any Chronic Diseases?',
+                  '- Any Chronic Diseases ?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
+                    fontSize: 15.0,
                   ),
                 ),
               ],
@@ -201,7 +202,7 @@ class _FirstAidState extends State<FirstAid> {
             Row(
               children: [
                 Text(
-                  'Details about your case',
+                  'Details about your case :',
                   style: TextStyle(
                     fontSize: 21.0,
                   ),
@@ -231,8 +232,8 @@ class _FirstAidState extends State<FirstAid> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => FirstAidpage(),
-              ),
-            );
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

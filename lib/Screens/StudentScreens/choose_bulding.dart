@@ -22,6 +22,7 @@ class _BuildingState extends State<Building> {
   get typeReport => "SOS";
   String Description = "";
   String image_report_url = "";
+  String State = "No Response Yet ..";
 
   Future addDat() async {
     FirebaseFirestore.instance.collection('Reports').add({
@@ -29,6 +30,7 @@ class _BuildingState extends State<Building> {
       'UserID': dat['ID'],
       'PhoneNum': dat['Phone'],
       'Type': typeReport,
+      'State': State,
       'RID': RIDSOS,
       'BuildingName': BuildingName,
       'FloorNum': "",

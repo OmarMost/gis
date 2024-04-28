@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/LoginScreens/loginScreen.dart';
 import 'package:gis/Screens/SecurtyScreens/home_manger.dart';
-import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
+import 'package:gis/Screens/SecurtyScreens/homesecurtySOS.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
 import '../StudentScreens/student_home.dart'; //By Elgammal

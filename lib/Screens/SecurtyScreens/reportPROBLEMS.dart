@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Report extends StatelessWidget {
+class ReportBROBLEMS extends StatelessWidget {
   final String name;
   final String userid;
   final String phoneNumber;
@@ -11,9 +11,12 @@ class Report extends StatelessWidget {
   final String buildingName;
   final String floorNumber;
   final String Photo;
+  final String State;
+
   final String time;
 
-  Report({
+  ReportBROBLEMS({
+    required this.State,
     required this.reporttype,
     required this.reportId,
     required this.name,
@@ -29,9 +32,9 @@ class Report extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Color.fromARGB(255, 251, 246, 246),
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: const Color.fromARGB(255, 251, 246, 246),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -40,7 +43,7 @@ class Report extends StatelessWidget {
           children: [
             Text(
               reporttype,
-              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
@@ -113,9 +116,29 @@ class Report extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.layers),
+                Icon(Icons.add_task_rounded),
                 SizedBox(width: 8),
-                Text(Photo, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(State, style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.add_task_rounded),
+                SizedBox(width: 8),
+                Text(State, style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 200,
+                  width: 200,
+                  child: State == "No Response Yet .."
+                      ? Image.asset('assets/False.jpg')
+                      : Image.asset('assets/True.jpg'),
+                ),
               ],
             ),
             Spacer(),

@@ -18,18 +18,20 @@ class floor extends StatefulWidget {
 
 class _floorState extends State<floor> {
   String FloorNum = "";
+  String State = "No Response Yet ..";
 
   int RIDSOS = 1;
   // get RID => '1';
   get typeReport => "SOS";
   String Description = "";
-  String image_report_url='';
+  String image_report_url = '';
 
   Future addDat() async {
     FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'],
       'UserID': dat['ID'],
       'PhoneNum': dat['Phone'],
+      'State': State,
       'Type': typeReport,
       'RID': RIDSOS,
       'BuildingName': widget.BuildingName,

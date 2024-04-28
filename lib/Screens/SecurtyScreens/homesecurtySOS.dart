@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/SecurtyScreens/home_sec2.dart';
-import 'package:gis/Screens/SecurtyScreens/home_sec3.dart';
+import 'package:gis/Screens/SecurtyScreens/home_secFIRSTAID.dart';
+import 'package:gis/Screens/SecurtyScreens/home_secPROBLEMS.dart';
 import 'package:gis/Screens/SecurtyScreens/profilesec.dart';
-import 'package:gis/Screens/SecurtyScreens/report.dart';
+import 'package:gis/Screens/SecurtyScreens/reportSOS.dart';
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 
 String? R_ID;
@@ -361,7 +361,7 @@ class _Home_SecState extends State<Home_Sec> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          Report(
+                                                          ReportSOS(
                                                         buildingName:
                                                             '${report['BuildingName']}',
                                                         floorNumber:
@@ -377,6 +377,8 @@ class _Home_SecState extends State<Home_Sec> {
                                                         reporttype:
                                                             '${report['Type']}',
                                                         time: '22:00',
+                                                        State:
+                                                            '${report['State']}',
                                                         Descriotion:
                                                             '${report['Description']}',
                                                         Photo:
