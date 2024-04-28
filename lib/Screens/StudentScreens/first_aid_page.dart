@@ -20,10 +20,10 @@ class _FirstAidState extends State<FirstAid> {
 
   String? RID;
   get type => "First Aid";
-  String Description = "";
 
-  Future addDat() async {
-    FirebaseFirestore.instance.collection('Reports').add({
+  Future<void> addDat() async {
+    try {
+      DocumentReference documentReference = await FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'], 
       'PhoneNum': dat['Phone'],
       'UserID': dat['ID'], 
@@ -34,15 +34,23 @@ class _FirstAidState extends State<FirstAid> {
       'Description': description_Controller.text,
       'isReportingForSelf' : isReportingForSelf,
       'hasChronicDiseases' : hasChronicDiseases
-      })//Make ID
-      .then((documentReference) {
-        setState(() {
-          RID = documentReference.id;
-        });
-        print('Document added with ID: ${documentReference.id}');
-      }).catchError((error) {
-        print('Error adding document: $error');
       });
+
+      setState(() {
+        RID = documentReference.id;
+      });
+      print('Document added with ID: ${documentReference.id}');
+
+      // Navigate to the next page here or handle next actions
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => FirstAidpage(),
+        ),
+      );
+    } catch (error) {
+      print('Error adding document: $error');
+    }
   }
 
   final user = FirebaseAuth.instance.currentUser!;
@@ -222,16 +230,16 @@ class _FirstAidState extends State<FirstAid> {
               child: SizedBox(
                 width: 300,
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // Handle 'Submit' button click
-                    addDat();
+                    await addDat();
                     print('Senttttttttttttt');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FirstAidpage(),
-              ),
-            );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => FirstAidpage(),
+                    //   ),
+                    // );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
