@@ -31,13 +31,13 @@ class _ReportAProblemState extends State<ReportAProblem> {
   //To store the url of the uploaded image
   var image_report_url;
   //____________________________________________________
-
-  int RID = 1;
+  String State = "No Response Yet ..";
+  String RID = "";
   // get RID => '1';
   get type => "Report A Problem";
 
   Future addDat() async {
-    FirebaseFirestore.instance.collection('Reports').add({
+    await FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'],
       'PhoneNum': dat['Phone'],
       'UserID': dat['ID'],
@@ -45,12 +45,9 @@ class _ReportAProblemState extends State<ReportAProblem> {
       'RID': RID,
       'BuildingName': widget.BuildingName,
       'FloorNum': widget.FloorNum,
+      'State': State,
       'Description': description_Controller.text,
       'ReportImage': image_report_url
-    });
-
-    setState(() {
-      RID++;
     });
   }
 
@@ -184,7 +181,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
                   ),
                   SizedBox(height: 10), // Adjust the height as needed
                   GestureDetector(
-                    onDoubleTap: uploadReportImage,
+                    onTap: uploadReportImage,
                     child: CircleAvatar(
                       radius: 60,
                       backgroundImage: dat['ReportImage'] != null
@@ -202,7 +199,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
               child: SizedBox(
                 width: 300, // width of button
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // Handle 'Submit' button click
                     addDat();
                     print('Senttttttttttttt');
