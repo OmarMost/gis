@@ -20,7 +20,6 @@ class _FirstAidState extends State<FirstAid> {
 
   String? RID;
   get type => "First Aid";
-  String Description = "";
 
   Future addDat() async {
     FirebaseFirestore.instance.collection('Reports').add({
@@ -225,7 +224,7 @@ class _FirstAidState extends State<FirstAid> {
                 width: 300,
                 child: ElevatedButton(
                   onPressed: () async {
-                    // Handle 'Submit' button click
+                    // Handle 'Submit' button
                     await addDat();
                     print('Senttttttttttttt');
                     Navigator.push(
