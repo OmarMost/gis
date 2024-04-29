@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/SecurtyScreens/home_secFIRSTAID.dart';
 import 'package:gis/Screens/SecurtyScreens/home_secPROBLEMS.dart';
+import 'package:gis/Screens/SecurtyScreens/map.dart';
 import 'package:gis/Screens/SecurtyScreens/profilesec.dart';
 import 'package:gis/Screens/SecurtyScreens/reportSOS.dart';
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
@@ -108,7 +109,13 @@ class _Home_SecState extends State<Home_Sec> {
               title: const Text('Map',
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MTIMAP(),
+                    ));
+              },
             ),
             ListTile(
               leading: const Icon(Icons.logout, color: Colors.black),

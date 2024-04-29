@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MTIMAP(),//Put Onboarding to normal Start.
+      home: Onboarding(),//Put Onboarding to normal Start.
 
       // home: Report(
       //   buildingNumber: '5',
