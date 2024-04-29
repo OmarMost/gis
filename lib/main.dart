@@ -23,6 +23,7 @@ import 'package:gis/Screens/LoginScreens/sec_login.dart'; // ..Elgammal
 import 'package:gis/Screens/StudentScreens/sos_page.dart'; // ..Elgammal
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart'; // ..Elgammal
 import 'package:gis/Screens/StudentScreens/first_aid_page.dart'; // .. Elgammal
+import 'package:gis/Screens/SecurtyScreens/map.dart'; // to test map
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 import 'package:gis/Screens/onboarding_Screens/type_selection.dart';
 
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Onboarding(),//Put Onboarding to normal Start.
+      home: MTIMAP(),//Put Onboarding to normal Start.
 
       // home: Report(
       //   buildingNumber: '5',

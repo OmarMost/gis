@@ -7,7 +7,7 @@ import 'package:gis/Screens/SecurtyScreens/home_manger.dart';
 import 'package:gis/Screens/SecurtyScreens/homesecurtySOS.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
-import 'package:gis/Screens/StudentScreens/test_map.dart'; //to test map
+import 'package:gis/Screens/SecurtyScreens/map.dart'; //to test map
 import '../StudentScreens/student_home.dart'; //By Elgammal
 import 'on_boarding2.dart';
 
