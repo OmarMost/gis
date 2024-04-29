@@ -105,7 +105,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
         image_report_url = await reportimagerefstorage.getDownloadURL();
         print(image_report_url);
 
-        await FirebaseFirestore.instance
+        FirebaseFirestore.instance
             .collection('Reports')
             .doc(profiledoc)
             .update({'ReportImage': image_report_url});

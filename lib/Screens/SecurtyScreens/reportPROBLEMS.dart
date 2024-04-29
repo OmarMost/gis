@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ReportBROBLEMS extends StatelessWidget {
   final String name;
@@ -12,8 +12,8 @@ class ReportBROBLEMS extends StatelessWidget {
   final String floorNumber;
   final String Photo;
   final String State;
-
   final String time;
+  String? Reportdoc;
 
   ReportBROBLEMS({
     required this.State,
@@ -28,6 +28,15 @@ class ReportBROBLEMS extends StatelessWidget {
     required this.Photo,
     required this.time,
   });
+
+  void updateStateToX() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    FirebaseFirestore.instance
+        .collection('Reports')
+        .doc(Reportdoc)
+        .update({'State': "Responded"});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +89,10 @@ class ReportBROBLEMS extends StatelessWidget {
               children: [
                 Icon(Icons.phone),
                 SizedBox(width: 8),
-                Text("Phone : $phoneNumber",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(
+                  "Phone : $phoneNumber",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             SizedBox(height: 8),
@@ -90,8 +101,10 @@ class ReportBROBLEMS extends StatelessWidget {
               children: [
                 Icon(Icons.business),
                 SizedBox(width: 8),
-                Text('Building  : $buildingName',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(
+                  'Building  : $buildingName',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             SizedBox(height: 8),
@@ -100,8 +113,10 @@ class ReportBROBLEMS extends StatelessWidget {
               children: [
                 Icon(Icons.layers),
                 SizedBox(width: 8),
-                Text('Floor Number  : $floorNumber',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(
+                  'Floor Number  : $floorNumber',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             SizedBox(height: 8),
@@ -110,7 +125,10 @@ class ReportBROBLEMS extends StatelessWidget {
               children: [
                 Icon(Icons.access_time),
                 SizedBox(width: 8),
-                Text(time, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(
+                  time,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             Row(
@@ -118,23 +136,28 @@ class ReportBROBLEMS extends StatelessWidget {
               children: [
                 Icon(Icons.add_task_rounded),
                 SizedBox(width: 8),
-                Text(State, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(
+                  State,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.add_task_rounded),
-                SizedBox(width: 8),
-                Text(State, style: TextStyle(fontWeight: FontWeight.bold)),
+                Image(
+                  image: NetworkImage(Photo),
+                  width: 250,
+                  height: 230,
+                ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 200,
-                  width: 200,
+                  height: 100,
+                  width: 100,
                   child: State == "No Response Yet .."
                       ? Image.asset('assets/False.jpg')
                       : Image.asset('assets/True.jpg'),
@@ -152,7 +175,9 @@ class ReportBROBLEMS extends StatelessWidget {
                   backgroundColor: Colors.orangeAccent,
                   padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  updateStateToX();
+                },
                 child: Text(
                   'Respond',
                   style: TextStyle(
