@@ -7,30 +7,42 @@ import 'package:gis/Screens/StudentScreens/sos_page.dart';
 
 class floor extends StatefulWidget {
   final String type, BuildingName;
-  floor({super.key, required this.type, required this.BuildingName}); //LAST EDIT GAMMAL
-  
+  floor(
+      {super.key,
+      required this.type,
+      required this.BuildingName}); //LAST EDIT GAMMAL
 
   @override
   State<floor> createState() => _floorState();
 }
 
 class _floorState extends State<floor> {
-
   String FloorNum = "";
-  
+  String State = "No Response Yet ..";
+
   int RIDSOS = 1;
   // get RID => '1';
   get typeReport => "SOS";
   String Description = "";
+  String image_report_url = '';
 
   Future addDat() async {
-  FirebaseFirestore.instance
-      .collection('Reports')
-      .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': typeReport, 'RID': RIDSOS, 'BuildingName': widget.BuildingName, 'FloorNum': FloorNum, 'Description': Description});
+    FirebaseFirestore.instance.collection('Reports').add({
+      'Username': dat['Name'],
+      'UserID': dat['ID'],
+      'PhoneNum': dat['Phone'],
+      'State': State,
+      'Type': typeReport,
+      'RID': RIDSOS,
+      'BuildingName': widget.BuildingName,
+      'FloorNum': FloorNum,
+      'Description': Description,
+      'ReportImage': image_report_url
+    });
 
-      setState(() {
-        RIDSOS++;
-      });
+    setState(() {
+      RIDSOS++;
+    });
   }
 
   final userr = FirebaseAuth.instance.currentUser!;
@@ -55,8 +67,6 @@ class _floorState extends State<floor> {
     getdat();
     super.initState();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -99,10 +109,11 @@ class _floorState extends State<floor> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: () { //LAST EDIT GAMMAL
+                    onPressed: () {
+                      //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
                         FloorNum = "3";
-                        addDat();//=========================================
+                        addDat(); //=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
                             context,
@@ -114,7 +125,9 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(BuildingName: widget.BuildingName, FloorNum: '3'),
+                              builder: (context) => ReportAProblem(
+                                  BuildingName: widget.BuildingName,
+                                  FloorNum: '3'),
                             ));
                       }
                       if (widget.type == 'first aid') {
@@ -122,7 +135,9 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(BuildingName: widget.BuildingName, FloorNum: '3'),
+                              builder: (context) => FirstAid(
+                                  BuildingName: widget.BuildingName,
+                                  FloorNum: '3'),
                             ));
                       }
                     },
@@ -142,10 +157,11 @@ class _floorState extends State<floor> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () { //LAST EDIT GAMMAL
+                    onPressed: () {
+                      //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
                         FloorNum = "2";
-                        addDat();//=========================================
+                        addDat(); //=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
                             context,
@@ -157,7 +173,9 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(BuildingName: widget.BuildingName, FloorNum: '2'),
+                              builder: (context) => ReportAProblem(
+                                  BuildingName: widget.BuildingName,
+                                  FloorNum: '2'),
                             ));
                       }
                       if (widget.type == 'first aid') {
@@ -165,7 +183,9 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(BuildingName: widget.BuildingName, FloorNum: '2'),
+                              builder: (context) => FirstAid(
+                                  BuildingName: widget.BuildingName,
+                                  FloorNum: '2'),
                             ));
                       }
                     },
@@ -183,10 +203,11 @@ class _floorState extends State<floor> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () { //LAST EDIT GAMMAL
+                    onPressed: () {
+                      //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
                         FloorNum = "1";
-                        addDat();//=========================================
+                        addDat(); //=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
                             context,
@@ -198,7 +219,9 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(BuildingName: widget.BuildingName, FloorNum: '1'),
+                              builder: (context) => ReportAProblem(
+                                  BuildingName: widget.BuildingName,
+                                  FloorNum: '1'),
                             ));
                       }
                       if (widget.type == 'first aid') {
@@ -206,7 +229,9 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstAid(BuildingName: widget.BuildingName, FloorNum: '1'),
+                              builder: (context) => FirstAid(
+                                  BuildingName: widget.BuildingName,
+                                  FloorNum: '1'),
                             ));
                       }
                     },
@@ -224,10 +249,11 @@ class _floorState extends State<floor> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () { //LAST EDIT GAMMAL
+                    onPressed: () {
+                      //LAST EDIT GAMMAL
                       if (widget.type == 'sos') {
                         FloorNum = "Ground floor";
-                        addDat();//=========================================
+                        addDat(); //=========================================
                         print('Senttttttttttttt');
                         Navigator.push(
                             context,
@@ -239,7 +265,9 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReportAProblem(BuildingName: widget.BuildingName, FloorNum: 'Ground floor'),
+                              builder: (context) => ReportAProblem(
+                                  BuildingName: widget.BuildingName,
+                                  FloorNum: 'Ground floor'),
                             ));
                       }
                       if (widget.type == 'first aid') {
@@ -247,7 +275,9 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => FirstAid(BuildingName: widget.BuildingName, FloorNum: 'Ground floor'),
+                              builder: (context) => FirstAid(
+                                  BuildingName: widget.BuildingName,
+                                  FloorNum: 'Ground floor'),
                             ));
                       }
                     },

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gis/Screens/SecurtyScreens/report.dart';
+import 'package:gis/Screens/SecurtyScreens/reportSOS.dart';
 
 String? R_ID;
 String? titel;
@@ -119,14 +119,17 @@ class Student_Reports extends StatelessWidget {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => Report(
-                                                      buildingNumber: '2',
+                                                builder: (context) => ReportSOS(
+                                                      State: "ddd",
+                                                      Descriotion: "ldd42",
+                                                      Photo: "l",
+                                                      buildingName: '2',
                                                       floorNumber: "4",
-                                                      id: "457785",
+                                                      userid: "457785",
                                                       name: 'OZ',
                                                       phoneNumber: "012",
-                                                      reportId: '8',
-                                                      reportName: "Fire",
+                                                      reportId: "77",
+                                                      reporttype: "Rname",
                                                       time: '22:00',
                                                     )));
                                       },

@@ -36,6 +36,7 @@ dependencies:
   flutter:
     sdk: flutter
   fluttertoast: ^8.2.4
+  google_maps_flutter: ^2.6.1 #Elgammal
   image_picker: ^1.0.7 #Elgammal
   pull_to_refresh: ^2.0.0 #Elgammal
   url_launcher: ^6.1.0 #Elgammal
@@ -76,6 +77,8 @@ flutter:
     - assets/sec_Logo.jpg
     - assets/sec_Logo2.jpg
     - assets/Student_logo.jpg
+    - assets/True.jpg
+    - assets/False.jpg
 
 
     

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
 
 class FirstAid extends StatefulWidget {
-  // const FirstAid({super.key});
   final String BuildingName, FloorNum;
   FirstAid({super.key, required this.BuildingName, required this.FloorNum});
 
@@ -18,37 +17,41 @@ class _FirstAidState extends State<FirstAid> {
   // Variables of radio buttons
   bool isReportingForSelf = true; // Default is "For Me"
   bool hasChronicDiseases = false; // Default is "No"
-
-  int RID = 1;
-  // get RID => '1';
+  String State = "No Response Yet ..";
+  String? RID;
   get type => "First Aid";
-  String Description = "";
 
   Future addDat() async {
     FirebaseFirestore.instance.collection('Reports').add({
-      'Username': dat['Name'], 
-      'PhoneNum': dat['Phone'], 
-      'Type': type, 
-      'RID': RID, 
-      'BuildingName': widget.BuildingName, 
-      'FloorNum': widget.FloorNum, 
+      'Username': dat['Name'],
+      'PhoneNum': dat['Phone'],
+      'UserID': dat['ID'],
+      'Type': type,
+      'RID': RID,
+      'BuildingName': widget.BuildingName,
+      'FloorNum': widget.FloorNum,
+      'State': State,
       'Description': description_Controller.text,
-      'isReportingForSelf' : isReportingForSelf,
-      'hasChronicDiseases' : hasChronicDiseases
-      });
-
+      'isReportingForSelf': isReportingForSelf,
+      'hasChronicDiseases': hasChronicDiseases
+    }) //Make ID
+        .then((documentReference) {
       setState(() {
-        RID++;
+        RID = documentReference.id;
       });
+      print('Document added with ID: ${documentReference.id}');
+    }).catchError((error) {
+      print('Error adding document: $error');
+    });
   }
 
-  final userr = FirebaseAuth.instance.currentUser!;
+  final user = FirebaseAuth.instance.currentUser!;
   Map<String, dynamic> dat = {};
   getdat() {
     dat.clear();
     FirebaseFirestore.instance
         .collection('Users')
-        .where('Email', isEqualTo: userr.email)
+        .where('Email', isEqualTo: user.email)
         .get()
         .then((value) => value.docs.forEach((element) {
               dat.addAll(element.data());
@@ -101,17 +104,18 @@ class _FirstAidState extends State<FirstAid> {
             SizedBox(height: 20.0),
             //First Question
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Align text to the left
               children: [
                 Text(
-                  'Are you reporting for you or someone else?',
+                  '- Are you reporting for you or someone else ?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
+                    fontSize: 15.0,
                   ),
                 ),
               ],
-            ), 
+            ),
             //End First Question, then Radio >>
             Column(
               children: [
@@ -148,13 +152,14 @@ class _FirstAidState extends State<FirstAid> {
             SizedBox(height: 16.0),
             //Second Question
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Align text to the left
               children: [
                 Text(
-                  'Any Chronic Diseases?',
+                  '- Any Chronic Diseases ?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
+                    fontSize: 15.0,
                   ),
                 ),
               ],
@@ -197,7 +202,7 @@ class _FirstAidState extends State<FirstAid> {
             Row(
               children: [
                 Text(
-                  'Details about your case',
+                  'Details about your case :',
                   style: TextStyle(
                     fontSize: 21.0,
                   ),
@@ -219,16 +224,16 @@ class _FirstAidState extends State<FirstAid> {
               child: SizedBox(
                 width: 300,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Handle 'Submit' button click
-                    addDat();
+                  onPressed: () async {
+                    // Handle 'Submit' button
+                    await addDat();
                     print('Senttttttttttttt');
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => FirstAidpage(),
-              ),
-            );
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

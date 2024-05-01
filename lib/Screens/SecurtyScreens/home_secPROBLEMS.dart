@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/SecurtyScreens/home_sec2.dart';
-import 'package:gis/Screens/SecurtyScreens/home_sec3.dart';
+import 'package:gis/Screens/SecurtyScreens/home_secFIRSTAID.dart';
+import 'package:gis/Screens/SecurtyScreens/homesecurtySOS.dart';
+import 'package:gis/Screens/SecurtyScreens/map.dart';
 import 'package:gis/Screens/SecurtyScreens/profilesec.dart';
-import 'package:gis/Screens/SecurtyScreens/report.dart';
+import 'package:gis/Screens/SecurtyScreens/reportPROBLEMS.dart';
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 
 String? R_ID;
@@ -14,14 +15,14 @@ String? sec_name;
 
 int itemNUM = 16;
 
-class Home_Sec extends StatefulWidget {
-  const Home_Sec({Key? key}) : super(key: key);
+class Home_Sec3 extends StatefulWidget {
+  const Home_Sec3({Key? key}) : super(key: key);
 
   @override
-  State<Home_Sec> createState() => _Home_SecState();
+  State<Home_Sec3> createState() => _Home_SecState();
 }
 
-class _Home_SecState extends State<Home_Sec> {
+class _Home_SecState extends State<Home_Sec3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +109,13 @@ class _Home_SecState extends State<Home_Sec> {
               title: const Text('Map',
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MTIMAP(),
+                    ));
+              },
             ),
             ListTile(
               leading: const Icon(Icons.logout, color: Colors.black),
@@ -146,25 +153,25 @@ class _Home_SecState extends State<Home_Sec> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text('SOS Reports'),
-                                  content: Text('Ther is 4 reports'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec()));
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (context) {
+                            //     return AlertDialog(
+                            //       title: Text('SOS Reports'),
+                            //  //     content: Text('Ther is 4 reports'),
+                            //       actions: [
+                            //         TextButton(
+                            //           onPressed: () => Navigator.pop(context),
+                            //           child: Text('OK'),
+                            //         ),
+                            //       ],
+                            //     );
+                            //   },
+                            // );
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.red),
@@ -177,25 +184,25 @@ class _Home_SecState extends State<Home_Sec> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text('First Aid Reports'),
-                                  // content: Text('First button is pressed.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec2()));
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (context) {
+                            //     return AlertDialog(
+                            //       title: Text('First Aid Reports'),
+                            //       // content: Text('First button is pressed.'),
+                            //       actions: [
+                            //         TextButton(
+                            //           onPressed: () => Navigator.pop(context),
+                            //           child: Text('OK'),
+                            //         ),
+                            //       ],
+                            //     );
+                            //   },
+                            // );
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.greenAccent),
@@ -208,25 +215,25 @@ class _Home_SecState extends State<Home_Sec> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text('Reports of problems'),
-                                  //  content: Text('Ther is 22 Repots'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec3()));
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (context) {
+                            //     return AlertDialog(
+                            //       title: Text('Reports of problems'),
+                            //       //  content: Text('Ther is 22 Repots'),
+                            //       actions: [
+                            //         TextButton(
+                            //           onPressed: () => Navigator.pop(context),
+                            //           child: Text('OK'),
+                            //         ),
+                            //       ],
+                            //     );
+                            //   },
+                            // );
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue),
@@ -252,10 +259,12 @@ class _Home_SecState extends State<Home_Sec> {
 
                               // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
                               final filteredReports = reports
-                                  .where((report) => report['Type'] == 'SOS')
+                                  .where((report) =>
+                                      report['Type'] == 'Report A Problem')
                                   .toList();
 
                               return ListView.builder(
+                                reverse: true,
                                 itemCount: filteredReports.length,
                                 scrollDirection: Axis.vertical,
                                 itemBuilder: (context, index) {
@@ -279,7 +288,7 @@ class _Home_SecState extends State<Home_Sec> {
                                                 padding:
                                                     const EdgeInsets.all(10.0),
                                                 child: Text(
-                                                  '                                          Report ID : ${report['RID']}',
+                                                  'Report ID : ${report['RID']}',
                                                   style: TextStyle(
                                                     fontSize: 15,
                                                   ),
@@ -288,10 +297,12 @@ class _Home_SecState extends State<Home_Sec> {
                                             ],
                                           ),
                                           Text(
-                                            'Type: ${report['Type']}',
+                                            '${report['Type']}',
                                             style: TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.red,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                fontSize: 25,
+                                                color: Colors.blue,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Row(
@@ -357,21 +368,28 @@ class _Home_SecState extends State<Home_Sec> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          Report(
-                                                        buildingNumber:
-                                                            '${report['Username']}',
+                                                          ReportBROBLEMS(
+                                                        buildingName:
+                                                            '${report['BuildingName']}',
                                                         floorNumber:
-                                                            '${report['Username']}',
-                                                        id: '${report['RID']}',
+                                                            '${report['FloorNum']}',
+                                                        userid:
+                                                            '${report['UserID']}',
                                                         name:
                                                             '${report['Username']}',
                                                         phoneNumber:
                                                             '${report['PhoneNum']}',
                                                         reportId:
                                                             '${report['RID']}',
-                                                        reportName:
-                                                            '${report['Username']}',
+                                                        State:
+                                                            '${report['State']}',
+                                                        reporttype:
+                                                            '${report['Type']}',
                                                         time: '22:00',
+                                                        Descriotion:
+                                                            '${report['Description']}',
+                                                        Photo:
+                                                            '${report['ReportImage']}',
                                                       ),
                                                     ),
                                                   );

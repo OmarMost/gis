@@ -4,9 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/LoginScreens/loginScreen.dart';
 import 'package:gis/Screens/SecurtyScreens/home_manger.dart';
-import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
+import 'package:gis/Screens/SecurtyScreens/homesecurtySOS.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
+import 'package:gis/Screens/SecurtyScreens/map.dart'; //to test map
 import '../StudentScreens/student_home.dart'; //By Elgammal
 import 'on_boarding2.dart';
 
@@ -65,7 +66,7 @@ class Onboarding extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Home_Sec(),
+                          builder: (context) => MTIMAP(),
                         ));
                     // Navigator.push(context,
                     //   MaterialPageRoute(builder: (context) => log));

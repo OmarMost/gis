@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
-import 'package:gis/Screens/SecurtyScreens/homesecurty.dart';
+import 'package:gis/Screens/SecurtyScreens/homesecurtySOS.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
 
