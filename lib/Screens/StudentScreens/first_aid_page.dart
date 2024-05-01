@@ -18,10 +18,10 @@ class _FirstAidState extends State<FirstAid> {
   bool isReportingForSelf = true; // Default is "For Me"
   bool hasChronicDiseases = false; // Default is "No"
   String State = "No Response Yet ..";
-  String? RID;
   get type => "First Aid";
-
+String? RID;
   Future addDat() async {
+    
     FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'],
       'PhoneNum': dat['Phone'],
@@ -231,7 +231,7 @@ class _FirstAidState extends State<FirstAid> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FirstAidpage(),
+                        builder: (context) => FirstAidpage(id: RID!,),
                       ),
                     );
                   },
