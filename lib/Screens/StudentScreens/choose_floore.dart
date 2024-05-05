@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
 import 'package:gis/Screens/StudentScreens/sos_page.dart';
@@ -19,9 +22,7 @@ class floor extends StatefulWidget {
 class _floorState extends State<floor> {
   String FloorNum = "";
   String State = "No Response Yet ..";
-
-  int RIDSOS = 1;
-  // get RID => '1';
+  String? RIDSOS;
   get typeReport => "SOS";
   String Description = "";
   String image_report_url = '';
@@ -37,11 +38,31 @@ class _floorState extends State<floor> {
       'BuildingName': widget.BuildingName,
       'FloorNum': FloorNum,
       'Description': Description,
-      'ReportImage': image_report_url
+      'ReportImage': image_report_url,
+      'lat': lat,
+      'long': long
+    }) //Make ID
+        .then((documentReference) {
+      setState(() {
+        RIDSOS = documentReference.id;
+      });
+      print('Document added with ID: ${documentReference.id}');
+    }).catchError((error) {
+      print('Error adding document: $error');
     });
-
-    setState(() {
-      RIDSOS++;
+    await Timer(Duration(seconds: 1), () {
+      AlertDialog(
+        backgroundColor: Colors.transparent,
+        content: CircularProgressIndicator(
+          backgroundColor: Colors.transparent,
+        ),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SOSPage(id: RIDSOS!,),
+        ),
+      );
     });
   }
 
@@ -62,8 +83,41 @@ class _floorState extends State<floor> {
             }));
   }
 
+// assiging var for lat and long to store the location
+  late double lat = 0;
+  late double long = 0;
+  String locationmessage = 'Current User Location';
+  getloc() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+
   @override
   void initState() {
+    print('--------------------Hello Initstate----------------------------');
+    getloc().then((value) {
+      lat = value.latitude;
+      long = value.longitude;
+      print(lat);
+      print(long);
+      print("-----------------------looooooong--$lat------------");
+      print("-------laaaaaaaaaaaaaaaaaaat----$long--------------------------");
+    });
+    setState(() {
+      locationmessage = 'Latitude :$lat , longitude : $long';
+      print(locationmessage);
+    });
+
     getdat();
     super.initState();
   }
@@ -118,7 +172,7 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SOSPage(),
+                              builder: (context) => SOSPage(id: RIDSOS!,),
                             ));
                       } else if (widget.type == 'problem') {
                         FloorNum = "3";
@@ -166,7 +220,7 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SOSPage(),
+                              builder: (context) => SOSPage(id: RIDSOS!,),
                             ));
                       } else if (widget.type == 'problem') {
                         FloorNum = "2";
@@ -212,7 +266,7 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SOSPage(),
+                              builder: (context) => SOSPage(id: RIDSOS!,),
                             ));
                       } else if (widget.type == 'problem') {
                         FloorNum = "1";
@@ -258,7 +312,7 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SOSPage(),
+                              builder: (context) => SOSPage(id: RIDSOS!,),
                             ));
                       } else if (widget.type == 'problem') {
                         FloorNum = "Ground floor";

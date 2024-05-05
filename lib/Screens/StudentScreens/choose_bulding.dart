@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:gis/Screens/StudentScreens/choose_floore.dart';
 import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
@@ -16,9 +19,7 @@ class Building extends StatefulWidget {
 
 class _BuildingState extends State<Building> {
   String BuildingName = "";
-
-  int RIDSOS = 1;
-  // get RID => '1';
+  String? RIDSOS;
   get typeReport => "SOS";
   String Description = "";
   String image_report_url = "";
@@ -35,11 +36,32 @@ class _BuildingState extends State<Building> {
       'BuildingName': BuildingName,
       'FloorNum': "",
       'Description': Description,
-      'ReportImage': image_report_url
-    }); //without ( 'Floor Num': "" )
-
-    setState(() {
-      RIDSOS++;
+      'ReportImage': image_report_url,
+      'lat': lat,
+      'long': long
+      //without ( 'Floor Num': "" )
+    }) //Make ID
+        .then((documentReference) {
+      setState(() {
+        RIDSOS = documentReference.id;
+      });
+      print('Document added with ID: ${documentReference.id}');
+    }).catchError((error) {
+      print('Error adding document: $error');
+    });
+    await Timer(Duration(seconds: 1), () {
+      AlertDialog(
+        backgroundColor: Colors.transparent,
+        content: CircularProgressIndicator(
+          backgroundColor: Colors.transparent,
+        ),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SOSPage(id: RIDSOS!,),
+        ),
+      );
     });
   }
 
@@ -60,8 +82,41 @@ class _BuildingState extends State<Building> {
             }));
   }
 
+// assiging var for lat and long to store the location
+  late double lat = 0;
+  late double long = 0;
+  String locationmessage = 'Current User Location';
+  getloc() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+
   @override
   void initState() {
+    print('--------------------Hello Initstate----------------------------');
+    getloc().then((value) {
+      lat = value.latitude;
+      long = value.longitude;
+      print(lat);
+      print(long);
+      print("-----------------------looooooong--$lat------------");
+      print("-------laaaaaaaaaaaaaaaaaaat----$long--------------------------");
+    });
+    setState(() {
+      locationmessage = 'Latitude :$lat , longitude : $long';
+      print(locationmessage);
+    });
+
     getdat();
     super.initState();
   }
@@ -87,7 +142,7 @@ class _BuildingState extends State<Building> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              floor(type: 'sos', BuildingName: 'Lectures'),
+                              floor(type: 'sos', BuildingName: 'Lectures',),
                         ));
                   } else if (widget.type == 'problem') {
                     Navigator.push(
@@ -177,11 +232,10 @@ class _BuildingState extends State<Building> {
                       if (widget.type == 'sos') {
                         BuildingName = "Cafe 1";
                         addDat(); //=========================================
-                        print('Senttttttttttttt');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SOSPage(),
+                              builder: (context) => SOSPage(id: RIDSOS!,),
                             ));
                       } else if (widget.type == 'problem') {
                         BuildingName = "Cafe 1";
@@ -231,7 +285,7 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SOSPage(),
+                              builder: (context) => SOSPage(id: RIDSOS!,),
                             ));
                       } else if (widget.type == 'problem') {
                         BuildingName = "Cafe 2";
@@ -284,7 +338,7 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SOSPage(),
+                              builder: (context) => SOSPage(id: RIDSOS!,),
                             ));
                       } else if (widget.type == 'problem') {
                         BuildingName = "Campus";
@@ -337,7 +391,7 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SOSPage(),
+                              builder: (context) => SOSPage(id: RIDSOS!,),
                             ));
                       } else if (widget.type == 'problem') {
                         BuildingName = "Cafe 3";
@@ -388,7 +442,7 @@ class _BuildingState extends State<Building> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SOSPage(),
+                              builder: (context) => SOSPage(id: RIDSOS!,),
                             ));
                       } else if (widget.type == 'problem') {
                         BuildingName = "Cafe 4";

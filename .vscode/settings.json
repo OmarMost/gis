@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "D:/gis/linux"
+    "cmake.sourceDirectory": "D:/gis/linux",
+    "C_Cpp.errorSquiggles": "enabled"
 }

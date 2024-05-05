@@ -1,14 +1,31 @@
+import 'dart:async'; //to Timer Fun
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 
 class ReportProblemPage extends StatefulWidget {
-  const ReportProblemPage({super.key});
+  final String id;
+  const ReportProblemPage({Key? key, required this.id}) : super(key: key);
+
 
   @override
   State<ReportProblemPage> createState() => _ReportProblemPageState();
 }
 
 class _ReportProblemPageState extends State<ReportProblemPage> {
+  void initState() {
+    super.initState();
+    Timer(Duration(milliseconds: 0), () {
+      setState(() {
+        FirebaseFirestore.instance
+            .collection('Reports')
+            .doc(widget.id!)
+            .update({'RID': widget.id!});
+      });
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

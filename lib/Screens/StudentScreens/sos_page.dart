@@ -1,53 +1,31 @@
 
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 import 'package:url_launcher/url_launcher.dart'; //to Handle 'Call Security' button click
 
 class SOSPage extends StatefulWidget {
-  const SOSPage({Key? key}) : super(key: key);
+  final String id;
+  const SOSPage({Key? key, required this.id}) : super(key: key);
 
   @override
   State<SOSPage> createState() => _SOSPageState();
 }
 
 class _SOSPageState extends State<SOSPage> {
-  // get type => "SOS";
-  // int RID = 1;
-  // // get RID => '1';
-
-  // Future addDat() async {
-  //   FirebaseFirestore.instance
-  //       .collection('Reports')
-  //       .add({'Username': dat['Name'], 'PhoneNum': dat['Phone'], 'Type': type, 'RID': RID});
-
-  //       setState(() {
-  //         RID++;
-  //       });
-  // }
-
-  // final userr = FirebaseAuth.instance.currentUser!;
-  // Map<String, dynamic> dat = {};
-  // getdat() {
-  //   dat.clear();
-  //   FirebaseFirestore.instance
-  //       .collection('Users')
-  //       .where('Email', isEqualTo: userr.email)
-  //       .get()
-  //       .then((value) => value.docs.forEach((element) {
-  //             dat.addAll(element.data());
-
-  //             print("-------------------------------------");
-  //             print(dat);
-  //             print('data usersssssssssssssssss');
-  //           }));
-  // }
-
-  // @override
-  // void initState() {
-  //   getdat();
-  //   super.initState();
-  // }
-
+  void initState() {
+    super.initState();
+    Timer(Duration(milliseconds: 0), () {
+      setState(() {
+        FirebaseFirestore.instance
+            .collection('Reports')
+            .doc(widget.id!)
+            .update({'RID': widget.id!});
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -57,9 +57,7 @@ class _FirstAidState extends State<FirstAid> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => FirstAidpage(
-            id: RID!,
-          ),
+          builder: (context) => FirstAidpage(id: RID!,),
         ),
       );
     });

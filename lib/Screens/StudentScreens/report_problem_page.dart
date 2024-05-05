@@ -1,7 +1,10 @@
+import 'dart:async'; //to Timer Fun
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:gis/Screens/StudentScreens/last_report_problem.dart';
 //image
 import 'dart:io'; //to turn File
@@ -10,10 +13,8 @@ import 'package:path/path.dart'; //to turn on basename
 //_________________________________________________
 
 class ReportAProblem extends StatefulWidget {
-  // const ReportAProblem({Key? key}) : super(key: key);
   final String BuildingName, FloorNum;
-  ReportAProblem(
-      {super.key, required this.BuildingName, required this.FloorNum});
+  ReportAProblem({super.key, required this.BuildingName, required this.FloorNum});
 
   @override
   State<ReportAProblem> createState() => _ReportAProblemState();
@@ -21,23 +22,20 @@ class ReportAProblem extends StatefulWidget {
 
 class _ReportAProblemState extends State<ReportAProblem> {
   final description_Controller = TextEditingController();
-
   //image
-  final user = FirebaseAuth.instance.currentUser;
+  final user = FirebaseAuth.instance.currentUser!;
   //To hold img
   File? imageReport;
   //To handle all the function of the lib(Image picker)
   final reportimagepicker = ImagePicker();
   //To store the url of the uploaded image
   var image_report_url;
-  //____________________________________________________
+  
   String State = "No Response Yet ..";
-  String RID = "";
-  // get RID => '1';
   get type => "Report A Problem";
-
+  String? RID;
   Future addDat() async {
-    await FirebaseFirestore.instance.collection('Reports').add({
+    FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'],
       'PhoneNum': dat['Phone'],
       'UserID': dat['ID'],
@@ -47,17 +45,41 @@ class _ReportAProblemState extends State<ReportAProblem> {
       'FloorNum': widget.FloorNum,
       'State': State,
       'Description': description_Controller.text,
-      'ReportImage': image_report_url
+      'ReportImage': image_report_url,
+      'lat': lat,
+      'long': long
+    }) //Make ID
+        .then((documentReference) {
+      setState(() {
+        RID = documentReference.id;
+      });
+      print('Document added with ID: ${documentReference.id}');
+    }).catchError((error) {
+      print('Error adding document: $error');
+    });
+    await Timer(Duration(seconds: 2), () {
+      AlertDialog(
+        backgroundColor: Colors.transparent,
+        content: CircularProgressIndicator(
+          backgroundColor: Colors.transparent,
+        ),
+      );
+      Navigator.push(
+        context as BuildContext, //xxx ERROR xxx
+        MaterialPageRoute(
+          builder: (context) => ReportProblemPage(id: RID!,),
+        ),
+      );
     });
   }
 
-  final userr = FirebaseAuth.instance.currentUser!;
+  // final userr = FirebaseAuth.instance.currentUser!;
   Map<String, dynamic> dat = {};
   getdat() {
     dat.clear();
     FirebaseFirestore.instance
         .collection('Users')
-        .where('Email', isEqualTo: userr.email)
+        .where('Email', isEqualTo: user!.email)
         .get()
         .then((value) => value.docs.forEach((element) {
               dat.addAll(element.data());
@@ -67,6 +89,26 @@ class _ReportAProblemState extends State<ReportAProblem> {
               print('data usersssssssssssssssss');
             }));
   }
+
+  // assiging var for lat and long to store the location
+  late double lat = 0;
+  late double long = 0;
+  String locationmessage = 'Current User Location';
+  getloc() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+        'Location permissions are permanently denied, we cannot request permissions.');
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+  
 
   //toImage
   String? profiledoc;
@@ -106,20 +148,30 @@ class _ReportAProblemState extends State<ReportAProblem> {
         print(image_report_url);
 
         CircularProgressIndicator(value: 1,);
-        // FirebaseFirestore.instance
-        //     .collection('Reports')
-        //     .doc(profiledoc)
-        //     .update({'ReportImage': image_report_url});
       });
     } else {}
   }
-  //_____________________________________________________
 
   @override
   void initState() {
+    print('--------------------Hello Initstate----------------------------');
+    getloc().then((value) {
+      lat = value.latitude;
+      long = value.longitude;
+      print(lat);
+      print(long);
+      print("-----------------------looooooong--$lat------------");
+      print("-------laaaaaaaaaaaaaaaaaaat----$long--------------------------");
+    });
+    setState(() {
+      locationmessage = 'Latitude :$lat , longitude : $long';
+      print(locationmessage);
+    });
+
     getdat();
     super.initState();
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +220,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
               ),
             ),
             SizedBox(height: 25.0),
-//====================================================================================================
+ //====================================================================================================
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -194,22 +246,15 @@ class _ReportAProblemState extends State<ReportAProblem> {
                 ],
               ),
             ),
-//====================================================================================================
+  //====================================================================================================
             SizedBox(height: 120.0), //Last 290 - 50
             Center(
               child: SizedBox(
                 width: 300, // width of button
                 child: ElevatedButton(
-                  onPressed: () async {
+                  onPressed: () {
                     // Handle 'Submit' button click
-                    await addDat();
-                    print('Senttttttttttttt');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ReportProblemPage(),
-                      ),
-                    );
+                    addDat();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
