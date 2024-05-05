@@ -35,7 +35,7 @@ class _ProfileSecState extends State<ProfileSec> {
   getdata() async {
     data.clear();
     await FirebaseFirestore.instance
-        .collection('Security')
+        .collection('Users')
         .where('Email', isEqualTo: user!.email)
         .get()
         .then((value) => value.docs.forEach((element) {
@@ -49,7 +49,7 @@ class _ProfileSecState extends State<ProfileSec> {
   String? profiledoc;
   getprofiledoc() {
     FirebaseFirestore.instance
-        .collection('Security')
+        .collection('Users')
         .where('Email', isEqualTo: user!.email)
         .get() 
         .then((value) => value.docs.forEach((element) {
@@ -61,16 +61,14 @@ class _ProfileSecState extends State<ProfileSec> {
   }
 
   Future senddata() async {
-    await FirebaseFirestore.instance.collection('Security').doc(profiledoc).update(
+    await FirebaseFirestore.instance.collection('Users').doc(profiledoc).update(
       {
         'Name': emailcontoller.text,
-        'ID': idcontoller.text
       },
     );
     print('--------------------------------------------------------');
     print('sent');
     emailcontoller.clear();
-    idcontoller.clear();
   }
   
   @override
@@ -120,10 +118,10 @@ class _ProfileSecState extends State<ProfileSec> {
                       child: GestureDetector(
                         child: CircleAvatar(
                           radius: 60,
-                          backgroundColor: Colors.red,) //Returnnnnnnnnnnnnnnnnnnnnnn
-                        //   backgroundImage: NetworkImage(
-                        //         'https://firebasestorage.googleapis.com/v0/b/project-campus-8579a.appspot.com/o/sec_Logo2.jpg?alt=media&token=6be4cd07-ffd8-4854-99cb-407239d8c172'),
-                        // ),
+                          // backgroundColor: Colors.red,) //Returnnnnnnnnnnnnnnnnnnnnnn
+                          backgroundImage: NetworkImage(
+                                'https://firebasestorage.googleapis.com/v0/b/project-campus-8579a.appspot.com/o/sec_Logo2.jpg?alt=media&token=6be4cd07-ffd8-4854-99cb-407239d8c172'),
+                        ),
                       ),
                     ),
                     SizedBox(height: 48.0),
@@ -159,7 +157,7 @@ class _ProfileSecState extends State<ProfileSec> {
                     SizedBox(height: 11.5),
                     TextFormField(
                       controller: idcontoller,
-                      enabled: edit,
+                      enabled: false,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.credit_card),
                         hintText: data['ID'],
