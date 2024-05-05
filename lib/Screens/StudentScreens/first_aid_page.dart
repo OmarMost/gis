@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
 
 class FirstAid extends StatefulWidget {
@@ -18,9 +21,8 @@ class _FirstAidState extends State<FirstAid> {
   bool isReportingForSelf = true; // Default is "For Me"
   bool hasChronicDiseases = false; // Default is "No"
   String State = "No Response Yet ..";
-  String? RID;
   get type => "First Aid";
-
+  String? RID;
   Future addDat() async {
     FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'],
@@ -33,7 +35,9 @@ class _FirstAidState extends State<FirstAid> {
       'State': State,
       'Description': description_Controller.text,
       'isReportingForSelf': isReportingForSelf,
-      'hasChronicDiseases': hasChronicDiseases
+      'hasChronicDiseases': hasChronicDiseases,
+      'lat': lat,
+      'long': long
     }) //Make ID
         .then((documentReference) {
       setState(() {
@@ -42,6 +46,22 @@ class _FirstAidState extends State<FirstAid> {
       print('Document added with ID: ${documentReference.id}');
     }).catchError((error) {
       print('Error adding document: $error');
+    });
+    await Timer(Duration(seconds: 2), () {
+      AlertDialog(
+        backgroundColor: Colors.transparent,
+        content: CircularProgressIndicator(
+          backgroundColor: Colors.transparent,
+        ),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => FirstAidpage(
+            id: RID!,
+          ),
+        ),
+      );
     });
   }
 
@@ -62,8 +82,41 @@ class _FirstAidState extends State<FirstAid> {
             }));
   }
 
+// assiging var for lat and long to store the location
+  late double lat = 0;
+  late double long = 0;
+  String locationmessage = 'Current User Location';
+  getloc() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+
   @override
   void initState() {
+    print('--------------------Hello Initstate----------------------------');
+    getloc().then((value) {
+      lat = value.latitude;
+      long = value.longitude;
+      print(lat);
+      print(long);
+      print("-----------------------looooooong--$lat------------");
+      print("-------laaaaaaaaaaaaaaaaaaat----$long--------------------------");
+    });
+    setState(() {
+      locationmessage = 'Latitude :$lat , longitude : $long';
+      print(locationmessage);
+    });
+
     getdat();
     super.initState();
   }
@@ -224,16 +277,9 @@ class _FirstAidState extends State<FirstAid> {
               child: SizedBox(
                 width: 300,
                 child: ElevatedButton(
-                  onPressed: () async {
+                  onPressed: () {
                     // Handle 'Submit' button
-                    await addDat();
-                    print('Senttttttttttttt');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FirstAidpage(),
-                      ),
-                    );
+                    addDat();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,

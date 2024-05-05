@@ -10,7 +10,7 @@ class ReportBROBLEMS extends StatelessWidget {
   final String Descriotion;
   final String buildingName;
   final String floorNumber;
-  final String Photo;
+  final String? Photo;
   final String State;
   final String time;
   String? Reportdoc;
@@ -145,11 +145,12 @@ class ReportBROBLEMS extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Photo != null? 
                 Image(
-                  image: NetworkImage(Photo),
+                  image: NetworkImage(Photo!),
                   width: 250,
                   height: 230,
-                ),
+                ) : Text("No Photo Taken")
               ],
             ),
             Row(

@@ -23,6 +23,28 @@ class Home_Sec extends StatefulWidget {
 }
 
 class _Home_SecState extends State<Home_Sec> {
+  final user = FirebaseAuth.instance.currentUser!;
+  Map<String, dynamic> data = {};
+  Future getdata() async {
+    data.clear();
+    await FirebaseFirestore.instance
+        .collection('Users')
+        .where('Email', isEqualTo: user.email)
+        .get()
+        .then((value) => value.docs.forEach((element) {
+              data.addAll(element.data());
+
+              print("---------------------------------------");
+              print(data);
+            }));
+  }
+
+  @override
+  void initState() {
+    getdata();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +56,11 @@ class _Home_SecState extends State<Home_Sec> {
         ),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
       ),
-      drawer: Drawer(
-          child: //data['Name'] != null?
+      drawer: FutureBuilder(
+        future: getdata(),
+        builder: (context, snapshot) {
+      return Drawer(
+          child: data['Name'] != null?
               Container(
         color: Colors.grey,
         child: ListView(
@@ -47,7 +72,7 @@ class _Home_SecState extends State<Home_Sec> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'My Drawer',
+                    '${data['Name']}',
                     style: TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
@@ -134,11 +159,11 @@ class _Home_SecState extends State<Home_Sec> {
           ],
         ),
       )
-          // : Center(
-          //       child: CircularProgressIndicator(
-          //           color: Colors.blue, strokeWidth: 8),
-          //     )
-          ),
+          : Center(
+                child: CircularProgressIndicator(
+                    color: Colors.blue, strokeWidth: 8),
+              ));
+  }),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(

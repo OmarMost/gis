@@ -33,16 +33,15 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_auth: ^4.2.8
   firebase_core: ^2.25.4
-  firebase_storage: ^11.6.10 #Elgammal
+  firebase_storage: ^11.6.10
   flutter:
     sdk: flutter
   fluttertoast: ^8.2.4
-  google_maps_flutter: ^2.6.1 #Elgammal
-  image_picker: ^1.0.7 #Elgammal
-  pull_to_refresh: ^2.0.0 #Elgammal
-  url_launcher: ^6.1.0 #Elgammal
-
-
+  geolocator: ^11.0.0
+  google_maps_flutter: ^2.6.1
+  image_picker: ^1.0.7
+  pull_to_refresh: ^2.0.0
+  url_launcher: ^6.1.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -80,9 +79,6 @@ flutter:
     - assets/Student_logo.jpg
     - assets/True.jpg
     - assets/False.jpg
-
-
-    
 
   fonts:
     - family: Didact_Gothic

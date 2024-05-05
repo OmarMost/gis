@@ -18,7 +18,8 @@ class Auth_Page extends StatelessWidget {
           if(snapshot.toString().contains("@security.com")){
             return Home_Sec();
           }
-         else{ return StudentHome();
+         else {
+           return StudentHome();
         }
         }
         //user not logged in

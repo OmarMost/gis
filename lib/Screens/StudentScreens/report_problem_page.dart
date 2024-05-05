@@ -105,10 +105,11 @@ class _ReportAProblemState extends State<ReportAProblem> {
         image_report_url = await reportimagerefstorage.getDownloadURL();
         print(image_report_url);
 
-        FirebaseFirestore.instance
-            .collection('Reports')
-            .doc(profiledoc)
-            .update({'ReportImage': image_report_url});
+        CircularProgressIndicator(value: 1,);
+        // FirebaseFirestore.instance
+        //     .collection('Reports')
+        //     .doc(profiledoc)
+        //     .update({'ReportImage': image_report_url});
       });
     } else {}
   }
@@ -201,7 +202,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
                 child: ElevatedButton(
                   onPressed: () async {
                     // Handle 'Submit' button click
-                    addDat();
+                    await addDat();
                     print('Senttttttttttttt');
                     Navigator.push(
                       context,
