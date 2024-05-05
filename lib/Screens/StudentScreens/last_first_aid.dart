@@ -1,23 +1,32 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gis/Screens/SecurtyScreens/homesecurtySOS.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 
 class FirstAidpage extends StatefulWidget {
- late String id;
-   FirstAidpage({Key? key,required this.id}) : super(key: key);
+  final String id;
+  const FirstAidpage({Key? key, required this.id}) : super(key: key);
 
   @override
   State<FirstAidpage> createState() => _FirstAidpageState();
 }
 
-@override
-void initState() {
-  // super.initState();
- 
-}
-
 class _FirstAidpageState extends State<FirstAidpage> {
+  void initState() {
+    super.initState();
+    Timer(Duration(milliseconds: 0), () {
+      setState(() {
+        FirebaseFirestore.instance
+            .collection('Reports')
+            .doc(widget.id!)
+            .update({'RID': widget.id!});
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +49,6 @@ class _FirstAidpageState extends State<FirstAidpage> {
           alignment: Alignment.center, // Center all child widgets
           child: Column(
             children: [
-               AlertDialog(title: Text('data'),content: ElevatedButton(onPressed: (){FirebaseFirestore.instance.collection('Reports').doc(widget.id).update({'RID': widget.id});}, child: Text('data')),),
-  
               SizedBox(height: 30.0),
               Text(
                 'First Aid',
