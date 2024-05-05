@@ -22,6 +22,10 @@ class _SecLoginState extends State<SecLogin> {
   bool _isSecurePassword = true;
   //any function will be written in the state
   void login() async {
+    if(emailController.toString().contains("@gmail.com")){
+    print("the email not valid");
+    }
+    else{
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text, password: passwordController.text);
     Navigator.pushReplacement(
@@ -29,6 +33,7 @@ class _SecLoginState extends State<SecLogin> {
         MaterialPageRoute(
           builder: (context) => Home_Sec(),
         ));
+    }
   }
 
   @override
