@@ -30,7 +30,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
   //To handle all the function of the lib(Image picker)
   final reportimagepicker = ImagePicker();
   //To store the url of the uploaded image
-  var image_report_url;
+  var image_report_url = "";
 
   String State = "No Response Yet ..";
   get type => "Report A Problem";

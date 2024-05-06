@@ -145,12 +145,12 @@ class ReportBROBLEMS extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Photo != null? 
+                Photo != ""? 
                 Image(
                   image: NetworkImage(Photo!),
                   width: 250,
                   height: 230,
-                ) : Text("No Photo Taken")
+                ) : Text("No Photo Taken !!")
               ],
             ),
             Row(
