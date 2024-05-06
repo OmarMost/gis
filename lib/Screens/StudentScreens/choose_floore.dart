@@ -216,6 +216,13 @@ class _floorState extends State<floor> {
                         print('Senttttttttttttt');
                       } else if (widget.type == 'problem') {
                         FloorNum = "2";
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReportAProblem(
+                                  BuildingName: widget.BuildingName,
+                                  FloorNum: '2'),
+                            ));
                       }
                       if (widget.type == 'first aid') {
                         FloorNum = "2";

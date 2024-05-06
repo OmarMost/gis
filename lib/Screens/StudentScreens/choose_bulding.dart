@@ -49,7 +49,7 @@ class _BuildingState extends State<Building> {
     }).catchError((error) {
       print('Error adding document: $error');
     });
-    await Timer(Duration(seconds: 1), () {
+    await Timer(Duration(seconds: 2), () {
       AlertDialog(
         backgroundColor: Colors.transparent,
         content: CircularProgressIndicator(
@@ -232,11 +232,6 @@ class _BuildingState extends State<Building> {
                       if (widget.type == 'sos') {
                         BuildingName = "Cafe 1";
                         addDat(); //=========================================
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SOSPage(id: RIDSOS!,),
-                            ));
                       } else if (widget.type == 'problem') {
                         BuildingName = "Cafe 1";
                         Navigator.push(
@@ -281,12 +276,6 @@ class _BuildingState extends State<Building> {
                       if (widget.type == 'sos') {
                         BuildingName = "Cafe 2";
                         addDat(); //=========================================
-                        print('Senttttttttttttt');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SOSPage(id: RIDSOS!,),
-                            ));
                       } else if (widget.type == 'problem') {
                         BuildingName = "Cafe 2";
                         Navigator.push(
@@ -334,12 +323,6 @@ class _BuildingState extends State<Building> {
                       if (widget.type == 'sos') {
                         BuildingName = "Campus";
                         addDat(); //=========================================
-                        print('Senttttttttttttt');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SOSPage(id: RIDSOS!,),
-                            ));
                       } else if (widget.type == 'problem') {
                         BuildingName = "Campus";
                         Navigator.push(
@@ -387,12 +370,6 @@ class _BuildingState extends State<Building> {
                       if (widget.type == 'sos') {
                         BuildingName = "Cafe 3";
                         addDat(); //=========================================
-                        print('Senttttttttttttt');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SOSPage(id: RIDSOS!,),
-                            ));
                       } else if (widget.type == 'problem') {
                         BuildingName = "Cafe 3";
                         Navigator.push(
@@ -438,12 +415,6 @@ class _BuildingState extends State<Building> {
                       if (widget.type == 'sos') {
                         BuildingName = "Cafe 4";
                         addDat(); //=========================================
-                        print('Senttttttttttttt');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SOSPage(id: RIDSOS!,),
-                            ));
                       } else if (widget.type == 'problem') {
                         BuildingName = "Cafe 4";
                         Navigator.push(
