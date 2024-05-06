@@ -50,7 +50,7 @@ class _floorState extends State<floor> {
     }).catchError((error) {
       print('Error adding document: $error');
     });
-    await Timer(Duration(seconds: 1), () {
+    await Timer(Duration(seconds: 2), () {
       AlertDialog(
         backgroundColor: Colors.transparent,
         content: CircularProgressIndicator(
@@ -60,7 +60,9 @@ class _floorState extends State<floor> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => SOSPage(id: RIDSOS!,),
+          builder: (context) => SOSPage(
+            id: RIDSOS!,
+          ),
         ),
       );
     });
@@ -169,11 +171,6 @@ class _floorState extends State<floor> {
                         FloorNum = "3";
                         addDat(); //=========================================
                         print('Senttttttttttttt');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SOSPage(id: RIDSOS!,),
-                            ));
                       } else if (widget.type == 'problem') {
                         FloorNum = "3";
                         Navigator.push(
@@ -217,20 +214,8 @@ class _floorState extends State<floor> {
                         FloorNum = "2";
                         addDat(); //=========================================
                         print('Senttttttttttttt');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SOSPage(id: RIDSOS!,),
-                            ));
                       } else if (widget.type == 'problem') {
                         FloorNum = "2";
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ReportAProblem(
-                                  BuildingName: widget.BuildingName,
-                                  FloorNum: '2'),
-                            ));
                       }
                       if (widget.type == 'first aid') {
                         FloorNum = "2";
@@ -263,11 +248,6 @@ class _floorState extends State<floor> {
                         FloorNum = "1";
                         addDat(); //=========================================
                         print('Senttttttttttttt');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SOSPage(id: RIDSOS!,),
-                            ));
                       } else if (widget.type == 'problem') {
                         FloorNum = "1";
                         Navigator.push(
@@ -312,7 +292,9 @@ class _floorState extends State<floor> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SOSPage(id: RIDSOS!,),
+                              builder: (context) => SOSPage(
+                                id: RIDSOS!,
+                              ),
                             ));
                       } else if (widget.type == 'problem') {
                         FloorNum = "Ground floor";
