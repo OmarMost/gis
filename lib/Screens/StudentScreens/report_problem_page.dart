@@ -14,7 +14,8 @@ import 'package:path/path.dart'; //to turn on basename
 
 class ReportAProblem extends StatefulWidget {
   final String BuildingName, FloorNum;
-  ReportAProblem({super.key, required this.BuildingName, required this.FloorNum});
+  ReportAProblem(
+      {super.key, required this.BuildingName, required this.FloorNum});
 
   @override
   State<ReportAProblem> createState() => _ReportAProblemState();
@@ -30,7 +31,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
   final reportimagepicker = ImagePicker();
   //To store the url of the uploaded image
   var image_report_url;
-  
+
   String State = "No Response Yet ..";
   get type => "Report A Problem";
   String? RID;
@@ -65,9 +66,11 @@ class _ReportAProblemState extends State<ReportAProblem> {
         ),
       );
       Navigator.push(
-        context as BuildContext, //xxx ERROR xxx
+        this.context,
         MaterialPageRoute(
-          builder: (context) => ReportProblemPage(id: RID!,),
+          builder: (context) => ReportProblemPage(
+            id: RID!,
+          ),
         ),
       );
     });
@@ -104,11 +107,10 @@ class _ReportAProblemState extends State<ReportAProblem> {
     }
     if (permission == LocationPermission.deniedForever) {
       return Future.error(
-        'Location permissions are permanently denied, we cannot request permissions.');
+          'Location permissions are permanently denied, we cannot request permissions.');
     }
     return await Geolocator.getCurrentPosition();
   }
-  
 
   //toImage
   String? profiledoc;
@@ -147,7 +149,9 @@ class _ReportAProblemState extends State<ReportAProblem> {
         image_report_url = await reportimagerefstorage.getDownloadURL();
         print(image_report_url);
 
-        CircularProgressIndicator(value: 1,);
+        CircularProgressIndicator(
+          value: 1,
+        );
       });
     } else {}
   }
@@ -171,7 +175,6 @@ class _ReportAProblemState extends State<ReportAProblem> {
     getdat();
     super.initState();
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +223,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
               ),
             ),
             SizedBox(height: 25.0),
- //====================================================================================================
+            //====================================================================================================
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -246,7 +249,7 @@ class _ReportAProblemState extends State<ReportAProblem> {
                 ],
               ),
             ),
-  //====================================================================================================
+            //====================================================================================================
             SizedBox(height: 120.0), //Last 290 - 50
             Center(
               child: SizedBox(
