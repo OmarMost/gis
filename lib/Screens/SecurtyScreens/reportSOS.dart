@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
-class ReportSOS extends StatelessWidget {
+class ReportSOS extends StatefulWidget {
   final String name;
   final String userid;
   final String phoneNumber;
@@ -11,23 +13,39 @@ class ReportSOS extends StatelessWidget {
   final String buildingName;
   final String floorNumber;
   final String Photo;
-  final String State;
+  final String state;
+  final String lat;
+  final String long;
 
   final String time;
 
-  ReportSOS({
-    required this.State,
-    required this.reporttype,
-    required this.reportId,
-    required this.name,
-    required this.Descriotion,
-    required this.userid,
-    required this.phoneNumber,
-    required this.buildingName,
-    required this.floorNumber,
-    required this.Photo,
-    required this.time,
-  });
+  ReportSOS(
+      {required this.state,
+      required this.reporttype,
+      required this.reportId,
+      required this.name,
+      required this.Descriotion,
+      required this.userid,
+      required this.phoneNumber,
+      required this.buildingName,
+      required this.floorNumber,
+      required this.Photo,
+      required this.time,
+      required this.lat,
+      required this.long});
+
+  @override
+  State<ReportSOS> createState() => _ReportSOSState();
+}
+
+class _ReportSOSState extends State<ReportSOS> {
+  Future<void> openmap(String lat, String long) async {
+    String googleurl =
+        'https://www.google.com/maps/search/?api=1&query=$lat,$long';
+    await canLaunch(googleurl)
+        ? await launchUrlString(googleurl)
+        : throw 'Could not launch $googleurl';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +60,12 @@ class ReportSOS extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              reporttype,
+              widget.reporttype,
               style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
-              'Report ID : $reportId',
+              'Report ID : ${widget.reportId}',
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 24),
@@ -57,7 +75,7 @@ class ReportSOS extends StatelessWidget {
                 Icon(Icons.person),
                 SizedBox(width: 8),
                 Text(
-                  name,
+                  widget.name,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -69,7 +87,7 @@ class ReportSOS extends StatelessWidget {
                 Icon(Icons.quick_contacts_mail_outlined),
                 SizedBox(width: 8),
                 Text(
-                  'ID : $userid',
+                  'ID : ${widget.userid}',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -80,7 +98,7 @@ class ReportSOS extends StatelessWidget {
               children: [
                 Icon(Icons.phone),
                 SizedBox(width: 8),
-                Text("Phone : $phoneNumber",
+                Text("Phone : ${widget.phoneNumber}",
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -90,7 +108,7 @@ class ReportSOS extends StatelessWidget {
               children: [
                 Icon(Icons.business),
                 SizedBox(width: 8),
-                Text('Building  : $buildingName',
+                Text('Building  : ${widget.buildingName}',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -100,7 +118,7 @@ class ReportSOS extends StatelessWidget {
               children: [
                 Icon(Icons.layers),
                 SizedBox(width: 8),
-                Text('Floor Number  : $floorNumber',
+                Text('Floor Number  : ${widget.floorNumber}',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -110,15 +128,38 @@ class ReportSOS extends StatelessWidget {
               children: [
                 Icon(Icons.access_time),
                 SizedBox(width: 8),
-                Text(time, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(widget.time,
+                    style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Icon(Icons.location_on),
+                SizedBox(width: 8),
+                Text(widget.lat, style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.location_on),
+                SizedBox(width: 8),
+                Text(widget.long,
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            ElevatedButton.icon(
+                onPressed: () => openmap,
+                icon: Icon(Icons.map),
+                label: Text('See Location')),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
                 Icon(Icons.add_task_rounded),
                 SizedBox(width: 8),
-                Text(State, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(widget.state,
+                    style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             Row(
@@ -127,7 +168,7 @@ class ReportSOS extends StatelessWidget {
                 Container(
                   height: 200,
                   width: 200,
-                  child: State == "No Response Yet .."
+                  child: widget.state == "No Response Yet .."
                       ? Image.asset('assets/False.jpg')
                       : Image.asset('assets/True.jpg'),
                 ),

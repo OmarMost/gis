@@ -120,7 +120,7 @@ class Student_Reports extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => ReportSOS(
-                                                      State: "ddd",
+                                                      state: "ddd",
                                                       Descriotion: "ldd42",
                                                       Photo: "l",
                                                       buildingName: '2',
@@ -131,6 +131,8 @@ class Student_Reports extends StatelessWidget {
                                                       reportId: "77",
                                                       reporttype: "Rname",
                                                       time: '22:00',
+                                                      lat: '',
+                                                      long: '',
                                                     )));
                                       },
                                       child: Text(

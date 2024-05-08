@@ -57,113 +57,121 @@ class _Home_SecState extends State<Home_Sec> {
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
       ),
       drawer: FutureBuilder(
-        future: getdata(),
-        builder: (context, snapshot) {
-      return Drawer(
-          child: data['Name'] != null?
-              Container(
-        color: Colors.grey,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${data['Name']}',
-                    style: TextStyle(
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    'Security',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-              decoration: const BoxDecoration(
-                color: Colors.grey,
-              ),
-            ),
-            const Divider(
-              color: Colors.grey,
-              thickness: 0.0,
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.home,
-                color: Colors.black,
-              ),
-              title: const Text('Home Page',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () => Navigator.pop(context),
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.person,
-                color: Colors.black,
-              ),
-              title: const Text('Profile',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProfileSec(),
-                    ));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.video_camera_back, color: Colors.black),
-              title: const Text('Live Camera .. SOON',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(Icons.map_outlined, color: Colors.black),
-              title: const Text('Map',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MTIMAP(),
-                    ));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.logout, color: Colors.black),
-              title: const Text('Log Out',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Onboarding(),
-                    ));
-              },
-            ),
-          ],
-        ),
-      )
-          : Center(
-                child: CircularProgressIndicator(
-                    color: Colors.blue, strokeWidth: 8),
-              ));
-  }),
+          future: getdata(),
+          builder: (context, snapshot) {
+            return Drawer(
+                child: data['Name'] != null
+                    ? Container(
+                        color: Colors.grey,
+                        child: ListView(
+                          padding: EdgeInsets.zero,
+                          children: [
+                            DrawerHeader(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${data['Name']}',
+                                    style: TextStyle(
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Security',
+                                    style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: const BoxDecoration(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            const Divider(
+                              color: Colors.grey,
+                              thickness: 0.0,
+                            ),
+                            ListTile(
+                              leading: const Icon(
+                                Icons.home,
+                                color: Colors.black,
+                              ),
+                              title: const Text('Home Page',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              onTap: () => Navigator.pop(context),
+                            ),
+                            ListTile(
+                              leading: const Icon(
+                                Icons.person,
+                                color: Colors.black,
+                              ),
+                              title: const Text('Profile',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ProfileSec(),
+                                    ));
+                              },
+                            ),
+                            ListTile(
+                              leading: const Icon(Icons.video_camera_back,
+                                  color: Colors.black),
+                              title: const Text('Live Camera .. SOON',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              onTap: () {},
+                            ),
+                            ListTile(
+                              leading: const Icon(Icons.map_outlined,
+                                  color: Colors.black),
+                              title: const Text('Map',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MTIMAP(),
+                                    ));
+                              },
+                            ),
+                            ListTile(
+                              leading:
+                                  const Icon(Icons.logout, color: Colors.black),
+                              title: const Text('Log Out',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              onTap: () {
+                                FirebaseAuth.instance.signOut();
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Onboarding(),
+                                    ));
+                              },
+                            ),
+                          ],
+                        ),
+                      )
+                    : Center(
+                        child: CircularProgressIndicator(
+                            color: Colors.blue, strokeWidth: 8),
+                      ));
+          }),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -295,7 +303,7 @@ class _Home_SecState extends State<Home_Sec> {
                                 itemBuilder: (context, index) {
                                   final report = filteredReports[index];
                                   return Padding(
-                                    padding: const EdgeInsets.all(1.0),
+                                    padding: const EdgeInsets.all(7.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         borderRadius:
@@ -409,12 +417,16 @@ class _Home_SecState extends State<Home_Sec> {
                                                         reporttype:
                                                             '${report['Type']}',
                                                         time: '22:00',
-                                                        State:
+                                                        state:
                                                             '${report['State']}',
                                                         Descriotion:
                                                             '${report['Description']}',
                                                         Photo:
                                                             '${report['ReportImage']}',
+                                                        lat:
+                                                            '${report['lat'].toString()}',
+                                                        long:
+                                                            '${report['long'].toString()}',
                                                       ),
                                                     ),
                                                   );

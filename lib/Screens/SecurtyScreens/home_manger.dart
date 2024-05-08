@@ -150,7 +150,9 @@ class Home_Manger extends StatelessWidget {
                                                       reportId: "77",
                                                       reporttype: "Rname",
                                                       time: '22:00',
-                                                      State: '777',
+                                                      state: '777',
+                                                      lat: '',
+                                                      long: '',
                                                     )));
                                       },
                                       child: Text(
