@@ -39,9 +39,9 @@ class ReportSOS extends StatefulWidget {
 }
 
 class _ReportSOSState extends State<ReportSOS> {
-  Future<void> openmap(String lat, String long) async {
+  Future<void> openmap(String latuide, String longtuide) async {
     String googleurl =
-        'https://www.google.com/maps/search/?api=1&query=$lat,$long';
+        'https://www.google.com/maps/search/?api=1&query=$latuide,$longtuide';
     await canLaunch(googleurl)
         ? await launchUrlString(googleurl)
         : throw 'Could not launch $googleurl';
@@ -150,7 +150,9 @@ class _ReportSOSState extends State<ReportSOS> {
               ],
             ),
             ElevatedButton.icon(
-                onPressed: () => openmap,
+                onPressed: () {
+                  openmap(widget.lat, widget.long);
+                },
                 icon: Icon(Icons.map),
                 label: Text('See Location')),
             Row(

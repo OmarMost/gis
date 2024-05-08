@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -34,10 +33,8 @@ class _SOSPageState extends State<SOSPage> {
         leading: IconButton(
           icon: Icon(Icons.home),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => StudentHome()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => StudentHome()));
             //Navigator.of(context).pushReplacement(StudentHome as Route<Object?>);
           },
         ),
@@ -105,7 +102,7 @@ class _SOSPageState extends State<SOSPage> {
 
   // Function to Handle 'Call Security' button click
   void _callSecurity() async {
-    const url = 'tel:+201067426719'; 
+    const url = 'tel:+201067426719';
     if (await canLaunch(url)) {
       await launch(url);
     } else {

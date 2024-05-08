@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gis/Screens/LoginScreens/sec_login.dart';
+
 import 'package:gis/Screens/LoginScreens/signup.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 
@@ -19,17 +19,17 @@ class _Login_ScreenState extends State<Login_Screen> {
   bool _isSecurePassword = true;
   //any function will be written in the state
   void login() async {
-    if(emailController.toString().contains("@security.com")){
-    print("the email not valid");
-    }
-    else{
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text);
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => StudentHome(),
-        ));
+    if (emailController.toString().contains("@security.com")) {
+      print("the email not valid");
+    } else {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.toString(),
+          password: passwordController.toString());
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => StudentHome(),
+          ));
     }
   }
 
