@@ -6,7 +6,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MTIMAP extends StatefulWidget {
   const MTIMAP({super.key});
-///0
   @override
   State<MTIMAP> createState() => _MTIMAPState();
 }
