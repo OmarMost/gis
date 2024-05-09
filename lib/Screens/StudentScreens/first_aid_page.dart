@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
+import 'package:intl/intl.dart'; // to Date
 
 class FirstAid extends StatefulWidget {
   final String BuildingName, FloorNum;
@@ -24,6 +25,15 @@ class _FirstAidState extends State<FirstAid> {
   get type => "First Aid";
   String? RID;
   Future addDat() async {
+    //Current date and time
+    DateTime now = DateTime.now();
+    //Customize date formate
+    DateFormat dateFormat = DateFormat('dd-MM-yyyy');
+    DateFormat timeFormat = DateFormat('HH:mm:ss');
+
+    String formattedDate = dateFormat.format(now);
+    String formattedTime = timeFormat.format(now);
+
     FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'],
       'PhoneNum': dat['Phone'],
@@ -37,7 +47,9 @@ class _FirstAidState extends State<FirstAid> {
       'isReportingForSelf': isReportingForSelf,
       'hasChronicDiseases': hasChronicDiseases,
       'lat': lat,
-      'long': long
+      'long': long,
+      'Date': formattedDate, // to Add date
+      'Time': formattedTime
     }) //Make ID
         .then((documentReference) {
       setState(() {
