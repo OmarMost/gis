@@ -424,9 +424,9 @@ class _Home_SecState extends State<Home_Sec> {
                                                         Photo:
                                                             '${report['ReportImage']}',
                                                         lat:
-                                                            '${report['lat'].toString()}',
+                                                            report['lat'],
                                                         long:
-                                                            '${report['long'].toString()}',
+                                                            report['long'],
                                                       ),
                                                     ),
                                                   );

@@ -6,7 +6,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class locationOnMap extends StatefulWidget {
   double lat, long;
-  locationOnMap({super.key, required this.lat, required this.long});
+  String type;
+  locationOnMap({super.key, required this.lat, required this.long, required this.type});
 
   @override
   State<locationOnMap> createState() => _locationOnMapState();
@@ -30,14 +31,34 @@ class _locationOnMapState extends State<locationOnMap> {
   void initState() {
     super.initState();
 
-    _marker.add(Marker(
-      markerId: MarkerId('userloc'), //identifier Marker (Unique)
-      position: LatLng(widget.lat, widget.long),
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed), // (hueRed): Red Pin icon
-      infoWindow: InfoWindow( // Optional, adds a pop-up window when the marker is tapped
-        title: 'User Location !!',
-      ),
-    ));
+    if(widget.type == 'SOS') {
+      _marker.add(Marker(
+        markerId: MarkerId('userloc'), //identifier Marker (Unique)
+        position: LatLng(widget.lat, widget.long),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed), // (hueRed): Red Pin icon
+        infoWindow: InfoWindow(
+          title: 'Student Location !!',
+        ),
+      ));
+    } else if(widget.type == "problem") {
+        _marker.add(Marker(
+          markerId: MarkerId('userloc'), //identifier Marker (Unique)
+          position: LatLng(widget.lat, widget.long),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+          infoWindow: InfoWindow( 
+            title: 'User Location !!',
+          ),
+        ));
+    } else {
+        _marker.add(Marker(
+          markerId: MarkerId('userloc'), //identifier Marker (Unique)
+          position: LatLng(widget.lat, widget.long),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen), 
+          infoWindow: InfoWindow( 
+            title: 'User Location !!',
+          ),
+        ));
+    }
   }
 
 

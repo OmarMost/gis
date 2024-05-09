@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gis/Screens/SecurtyScreens/location_on_map.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -14,8 +15,8 @@ class ReportSOS extends StatefulWidget {
   final String floorNumber;
   final String Photo;
   final String state;
-  final String lat;
-  final String long;
+  final double lat;
+  final double long;
 
   final String time;
 
@@ -137,7 +138,7 @@ class _ReportSOSState extends State<ReportSOS> {
               children: [
                 Icon(Icons.location_on),
                 SizedBox(width: 8),
-                Text(widget.lat, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('${widget.lat}', style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             Row(
@@ -145,13 +146,18 @@ class _ReportSOSState extends State<ReportSOS> {
               children: [
                 Icon(Icons.location_on),
                 SizedBox(width: 8),
-                Text(widget.long,
+                Text('${widget.long}',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             ElevatedButton.icon(
                 onPressed: () {
-                  openmap(widget.lat, widget.long);
+                  // openmap(widget.lat, widget.long);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => locationOnMap(lat: widget.lat, long: widget.long, type: 'SOS',),
+                  ));
                 },
                 icon: Icon(Icons.map),
                 label: Text('See Location')),
