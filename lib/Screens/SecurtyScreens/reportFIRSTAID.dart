@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
-class Report2 extends StatelessWidget {
+class ReportFIRSTAID extends StatefulWidget {
   final String name;
   final String userid;
   final String phoneNumber;
@@ -13,11 +16,14 @@ class Report2 extends StatelessWidget {
   final String Photo;
   final String State;
   final String time;
-  String isReportingForSelf;
-  String hasChronicDiseases;
+  final String lat;
+  final String long;
+  final isReportingForSelf;
+  final hasChronicDiseases;
 
-  Report2(
+  ReportFIRSTAID(
       {required this.reporttype,
+      required this.long,
       required this.reportId,
       required this.name,
       required this.Descriotion,
@@ -27,14 +33,51 @@ class Report2 extends StatelessWidget {
       required this.floorNumber,
       required this.Photo,
       required this.time,
+      required this.lat,
       required this.State,
       required this.isReportingForSelf,
       required this.hasChronicDiseases});
 
   @override
+  _ReportFIRSTAIDState createState() => _ReportFIRSTAIDState();
+}
+
+class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
+  bool isResponded = true;
+  bool isFirstClick = true;
+
+  void updateStateToX() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    String newState = isFirstClick ? "In The Way" : "Responded";
+
+    FirebaseFirestore.instance
+        .collection('Reports')
+        .doc(widget.reportId)
+        .update({'State': newState});
+
+    if (!isFirstClick) {
+      Navigator.pop(context);
+    }
+
+    setState(() {
+      isResponded = !isResponded;
+      isFirstClick = false;
+    });
+  }
+
+  Future<void> openmap(String latuide, String longtuide) async {
+    String googleurl =
+        'https://www.google.com/maps/search/?api=1&query=$latuide,$longtuide';
+    await canLaunch(googleurl)
+        ? await launchUrlString(googleurl)
+        : throw 'Could not launch $googleurl';
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 251, 246, 246),
+      backgroundColor: Color.fromARGB(255, 251, 246, 246),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 251, 246, 246),
       ),
@@ -44,12 +87,12 @@ class Report2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              reporttype,
-              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              widget.reporttype,
+              style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
-              'Report ID : $reportId',
+              'Report ID : ${widget.reportId}',
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 24),
@@ -59,7 +102,7 @@ class Report2 extends StatelessWidget {
                 Icon(Icons.person),
                 SizedBox(width: 8),
                 Text(
-                  name,
+                  widget.name,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -71,7 +114,7 @@ class Report2 extends StatelessWidget {
                 Icon(Icons.quick_contacts_mail_outlined),
                 SizedBox(width: 8),
                 Text(
-                  'ID : $userid',
+                  'ID : ${widget.userid}',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -82,7 +125,7 @@ class Report2 extends StatelessWidget {
               children: [
                 Icon(Icons.phone),
                 SizedBox(width: 8),
-                Text("Phone : $phoneNumber",
+                Text("Phone : ${widget.phoneNumber}",
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -92,7 +135,7 @@ class Report2 extends StatelessWidget {
               children: [
                 Icon(Icons.business),
                 SizedBox(width: 8),
-                Text('Building  : $buildingName',
+                Text('Building  : ${widget.buildingName}',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -102,7 +145,7 @@ class Report2 extends StatelessWidget {
               children: [
                 Icon(Icons.layers),
                 SizedBox(width: 8),
-                Text('Floor Number  : $floorNumber',
+                Text('Floor Number  : ${widget.floorNumber}',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -112,16 +155,7 @@ class Report2 extends StatelessWidget {
               children: [
                 Icon(Icons.access_time),
                 SizedBox(width: 8),
-                Text(time, style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.question_mark_rounded),
-                SizedBox(width: 8),
-                Text(
-                    'Are you reporting for you or someone else?    $isReportingForSelf',
+                Text(widget.time,
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -131,53 +165,90 @@ class Report2 extends StatelessWidget {
                 Icon(Icons.question_mark_rounded),
                 SizedBox(width: 8),
                 Text(
-                    'Any Chronic Diseases?                                       $hasChronicDiseases',
+                    'Are you reporting for you or someone else? ${widget.isReportingForSelf}',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.question_mark_rounded),
+                SizedBox(width: 8),
+                Text('Any Chronic Diseases? ${widget.hasChronicDiseases}',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.location_on),
+                SizedBox(width: 8),
+                Text(widget.lat, style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.location_on),
+                SizedBox(width: 8),
+                Text(widget.long,
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            ElevatedButton.icon(
+                onPressed: () {
+                  openmap(widget.lat, widget.long);
+                },
+                icon: Icon(Icons.map),
+                label: Text('See Location')),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(Icons.add_task_rounded),
                 SizedBox(width: 8),
-                Text(State, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(widget.State,
+                    style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 200,
-                  width: 200,
-                  child: State == "No Response Yet .."
+                  height: 150,
+                  width: 150,
+                  child: widget.State == "No Response Yet .."
                       ? Image.asset('assets/False.jpg')
                       : Image.asset('assets/True.jpg'),
                 ),
               ],
             ),
-            ///////////////////////////////////
-            ///////////////////////////////////
-            ///////////////////////////////////
             Spacer(),
             Align(
               alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  backgroundColor: Colors.orangeAccent,
-                  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                ),
-                onPressed: () {},
-                child: Text(
-                  'Respond',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              ),
+              child: widget.State != "Responded"
+                  ? ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        backgroundColor:
+                            isResponded ? Colors.orangeAccent : Colors.green,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                      ),
+                      onPressed: () {
+                        updateStateToX();
+                      },
+                      child: Text(
+                        isResponded ? 'In My Way ..' : 'Responded',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                  : SizedBox(),
             ),
           ],
         ),

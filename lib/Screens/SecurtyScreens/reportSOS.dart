@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -39,6 +40,28 @@ class ReportSOS extends StatefulWidget {
 }
 
 class _ReportSOSState extends State<ReportSOS> {
+  bool isResponded = true;
+  bool isFirstClick = true;
+  void updateStateToX() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    String newState = isFirstClick ? "In The Way" : "Responded";
+
+    FirebaseFirestore.instance
+        .collection('Reports')
+        .doc(widget.reportId)
+        .update({'State': newState});
+
+    if (!isFirstClick) {
+      Navigator.pop(context);
+    }
+
+    setState(() {
+      isResponded = !isResponded;
+      isFirstClick = false;
+    });
+  }
+
   Future<void> openmap(String latuide, String longtuide) async {
     String googleurl =
         'https://www.google.com/maps/search/?api=1&query=$latuide,$longtuide';
@@ -179,23 +202,30 @@ class _ReportSOSState extends State<ReportSOS> {
             Spacer(),
             Align(
               alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  backgroundColor: Colors.orangeAccent,
-                  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                ),
-                onPressed: () {},
-                child: Text(
-                  'Respond',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              ),
+              child: widget.state != "Responded"
+                  ? ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        backgroundColor:
+                            isResponded ? Colors.orangeAccent : Colors.green,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                      ),
+                      onPressed: () {
+                        updateStateToX();
+                      },
+                      child: Text(
+                        isResponded ? 'In My Way ..' : 'Responded',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                        ),
+                      ),
+                    )
+                  : SizedBox(),
             ),
           ],
         ),
