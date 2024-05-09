@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ReportBROBLEMS extends StatelessWidget {
+class ReportBROBLEMS extends StatefulWidget {
   final String name;
   final String userid;
   final String phoneNumber;
@@ -13,7 +13,6 @@ class ReportBROBLEMS extends StatelessWidget {
   final String? Photo;
   final String State;
   final String time;
-  String? Reportdoc;
 
   ReportBROBLEMS({
     required this.State,
@@ -29,13 +28,31 @@ class ReportBROBLEMS extends StatelessWidget {
     required this.time,
   });
 
+  @override
+  _ReportBROBLEMSState createState() => _ReportBROBLEMSState();
+}
+
+class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
+  bool isResponded = true;
+  bool isFirstClick = true;
   void updateStateToX() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
+    String newState = isFirstClick ? "New Value 1" : "New Value 2";
+
     FirebaseFirestore.instance
         .collection('Reports')
-        .doc(Reportdoc)
-        .update({'State': "Responded"});
+        .doc(widget.reportId)
+        .update({'FieldName': newState});
+
+    if (!isFirstClick) {
+      Navigator.pop(context);
+    }
+
+    setState(() {
+      isResponded = !isResponded;
+      isFirstClick = false;
+    });
   }
 
   @override
@@ -51,12 +68,12 @@ class ReportBROBLEMS extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              reporttype,
+              widget.reporttype,
               style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
-              'Report ID : $reportId',
+              'Report ID : ${widget.reportId}',
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 24),
@@ -66,7 +83,7 @@ class ReportBROBLEMS extends StatelessWidget {
                 Icon(Icons.person),
                 SizedBox(width: 8),
                 Text(
-                  name,
+                  widget.name,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -78,7 +95,7 @@ class ReportBROBLEMS extends StatelessWidget {
                 Icon(Icons.quick_contacts_mail_outlined),
                 SizedBox(width: 8),
                 Text(
-                  'ID : $userid',
+                  'ID : ${widget.userid}',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -90,7 +107,7 @@ class ReportBROBLEMS extends StatelessWidget {
                 Icon(Icons.phone),
                 SizedBox(width: 8),
                 Text(
-                  "Phone : $phoneNumber",
+                  "Phone : ${widget.phoneNumber}",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -102,7 +119,7 @@ class ReportBROBLEMS extends StatelessWidget {
                 Icon(Icons.business),
                 SizedBox(width: 8),
                 Text(
-                  'Building  : $buildingName',
+                  'Building  : ${widget.buildingName}',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -114,7 +131,7 @@ class ReportBROBLEMS extends StatelessWidget {
                 Icon(Icons.layers),
                 SizedBox(width: 8),
                 Text(
-                  'Floor Number  : $floorNumber',
+                  'Floor Number  : ${widget.floorNumber}',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -126,7 +143,7 @@ class ReportBROBLEMS extends StatelessWidget {
                 Icon(Icons.access_time),
                 SizedBox(width: 8),
                 Text(
-                  time,
+                  widget.time,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -137,7 +154,7 @@ class ReportBROBLEMS extends StatelessWidget {
                 Icon(Icons.add_task_rounded),
                 SizedBox(width: 8),
                 Text(
-                  State,
+                  widget.State,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -145,12 +162,13 @@ class ReportBROBLEMS extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Photo != ""? 
-                Image(
-                  image: NetworkImage(Photo!),
-                  width: 250,
-                  height: 230,
-                ) : Text("No Photo Taken !!")
+                widget.Photo != ""
+                    ? Image(
+                        image: NetworkImage(widget.Photo!),
+                        width: 250,
+                        height: 230,
+                      )
+                    : Text("No Photo Taken !!")
               ],
             ),
             Row(
@@ -159,7 +177,7 @@ class ReportBROBLEMS extends StatelessWidget {
                 Container(
                   height: 100,
                   width: 100,
-                  child: State == "No Response Yet .."
+                  child: widget.State == "No Response Yet .."
                       ? Image.asset('assets/False.jpg')
                       : Image.asset('assets/True.jpg'),
                 ),
@@ -173,18 +191,20 @@ class ReportBROBLEMS extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  backgroundColor: Colors.orangeAccent,
+                  backgroundColor:
+                      isResponded ? Colors.orangeAccent : Colors.green,
                   padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                 ),
                 onPressed: () {
                   updateStateToX();
                 },
                 child: Text(
-                  'Respond',
+                  isResponded ? 'In My Way ..' : 'Responded',
                   style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),

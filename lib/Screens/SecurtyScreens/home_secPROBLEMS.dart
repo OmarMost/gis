@@ -22,10 +22,7 @@ class Home_Sec3 extends StatefulWidget {
   State<Home_Sec3> createState() => _Home_SecState();
 }
 
-
-
 class _Home_SecState extends State<Home_Sec3> {
-  
   final user = FirebaseAuth.instance.currentUser!;
   Map<String, dynamic> data = {};
   Future getdata() async {
@@ -60,113 +57,121 @@ class _Home_SecState extends State<Home_Sec3> {
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
       ),
       drawer: FutureBuilder(
-        future: getdata(),
-        builder: (context, snapshot) {
-      return Drawer(
-          child: data['Name'] != null?
-              Container(
-        color: Colors.grey,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${data['Name']}',
-                    style: TextStyle(
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    'Security',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-              decoration: const BoxDecoration(
-                color: Colors.grey,
-              ),
-            ),
-            const Divider(
-              color: Colors.grey,
-              thickness: 0.0,
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.home,
-                color: Colors.black,
-              ),
-              title: const Text('Home Page',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () => Navigator.pop(context),
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.person,
-                color: Colors.black,
-              ),
-              title: const Text('Profile',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProfileSec(),
-                    ));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.video_camera_back, color: Colors.black),
-              title: const Text('Live Camera .. SOON',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: const Icon(Icons.map_outlined, color: Colors.black),
-              title: const Text('Map',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MTIMAP(),
-                    ));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.logout, color: Colors.black),
-              title: const Text('Log Out',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black)),
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Onboarding(),
-                    ));
-              },
-            ),
-          ],
-        ),
-      )
-           : Center(
-                 child: CircularProgressIndicator(
-                     color: Colors.blue, strokeWidth: 8),
-               ));
-        }),
+          future: getdata(),
+          builder: (context, snapshot) {
+            return Drawer(
+                child: data['Name'] != null
+                    ? Container(
+                        color: Colors.grey,
+                        child: ListView(
+                          padding: EdgeInsets.zero,
+                          children: [
+                            DrawerHeader(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${data['Name']}',
+                                    style: TextStyle(
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Security',
+                                    style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              decoration: const BoxDecoration(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            const Divider(
+                              color: Colors.grey,
+                              thickness: 0.0,
+                            ),
+                            ListTile(
+                              leading: const Icon(
+                                Icons.home,
+                                color: Colors.black,
+                              ),
+                              title: const Text('Home Page',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              onTap: () => Navigator.pop(context),
+                            ),
+                            ListTile(
+                              leading: const Icon(
+                                Icons.person,
+                                color: Colors.black,
+                              ),
+                              title: const Text('Profile',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ProfileSec(),
+                                    ));
+                              },
+                            ),
+                            ListTile(
+                              leading: const Icon(Icons.video_camera_back,
+                                  color: Colors.black),
+                              title: const Text('Live Camera .. SOON',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              onTap: () {},
+                            ),
+                            ListTile(
+                              leading: const Icon(Icons.map_outlined,
+                                  color: Colors.black),
+                              title: const Text('Map',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MTIMAP(),
+                                    ));
+                              },
+                            ),
+                            ListTile(
+                              leading:
+                                  const Icon(Icons.logout, color: Colors.black),
+                              title: const Text('Log Out',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              onTap: () {
+                                FirebaseAuth.instance.signOut();
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Onboarding(),
+                                    ));
+                              },
+                            ),
+                          ],
+                        ),
+                      )
+                    : Center(
+                        child: CircularProgressIndicator(
+                            color: Colors.blue, strokeWidth: 8),
+                      ));
+          }),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -185,21 +190,6 @@ class _Home_SecState extends State<Home_Sec3> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec()));
-                            // showDialog(
-                            //   context: context,
-                            //   builder: (context) {
-                            //     return AlertDialog(
-                            //       title: Text('SOS Reports'),
-                            //  //     content: Text('Ther is 4 reports'),
-                            //       actions: [
-                            //         TextButton(
-                            //           onPressed: () => Navigator.pop(context),
-                            //           child: Text('OK'),
-                            //         ),
-                            //       ],
-                            //     );
-                            //   },
-                            // );
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.red),
@@ -216,21 +206,6 @@ class _Home_SecState extends State<Home_Sec3> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec2()));
-                            // showDialog(
-                            //   context: context,
-                            //   builder: (context) {
-                            //     return AlertDialog(
-                            //       title: Text('First Aid Reports'),
-                            //       // content: Text('First button is pressed.'),
-                            //       actions: [
-                            //         TextButton(
-                            //           onPressed: () => Navigator.pop(context),
-                            //           child: Text('OK'),
-                            //         ),
-                            //       ],
-                            //     );
-                            //   },
-                            // );
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.greenAccent),
@@ -247,21 +222,6 @@ class _Home_SecState extends State<Home_Sec3> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home_Sec3()));
-                            // showDialog(
-                            //   context: context,
-                            //   builder: (context) {
-                            //     return AlertDialog(
-                            //       title: Text('Reports of problems'),
-                            //       //  content: Text('Ther is 22 Repots'),
-                            //       actions: [
-                            //         TextButton(
-                            //           onPressed: () => Navigator.pop(context),
-                            //           child: Text('OK'),
-                            //         ),
-                            //       ],
-                            //     );
-                            //   },
-                            // );
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue),
@@ -371,18 +331,22 @@ class _Home_SecState extends State<Home_Sec3> {
                                                 padding:
                                                     const EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  'State',
+                                                  'State :',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
                                               ),
-                                              Image(
-                                                width: 50,
+                                              Container(
                                                 height: 50,
-                                                image: AssetImage(
-                                                    'assets/finshed.png'),
+                                                width: 50,
+                                                child: '${report['State']}' ==
+                                                        "No Response Yet .."
+                                                    ? Image.asset(
+                                                        'assets/notfinshed.png')
+                                                    : Image.asset(
+                                                        'assets/finshed.png'),
                                               ),
                                             ],
                                           ),

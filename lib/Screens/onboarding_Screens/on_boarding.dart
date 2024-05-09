@@ -10,7 +10,7 @@ import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
 import 'package:gis/Screens/SecurtyScreens/map.dart'; //to test map
 import '../StudentScreens/student_home.dart'; //By Elgammal
 import 'on_boarding2.dart';
-//////////////////////////////ozmaisback
+
 
 class Onboarding extends StatelessWidget {
   final Key? key; // Named 'key' parameter added to the constructor

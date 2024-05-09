@@ -78,6 +78,7 @@ flutter:
     - assets/Student_logo.jpg
     - assets/True.jpg
     - assets/False.jpg
+    - assets/notfinshed.png
 
   fonts:
     - family: Didact_Gothic
