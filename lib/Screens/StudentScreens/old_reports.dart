@@ -131,8 +131,8 @@ class Student_Reports extends StatelessWidget {
                                                       reportId: "77",
                                                       reporttype: "Rname",
                                                       time: '22:00',
-                                                      lat: '',
-                                                      long: '',
+                                                      lat: 5.2,
+                                                      long: 2.2,
                                                     )));
                                       },
                                       child: Text(

@@ -107,26 +107,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       });
     } else {}
   }
-  // Future uploadProfileImage() async {
-  //   // getprofile();
-  //   //To open the camera
-  //   var pickedimage = await profileimagepicker.pickImage(source: ImageSource.camera);
-
-  //   if (pickedimage != null) {
-  //     //Image path
-  //     imageprofile = File(pickedimage.path);
-  //     //To remove unnesscary paths
-  //     var imagesprofilename = basename(pickedimage.path);
-  //     //To upload the img to fire storage (ref)
-  //     var profileimagerefstorage = FirebaseStorage.instance.ref(imagesprofilename);
-  //     //To wait when uploading the img to get the url for the img
-  //     await profileimagerefstorage.putFile(imageprofile!);
-  //     image_profile_url = await profileimagerefstorage.getDownloadURL();
-  //     CollectionReference currentprofile = FirebaseFirestore.instance.collection('Users');
-  //     currentprofile.doc(profiledoc).update({'Profile Image': image_profile_url});
-  //   } else {}
-  // }
-  //---------------------------------------------------------------------------------------------
 
   @override
   void initState() {

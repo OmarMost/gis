@@ -49,20 +49,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Onboarding(),//Put Onboarding to normal Start.
-
-      // home: Report(
-      //   buildingNumber: '5',
-      //   floorNumber: '5',
-      //   id: '7',
-      //   name: 'g',
-      //   phoneNumber: '888',
-      //   reportName: 'ggg',
-      //   time: '55',
-      //   reportId: 55,
-      // ),
-
-      // home: Onboarding(), 
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
     );
   }
-} // Security_robbery
+}

@@ -6,7 +6,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MTIMAP extends StatefulWidget {
   const MTIMAP({super.key});
-///0
   @override
   State<MTIMAP> createState() => _MTIMAPState();
 }
@@ -94,23 +93,8 @@ class _MTIMAPState extends State<MTIMAP> {
         title: 'Labs Building',
       ),
     ));
-
-    
-    // // Add a custom marker icon with the title embedded
-    // BitmapDescriptor.fromAssetImage(
-    //   ImageConfiguration(size: Size(10, 10)), // Adjust size as needed
-    //   'assets/finshed.png', // Path to your custom marker image
-    // ).then((BitmapDescriptor customIcon) {
-    //   _markers.add(Marker(
-    //     markerId: MarkerId('MTI'), // Unique identifier for the marker
-    //     position: LatLng(29.993200, 31.311350), // Position of the marker
-    //     icon: customIcon, // Custom marker icon
-    //   ));
-    //   setState(() {}); // Update the UI to show the marker with the custom icon
-    // });
   }
   
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
