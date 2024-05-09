@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
+import 'package:gis/Screens/SecurtyScreens/home_manger.dart';
 import 'package:gis/Screens/SecurtyScreens/homesecurtySOS.dart';
 import 'package:gis/Screens/StudentScreens/student_home.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
@@ -29,6 +30,14 @@ class _SecLoginState extends State<SecLogin> {
         context,
         MaterialPageRoute(
           builder: (context) => Home_Sec(),
+        ));
+    } else if(emailController.toString().contains("@manager.com")) { //By Elgammal to manager
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text, password: passwordController.text);
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Home_Manger(),
         ));
     }
     else{
