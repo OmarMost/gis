@@ -8,14 +8,11 @@ import 'package:gis/Screens/StudentScreens/student_home.dart';
 import 'package:gis/Screens/LoginScreens/signup.dart';
 
 class SecLogin extends StatefulWidget {
-  //final Function()? ontap;
-
   //const SecLogin({super.key, required this.ontap});
   @override
   State<SecLogin> createState() => _SecLoginState();
 }
 
-// await    async
 class _SecLoginState extends State<SecLogin> {
   // any variable will be decalared in the state
   final emailController = TextEditingController();

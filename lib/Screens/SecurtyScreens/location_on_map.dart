@@ -1,6 +1,5 @@
 import 'dart:async'; //to Completer
 import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -18,7 +17,6 @@ class _locationOnMapState extends State<locationOnMap> {
       Completer<GoogleMapController>();
 
   static const CameraPosition MTI = CameraPosition(
-      //_kGooglePlex موقع شركة جوجل محطوط افتراضي
       target: LatLng(29.993400, 31.311350), //MTI :: LatLng(29.993400, 31.311350),
       zoom: 19.30,
       bearing: 10.2 //To rotate the map, decreas go to the مع عقارب الساعة
@@ -46,7 +44,7 @@ class _locationOnMapState extends State<locationOnMap> {
           position: LatLng(widget.lat, widget.long),
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
           infoWindow: InfoWindow( 
-            title: 'User Location !!',
+            title: 'Student Location !!',
           ),
         ));
     } else {
@@ -55,7 +53,7 @@ class _locationOnMapState extends State<locationOnMap> {
           position: LatLng(widget.lat, widget.long),
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen), 
           infoWindow: InfoWindow( 
-            title: 'User Location !!',
+            title: 'Student Location !!',
           ),
         ));
     }
