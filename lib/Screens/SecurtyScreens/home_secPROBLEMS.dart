@@ -325,6 +325,8 @@ class _Home_SecState extends State<Home_Sec3> {
                                                 color: Colors.blue,
                                                 fontWeight: FontWeight.bold),
                                           ),
+
+                                          ///////////////////
                                           Row(
                                             children: [
                                               Padding(
@@ -339,13 +341,17 @@ class _Home_SecState extends State<Home_Sec3> {
                                               ),
                                             ],
                                           ),
+
+                                          ////////////////
                                           Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
                                                 padding:
                                                     const EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  '${report['Description']}',
+                                                  'Date :${report['Date']}',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight:
@@ -353,17 +359,11 @@ class _Home_SecState extends State<Home_Sec3> {
                                                   ),
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
                                               Padding(
                                                 padding:
-                                                    const EdgeInsets.all(8.0),
+                                                    const EdgeInsets.all(0.0),
                                                 child: Text(
-                                                  'State :',
+                                                  '                     State :',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
@@ -382,6 +382,25 @@ class _Home_SecState extends State<Home_Sec3> {
                                               ),
                                             ],
                                           ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  'Time :${report['Time']}',
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.end,
@@ -405,16 +424,21 @@ class _Home_SecState extends State<Home_Sec3> {
                                                             '${report['PhoneNum']}',
                                                         reportId:
                                                             '${report['RID']}',
-                                                        State:
-                                                            '${report['State']}',
                                                         reporttype:
                                                             '${report['Type']}',
                                                         time:
                                                             '${report['Time']}',
+                                                        State:
+                                                            '${report['State']}',
                                                         Descriotion:
                                                             '${report['Description']}',
                                                         Photo:
-                                                            '${report['ReportImage']}',
+                                                            '${report['Type']}',
+
+                                                        // lat:
+                                                        //     '${report['lat'].toString()}',
+                                                        // long:
+                                                        //     '${report['long'].toString()}',
                                                       ),
                                                     ),
                                                   );

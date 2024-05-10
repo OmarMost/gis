@@ -342,13 +342,13 @@ class _Home_SecState extends State<Home_Sec2> {
                                           ////////////////
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
                                                 padding:
                                                     const EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  '${report['Description']}',
+                                                  'Date :${report['Date']}',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight:
@@ -360,7 +360,7 @@ class _Home_SecState extends State<Home_Sec2> {
                                                 padding:
                                                     const EdgeInsets.all(0.0),
                                                 child: Text(
-                                                  'State :',
+                                                  '                     State :',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
@@ -376,6 +376,24 @@ class _Home_SecState extends State<Home_Sec2> {
                                                         'assets/notfinshed.png')
                                                     : Image.asset(
                                                         'assets/finshed.png'),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  'Time :${report['Time']}',
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
                                               ),
                                             ],
                                           ),
