@@ -425,6 +425,8 @@ class _Home_SecState extends State<Home_Sec2> {
                                                             '${report['Type']}',
                                                         time:
                                                             '${report['Time']}',
+                                                        Date:
+                                                            '${report['Date']}',
                                                         State:
                                                             '${report['State']}',
                                                         Descriotion:
@@ -435,10 +437,8 @@ class _Home_SecState extends State<Home_Sec2> {
                                                             '${report['hasChronicDiseases']}',
                                                         isReportingForSelf:
                                                             '${report['isReportingForSelf']}',
-                                                        lat:
-                                                            '${report['lat'].toString()}',
-                                                        long:
-                                                            '${report['long'].toString()}',
+                                                        lat: report['lat'],
+                                                        long: report['long'],
                                                       ),
                                                     ),
                                                   );
