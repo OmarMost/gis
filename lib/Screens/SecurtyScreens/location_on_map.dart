@@ -83,7 +83,9 @@ class _locationOnMapState extends State<locationOnMap> {
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
                 },
-              markers: _marker, // Set of Pin (Marker) to be displayed on the map
+                markers: _marker, // Set of Pin (Marker) to be displayed on the map
+                myLocationEnabled: true,
+                myLocationButtonEnabled: true, // Enable my location button
               ),
             )
           ],

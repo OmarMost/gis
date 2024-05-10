@@ -24,7 +24,6 @@ class _MTIMAPState extends State<MTIMAP> {
   //To Add Pins (Markers)
   Set<Marker> _markers = Set(); // Set to store markers
 
-
   @override
   void initState() {
     super.initState();
@@ -118,7 +117,9 @@ class _MTIMAPState extends State<MTIMAP> {
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
                 },
-              markers: _markers, // Set of Pins (Markers) to be displayed on the map
+                markers: _markers, // Set of Pins (Markers) to be displayed on the map
+                myLocationEnabled: true,
+                myLocationButtonEnabled: true, // Enable my location button
               ),
             )
           ],
