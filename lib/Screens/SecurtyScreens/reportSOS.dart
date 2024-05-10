@@ -18,7 +18,7 @@ class ReportSOS extends StatefulWidget {
   final String state;
   final double lat;
   final double long;
-
+  final String Date;
   final String time;
 
   ReportSOS(
@@ -34,6 +34,7 @@ class ReportSOS extends StatefulWidget {
       required this.Photo,
       required this.time,
       required this.lat,
+      required this.Date,
       required this.long});
 
   @override
@@ -150,40 +151,23 @@ class _ReportSOSState extends State<ReportSOS> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Icon(Icons.date_range_outlined),
+                SizedBox(width: 8),
+                Text(
+                  "Date :${widget.Date} ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
                 Icon(Icons.access_time),
                 SizedBox(width: 8),
-                Text(widget.time,
+                Text("Date :${widget.time} ",
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.location_on),
-                SizedBox(width: 8),
-                Text('${widget.lat}', style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.location_on),
-                SizedBox(width: 8),
-                Text('${widget.long}',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            ElevatedButton.icon(
-                onPressed: () {
-                  // openmap(widget.lat, widget.long);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => locationOnMap(lat: widget.lat, long: widget.long, type: 'SOS',),
-                  ));
-                },
-                icon: Icon(Icons.map),
-                label: Text('See Location')),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -192,6 +176,54 @@ class _ReportSOSState extends State<ReportSOS> {
                 Text(widget.state,
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.location_on),
+                SizedBox(width: 8),
+                Text('LAT :${widget.lat}',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.location_on),
+                SizedBox(width: 8),
+                Text('LONG :${widget.long}',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.add_task_rounded),
+                SizedBox(width: 8),
+                Text(widget.state,
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                // openmap(widget.lat, widget.long);
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => locationOnMap(
+                        lat: widget.lat,
+                        long: widget.long,
+                        type: 'SOS',
+                      ),
+                    ));
+              },
+              icon: Icon(
+                Icons.map,
+                color: Colors.red,
+              ),
+              label: Text('See Location',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.red)),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

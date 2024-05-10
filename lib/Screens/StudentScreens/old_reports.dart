@@ -126,6 +126,7 @@ class Student_Reports extends StatelessWidget {
                                                       buildingName: '2',
                                                       floorNumber: "4",
                                                       userid: "457785",
+                                                      Date: "2014-",
                                                       name: 'OZ',
                                                       phoneNumber: "012",
                                                       reportId: "77",

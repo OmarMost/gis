@@ -291,6 +291,14 @@ class _Home_SecState extends State<Home_Sec> {
                                     padding: const EdgeInsets.all(1.0),
                                     child: Container(
                                       decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.7),
+                                            spreadRadius: 2,
+                                            blurRadius: 5,
+                                            offset: Offset(0, 5),
+                                          ),
+                                        ],
                                         borderRadius:
                                             BorderRadius.circular(20.0),
                                         color:
@@ -361,7 +369,7 @@ class _Home_SecState extends State<Home_Sec> {
                                                 padding:
                                                     const EdgeInsets.all(0.0),
                                                 child: Text(
-                                                  '                     State :',
+                                                  '            State :',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
@@ -425,6 +433,8 @@ class _Home_SecState extends State<Home_Sec> {
                                                               '${report['Type']}',
                                                           time:
                                                               '${report['Time']}',
+                                                          Date:
+                                                              '${report['Date']}',
                                                           state:
                                                               '${report['State']}',
                                                           Descriotion:

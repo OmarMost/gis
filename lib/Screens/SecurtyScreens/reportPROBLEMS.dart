@@ -168,17 +168,6 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.add_task_rounded),
-                SizedBox(width: 8),
-                Text(
-                  "State :${widget.State} ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
                 Icon(Icons.location_on),
                 SizedBox(width: 8),
                 Text('LAT :${widget.lat}',
@@ -205,6 +194,17 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                 ),
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.add_task_rounded),
+                SizedBox(width: 8),
+                Text(
+                  "State :${widget.State} ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
             ElevatedButton.icon(
                 onPressed: () {
                   // openmap(widget.lat, widget.long);
@@ -218,8 +218,13 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                         ),
                       ));
                 },
-                icon: Icon(Icons.map),
-                label: Text('See Location')),
+                icon: Icon(
+                  Icons.map,
+                  color: Colors.blue,
+                ),
+                label: Text('See Location',
+                    style: TextStyle(
+                        color: Colors.blue[800], fontWeight: FontWeight.bold))),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
