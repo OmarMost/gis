@@ -80,6 +80,7 @@ flutter:
     - assets/True.jpg
     - assets/False.jpg
     - assets/notfinshed.png
+    - assets/LogoPNG.png
 
   fonts:
     - family: Didact_Gothic

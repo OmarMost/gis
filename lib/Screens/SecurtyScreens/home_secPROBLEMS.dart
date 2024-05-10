@@ -409,7 +409,8 @@ class _Home_SecState extends State<Home_Sec3> {
                                                             '${report['State']}',
                                                         reporttype:
                                                             '${report['Type']}',
-                                                        time: '22:00',
+                                                        time:
+                                                            '${report['Time']}',
                                                         Descriotion:
                                                             '${report['Description']}',
                                                         Photo:

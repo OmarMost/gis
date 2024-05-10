@@ -405,17 +405,16 @@ class _Home_SecState extends State<Home_Sec> {
                                                             '${report['RID']}',
                                                         reporttype:
                                                             '${report['Type']}',
-                                                        time: '22:00',
+                                                        time:
+                                                            '${report['Time']}',
                                                         state:
                                                             '${report['State']}',
                                                         Descriotion:
                                                             '${report['Description']}',
                                                         Photo:
                                                             '${report['ReportImage']}',
-                                                        lat:
-                                                            report['lat'],
-                                                        long:
-                                                            report['long'],
+                                                        lat: report['lat'],
+                                                        long: report['long'],
                                                       ),
                                                     ),
                                                   );
