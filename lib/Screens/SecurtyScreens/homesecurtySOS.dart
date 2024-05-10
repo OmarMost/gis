@@ -181,101 +181,86 @@ class _Home_SecState extends State<Home_Sec> {
                 padding: const EdgeInsets.all(5.0),
                 child: Column(
                   children: [
-                    ButtonBar(
-                      alignment: MainAxisAlignment.start,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Home_Sec()));
-                            // showDialog(
-                            //   context: context,
-                            //   builder: (context) {
-                            //     return AlertDialog(
-                            //       title: Text('SOS Reports'),
-                            //    ///   content: Text('Ther is 4 reports'),
-                            //       actions: [
-                            //         TextButton(
-                            //           onPressed: () => Navigator.pop(context),
-                            //           child: Text('OK'),
-                            //         ),
-                            //       ],
-                            //     );
-                            //   },
-                            // );
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red),
-                          child: Text(
-                            'SOS',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Home_Sec()));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.red),
+                                  child: Text(
+                                    'SOS',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Home_Sec2()));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.greenAccent),
+                                  child: Text(
+                                    'First Aid',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Home_Sec3()));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.blue),
+                                  child: Text(
+                                    'Reports of problems',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Home_Sec2()));
-
-                            // showDialog(
-                            //   context: context,
-                            //   builder: (context) {
-                            //     return AlertDialog(
-                            //       title: Text('First Aid Reports'),
-                            //       // content: Text('First button is pressed.'),
-                            //       actions: [
-                            //         TextButton(
-                            //           onPressed: () => Navigator.pop(context),
-                            //           child: Text('OK'),
-                            //         ),
-                            //       ],
-                            //     );
-                            //   },
-                            // );
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.greenAccent),
-                          child: Text(
-                            'First Aid',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Home_Sec3()));
-                            // showDialog(
-                            //   context: context,
-                            //   builder: (context) {
-                            //     return AlertDialog(
-                            //       title: Text('Reports of problems'),
-                            //       //  content: Text('Ther is 22 Repots'),
-                            //       actions: [
-                            //         TextButton(
-                            //           onPressed: () => Navigator.pop(context),
-                            //           child: Text('OK'),
-                            //         ),
-                            //       ],
-                            //     );
-                            //   },
-                            // );
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue),
-                          child: Text(
-                            'Reports of problems',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                        Container(
+                          height: 100,
+                          width: 200,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/LogoPNG.png'),
+                              fit: BoxFit.contain,
+                              alignment: Alignment.centerRight,
+                            ),
                           ),
                         ),
                       ],
@@ -303,7 +288,7 @@ class _Home_SecState extends State<Home_Sec> {
                                 itemBuilder: (context, index) {
                                   final report = filteredReports[index];
                                   return Padding(
-                                    padding: const EdgeInsets.all(7.0),
+                                    padding: const EdgeInsets.all(1.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         borderRadius:
@@ -383,11 +368,15 @@ class _Home_SecState extends State<Home_Sec> {
                                                   ),
                                                 ),
                                               ),
-                                              Image(
-                                                width: 50,
+                                              Container(
                                                 height: 50,
-                                                image: AssetImage(
-                                                    'assets/finshed.png'),
+                                                width: 50,
+                                                child: '${report['State']}' ==
+                                                        "No Response Yet .."
+                                                    ? Image.asset(
+                                                        'assets/notfinshed.png')
+                                                    : Image.asset(
+                                                        'assets/finshed.png'),
                                               ),
                                             ],
                                           ),
@@ -436,7 +425,7 @@ class _Home_SecState extends State<Home_Sec> {
                                                   style: TextStyle(
                                                     decoration: TextDecoration
                                                         .underline,
-                                                    fontSize: 15,
+                                                    fontSize: 20,
                                                     color: Colors.black,
                                                   ),
                                                 ),

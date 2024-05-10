@@ -7,7 +7,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
 import 'package:gis/Screens/StudentScreens/sos_page.dart';
-import 'package:intl/intl.dart'; // to Date
 
 class floor extends StatefulWidget {
   final String type, BuildingName;
@@ -29,15 +28,6 @@ class _floorState extends State<floor> {
   String image_report_url = '';
 
   Future addDat() async {
-    //Current date and time
-    DateTime now = DateTime.now();
-    //Customize date formate
-    DateFormat dateFormat = DateFormat('dd-MM-yyyy');
-    DateFormat timeFormat = DateFormat('HH:mm:ss');
-
-    String formattedDate = dateFormat.format(now);
-    String formattedTime = timeFormat.format(now);
-
     FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'],
       'UserID': dat['ID'],
@@ -50,9 +40,7 @@ class _floorState extends State<floor> {
       'Description': Description,
       'ReportImage': image_report_url,
       'lat': lat,
-      'long': long,
-      'Date': formattedDate, // to Add date
-      'Time': formattedTime
+      'long': long
     }) //Make ID
         .then((documentReference) {
       setState(() {

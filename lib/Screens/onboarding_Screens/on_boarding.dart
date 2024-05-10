@@ -11,7 +11,6 @@ import 'package:gis/Screens/SecurtyScreens/map.dart'; //to test map
 import '../StudentScreens/student_home.dart'; //By Elgammal
 import 'on_boarding2.dart';
 
-
 class Onboarding extends StatelessWidget {
   final Key? key; // Named 'key' parameter added to the constructor
 
@@ -67,7 +66,7 @@ class Onboarding extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MTIMAP(),
+                          builder: (context) => Home_Sec(),
                         ));
                     // Navigator.push(context,
                     //   MaterialPageRoute(builder: (context) => log));

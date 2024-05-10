@@ -8,7 +8,6 @@ import 'package:gis/Screens/StudentScreens/choose_floore.dart';
 import 'package:gis/Screens/StudentScreens/first_aid_page.dart';
 import 'package:gis/Screens/StudentScreens/report_problem_page.dart';
 import 'package:gis/Screens/StudentScreens/sos_page.dart';
-import 'package:intl/intl.dart'; // to Date
 
 class Building extends StatefulWidget {
   final String type;
@@ -27,15 +26,6 @@ class _BuildingState extends State<Building> {
   String State = "No Response Yet ..";
 
   Future addDat() async {
-    //Current date and time
-    DateTime now = DateTime.now();
-    //Customize date formate
-    DateFormat dateFormat = DateFormat('dd-MM-yyyy');
-    DateFormat timeFormat = DateFormat('HH:mm:ss');
-
-    String formattedDate = dateFormat.format(now);
-    String formattedTime = timeFormat.format(now);
-
     FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'],
       'UserID': dat['ID'],
@@ -48,9 +38,7 @@ class _BuildingState extends State<Building> {
       'Description': Description,
       'ReportImage': image_report_url,
       'lat': lat,
-      'long': long,
-      'Date': formattedDate, // to Add date
-      'Time': formattedTime
+      'long': long
       //without ( 'Floor Num': "" )
     }) //Make ID
         .then((documentReference) {

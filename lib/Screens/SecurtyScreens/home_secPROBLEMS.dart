@@ -180,56 +180,88 @@ class _Home_SecState extends State<Home_Sec3> {
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ButtonBar(
-                      alignment: MainAxisAlignment.start,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Home_Sec()));
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red),
-                          child: Text(
-                            'SOS',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Home_Sec()));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.red),
+                                  child: Text(
+                                    'SOS',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Home_Sec2()));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.greenAccent),
+                                  child: Text(
+                                    'First Aid',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Home_Sec3()));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.blue),
+                                  child: Text(
+                                    'Reports of problems',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Home_Sec2()));
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.greenAccent),
-                          child: Text(
-                            'First Aid',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Home_Sec3()));
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue),
-                          child: Text(
-                            'Reports of problems',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                        Container(
+                          height: 100,
+                          width: 200,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/LogoPNG.png'),
+                              fit: BoxFit.contain,
+                              alignment: Alignment.centerRight,
+                            ),
                           ),
                         ),
                       ],
@@ -391,7 +423,7 @@ class _Home_SecState extends State<Home_Sec3> {
                                                   style: TextStyle(
                                                     decoration: TextDecoration
                                                         .underline,
-                                                    fontSize: 15,
+                                                    fontSize: 20,
                                                     color: Colors.black,
                                                   ),
                                                 ),

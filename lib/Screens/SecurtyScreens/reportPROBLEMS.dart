@@ -38,12 +38,12 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
   void updateStateToX() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-    String newState = isFirstClick ? "New Value 1" : "New Value 2";
+    String newState = isFirstClick ? "In The Way" : "Responded";
 
     FirebaseFirestore.instance
         .collection('Reports')
         .doc(widget.reportId)
-        .update({'FieldName': newState});
+        .update({'State': newState});
 
     if (!isFirstClick) {
       Navigator.pop(context);
@@ -186,27 +186,30 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
             Spacer(),
             Align(
               alignment: Alignment.bottomCenter,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  backgroundColor:
-                      isResponded ? Colors.orangeAccent : Colors.green,
-                  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                ),
-                onPressed: () {
-                  updateStateToX();
-                },
-                child: Text(
-                  isResponded ? 'In My Way ..' : 'Responded',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+              child: widget.State != "Responded"
+                  ? ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        backgroundColor:
+                            isResponded ? Colors.orangeAccent : Colors.green,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                      ),
+                      onPressed: () {
+                        updateStateToX();
+                      },
+                      child: Text(
+                        isResponded ? 'In My Way ..' : 'Responded',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                  : SizedBox(),
             ),
           ],
         ),
