@@ -41,8 +41,6 @@ dependencies:
   image_picker: ^1.0.7
   pull_to_refresh: ^2.0.0
   url_launcher: ^6.1.0
-  flutter_swiper: ^1.1.6
-=======
   intl: ^0.17.0 #Date
 
 dev_dependencies:
@@ -82,7 +80,6 @@ flutter:
     - assets/True.jpg
     - assets/False.jpg
     - assets/notfinshed.png
-    - assets/LogoPNG.png
 
   fonts:
     - family: Didact_Gothic
