@@ -47,6 +47,12 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1 #icon of app
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/Logo1.jpg" # Path of logo image # flutter pub run flutter_launcher_icons
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -82,11 +88,13 @@ flutter:
     - assets/False.jpg
     - assets/notfinshed.png
     - assets/LogoPNG.png
+    - assets/appLogo.jpg
 
   fonts:
     - family: Didact_Gothic
       fonts:
         - asset: fonts/Didact_Gothic/DidactGothic-Regular.ttf
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
