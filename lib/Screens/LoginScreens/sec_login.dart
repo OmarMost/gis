@@ -20,25 +20,25 @@ class _SecLoginState extends State<SecLogin> {
   bool _isSecurePassword = true;
   //any function will be written in the state
   void login() async {
-    if(emailController.toString().contains("@security.com")){
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text);
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Home_Sec(),
-        ));
-    } else if(emailController.toString().contains("@manager.com")) { //By Elgammal to manager
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text);
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Home_Manger(),
-        ));
-    }
-    else{
-    print("the email not valid");
+    if (emailController.toString().contains("@security.com")) {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Home_Sec(),
+          ));
+    } else if (emailController.toString().contains("@manager.com")) {
+      //By Elgammal to manager
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Home_Manger(),
+          ));
+    } else {
+      print("the email not valid");
     }
   }
 

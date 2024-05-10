@@ -17,7 +17,7 @@ class Select_type extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'You Are a :',
+                    'Login as:',
                     style: TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 30,
@@ -45,7 +45,7 @@ class Select_type extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/Student_logo.jpg',
+                      'assets/Student_logo.png',
                       width: 130,
                       height: 130,
                     ),
@@ -80,7 +80,7 @@ class Select_type extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/sec_Logo2.jpg',
+                      'assets/sec_Logo2.png',
                       width: 130,
                       height: 130,
                     ),
