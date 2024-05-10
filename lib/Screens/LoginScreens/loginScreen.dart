@@ -22,8 +22,8 @@ class _Login_ScreenState extends State<Login_Screen> {
       print("the email not valid");
     } else {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.toString(),
-          password: passwordController.toString());
+          email: emailController.text,
+          password: passwordController.text);
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
