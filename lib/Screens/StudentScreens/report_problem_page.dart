@@ -10,7 +10,8 @@ import 'package:gis/Screens/StudentScreens/last_report_problem.dart';
 import 'dart:io'; //to turn File
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart'; //to turn on basename
-//_________________________________________________
+
+import 'package:intl/intl.dart'; // to DateFormat
 
 class ReportAProblem extends StatefulWidget {
   final String BuildingName, FloorNum;
@@ -36,6 +37,16 @@ class _ReportAProblemState extends State<ReportAProblem> {
   get type => "Report A Problem";
   String? RID;
   Future addDat() async {
+    // current date and time
+    DateTime now = DateTime.now();
+
+    // Customize data format
+    DateFormat dateFormat = DateFormat('dd-MM-yyyy');
+    DateFormat timeFormat = DateFormat('HH:mm:ss');
+
+    String formattedDate = dateFormat.format(now);
+    String formattedTime = timeFormat.format(now);
+
     FirebaseFirestore.instance.collection('Reports').add({
       'Username': dat['Name'],
       'PhoneNum': dat['Phone'],
@@ -48,7 +59,9 @@ class _ReportAProblemState extends State<ReportAProblem> {
       'Description': description_Controller.text,
       'ReportImage': image_report_url,
       'lat': lat,
-      'long': long
+      'long': long,
+      'Date': formattedDate,
+      'Time': formattedTime
     }) //Make ID
         .then((documentReference) {
       setState(() {
