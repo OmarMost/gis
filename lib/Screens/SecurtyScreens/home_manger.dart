@@ -152,6 +152,7 @@ class Home_Manger extends StatelessWidget {
                                                       time: '22:00',
                                                       state: '777',
                                                       lat: 5.2,
+                                                      Date: "2015-",
                                                       long: 5.2,
                                                     )));
                                       },

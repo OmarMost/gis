@@ -249,7 +249,8 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                 ),
                 label: Text(
                   'See Location',
-                  style: TextStyle(color: Colors.green[800]),
+                  style: TextStyle(
+                      color: Colors.green[800], fontWeight: FontWeight.bold),
                 )),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
