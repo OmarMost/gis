@@ -323,6 +323,8 @@ class _Home_SecState extends State<Home_Sec> {
                                                 color: Colors.red,
                                                 fontWeight: FontWeight.bold),
                                           ),
+
+                                          ///////////////////
                                           Row(
                                             children: [
                                               Padding(
@@ -337,13 +339,17 @@ class _Home_SecState extends State<Home_Sec> {
                                               ),
                                             ],
                                           ),
+
+                                          ////////////////
                                           Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
                                                 padding:
                                                     const EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  '${report['Description']}',
+                                                  'Date :${report['Date']}',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight:
@@ -351,17 +357,11 @@ class _Home_SecState extends State<Home_Sec> {
                                                   ),
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
                                               Padding(
                                                 padding:
-                                                    const EdgeInsets.all(8.0),
+                                                    const EdgeInsets.all(0.0),
                                                 child: Text(
-                                                  'State',
+                                                  '                     State :',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
@@ -382,6 +382,25 @@ class _Home_SecState extends State<Home_Sec> {
                                           ),
                                           Row(
                                             mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  'Time :${report['Time']}',
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+
+                                          Row(
+                                            mainAxisAlignment:
                                                 MainAxisAlignment.end,
                                             children: [
                                               TextButton(
@@ -389,33 +408,31 @@ class _Home_SecState extends State<Home_Sec> {
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          ReportSOS(
-                                                        buildingName:
-                                                            '${report['BuildingName']}',
-                                                        floorNumber:
-                                                            '${report['FloorNum']}',
-                                                        userid:
-                                                            '${report['UserID']}',
-                                                        name:
-                                                            '${report['Username']}',
-                                                        phoneNumber:
-                                                            '${report['PhoneNum']}',
-                                                        reportId:
-                                                            '${report['RID']}',
-                                                        reporttype:
-                                                            '${report['Type']}',
-                                                        time:
-                                                            '${report['Time']}',
-                                                        state:
-                                                            '${report['State']}',
-                                                        Descriotion:
-                                                            '${report['Description']}',
-                                                        Photo:
-                                                            '${report['ReportImage']}',
-                                                        lat: report['lat'],
-                                                        long: report['long'],
-                                                      ),
+                                                      builder: (context) => ReportSOS(
+                                                          buildingName:
+                                                              '${report['BuildingName']}',
+                                                          floorNumber:
+                                                              '${report['FloorNum']}',
+                                                          userid:
+                                                              '${report['UserID']}',
+                                                          name:
+                                                              '${report['Username']}',
+                                                          phoneNumber:
+                                                              '${report['PhoneNum']}',
+                                                          reportId:
+                                                              '${report['RID']}',
+                                                          reporttype:
+                                                              '${report['Type']}',
+                                                          time:
+                                                              '${report['Time']}',
+                                                          state:
+                                                              '${report['State']}',
+                                                          Descriotion:
+                                                              '${report['Description']}',
+                                                          Photo:
+                                                              '${report['Type']}',
+                                                          lat: report['lat'],
+                                                          long: report['long']),
                                                     ),
                                                   );
                                                 },

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gis/Screens/SecurtyScreens/location_on_map.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -16,8 +17,9 @@ class ReportFIRSTAID extends StatefulWidget {
   final String Photo;
   final String State;
   final String time;
-  final String lat;
-  final String long;
+  final String Date;
+  final double lat;
+  final double long;
   final isReportingForSelf;
   final hasChronicDiseases;
 
@@ -33,6 +35,7 @@ class ReportFIRSTAID extends StatefulWidget {
       required this.floorNumber,
       required this.Photo,
       required this.time,
+      required this.Date,
       required this.lat,
       required this.State,
       required this.isReportingForSelf,
@@ -149,6 +152,17 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.date_range_outlined),
+                SizedBox(width: 8),
+                Text(
+                  "Date :${widget.Date} ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
             SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -183,7 +197,8 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
               children: [
                 Icon(Icons.location_on),
                 SizedBox(width: 8),
-                Text(widget.lat, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('LAT : ${widget.lat}',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
             Row(
@@ -191,16 +206,21 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
               children: [
                 Icon(Icons.location_on),
                 SizedBox(width: 8),
-                Text(widget.long,
+                Text('LONG : ${widget.long}',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
-            ElevatedButton.icon(
-                onPressed: () {
-                  openmap(widget.lat, widget.long);
-                },
-                icon: Icon(Icons.map),
-                label: Text('See Location')),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.textsms_rounded),
+                SizedBox(width: 8),
+                Text(
+                  "Description :${widget.Descriotion} ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -210,12 +230,33 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
+            ElevatedButton.icon(
+                onPressed: () {
+                  // openmap(widget.lat, widget.long);
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => locationOnMap(
+                          lat: widget.lat,
+                          long: widget.long,
+                          type: 'First Aid',
+                        ),
+                      ));
+                },
+                icon: Icon(
+                  Icons.map,
+                  color: Colors.green[900],
+                ),
+                label: Text(
+                  'See Location',
+                  style: TextStyle(color: Colors.green[800]),
+                )),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 150,
-                  width: 150,
+                  height: 120,
+                  width: 120,
                   child: widget.State == "No Response Yet .."
                       ? Image.asset('assets/False.jpg')
                       : Image.asset('assets/True.jpg'),

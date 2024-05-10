@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:gis/Screens/SecurtyScreens/location_on_map.dart';
 
 class ReportBROBLEMS extends StatefulWidget {
   final String name;
@@ -13,20 +14,25 @@ class ReportBROBLEMS extends StatefulWidget {
   final String? Photo;
   final String State;
   final String time;
+  final String Date;
+  final double lat;
+  final double long;
 
-  ReportBROBLEMS({
-    required this.State,
-    required this.reporttype,
-    required this.reportId,
-    required this.name,
-    required this.Descriotion,
-    required this.userid,
-    required this.phoneNumber,
-    required this.buildingName,
-    required this.floorNumber,
-    required this.Photo,
-    required this.time,
-  });
+  ReportBROBLEMS(
+      {required this.State,
+      required this.reporttype,
+      required this.reportId,
+      required this.name,
+      required this.Descriotion,
+      required this.userid,
+      required this.phoneNumber,
+      required this.buildingName,
+      required this.floorNumber,
+      required this.Photo,
+      required this.time,
+      required this.Date,
+      required this.lat,
+      required this.long});
 
   @override
   _ReportBROBLEMSState createState() => _ReportBROBLEMSState();
@@ -69,7 +75,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
           children: [
             Text(
               widget.reporttype,
-              style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
@@ -140,10 +146,21 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Icon(Icons.date_range_outlined),
+                SizedBox(width: 8),
+                Text(
+                  "Date :${widget.Date} ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
                 Icon(Icons.access_time),
                 SizedBox(width: 8),
                 Text(
-                  widget.time,
+                  "Time :${widget.time} ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -154,11 +171,55 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                 Icon(Icons.add_task_rounded),
                 SizedBox(width: 8),
                 Text(
-                  widget.State,
+                  "State :${widget.State} ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.location_on),
+                SizedBox(width: 8),
+                Text('LAT :${widget.lat}',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.location_on),
+                SizedBox(width: 8),
+                Text('LONG :${widget.long}',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.textsms_rounded),
+                SizedBox(width: 8),
+                Text(
+                  "Description :${widget.Descriotion} ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            ElevatedButton.icon(
+                onPressed: () {
+                  // openmap(widget.lat, widget.long);
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => locationOnMap(
+                          lat: widget.lat,
+                          long: widget.long,
+                          type: 'problem',
+                        ),
+                      ));
+                },
+                icon: Icon(Icons.map),
+                label: Text('See Location')),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
