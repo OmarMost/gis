@@ -251,8 +251,8 @@ class _Home_SecState extends State<Home_Sec2> {
                           ],
                         ),
                         Container(
-                          height: 100,
-                          width: 200,
+                          height: 130,
+                          width: 190,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage('assets/LogoPNG.png'),
@@ -322,6 +322,8 @@ class _Home_SecState extends State<Home_Sec2> {
                                                 color: Colors.green,
                                                 fontWeight: FontWeight.bold),
                                           ),
+
+                                          ///////////////////
                                           Row(
                                             children: [
                                               Padding(
@@ -336,7 +338,11 @@ class _Home_SecState extends State<Home_Sec2> {
                                               ),
                                             ],
                                           ),
+
+                                          ////////////////
                                           Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
                                             children: [
                                               Padding(
                                                 padding:
@@ -350,17 +356,11 @@ class _Home_SecState extends State<Home_Sec2> {
                                                   ),
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
                                               Padding(
                                                 padding:
-                                                    const EdgeInsets.all(8.0),
+                                                    const EdgeInsets.all(0.0),
                                                 child: Text(
-                                                  'State',
+                                                  'State :',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
@@ -379,6 +379,7 @@ class _Home_SecState extends State<Home_Sec2> {
                                               ),
                                             ],
                                           ),
+
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.end,
