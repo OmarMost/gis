@@ -426,6 +426,8 @@ class _Home_SecState extends State<Home_Sec3> {
                                                             '${report['RID']}',
                                                         reporttype:
                                                             '${report['Type']}',
+                                                        Date:
+                                                            '${report['Date']}',
                                                         time:
                                                             '${report['Time']}',
                                                         State:
@@ -433,12 +435,10 @@ class _Home_SecState extends State<Home_Sec3> {
                                                         Descriotion:
                                                             '${report['Description']}',
                                                         Photo:
-                                                            '${report['Type']}',
-
-                                                        // lat:
-                                                        //     '${report['lat'].toString()}',
-                                                        // long:
-                                                        //     '${report['long'].toString()}',
+                                                            '${report['ReportImage']}',
+                                                        lat: report['lat'],
+                                                        long:
+                                                            report['long'],
                                                       ),
                                                     ),
                                                   );
