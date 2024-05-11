@@ -466,7 +466,6 @@ class _BuildingState extends State<Building> {
                   ),
                 ],
               ),
-
               // مبني اللابات
               GestureDetector(
                 onTap: () {

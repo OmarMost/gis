@@ -309,13 +309,6 @@ class _floorState extends State<floor> {
                         FloorNum = "Ground floor";
                         addDat(); //=========================================
                         print('Senttttttttttttt');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SOSPage(
-                                id: RIDSOS!,
-                              ),
-                            ));
                       } else if (widget.type == 'problem') {
                         FloorNum = "Ground floor";
                         Navigator.push(

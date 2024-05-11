@@ -58,18 +58,14 @@ class Onboarding extends StatelessWidget {
                         color: Colors.blue, fontWeight: FontWeight.bold),
                   ),
                 ),
-                //Changes by Elgammal to test StudentHomePage---------------------------
-
                 ElevatedButton(
                   onPressed: () {
                     // FirebaseAuth.instance.signOut();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Home_Sec(),
+                          builder: (context) => MTIMAP(),
                         ));
-                    // Navigator.push(context,
-                    //   MaterialPageRoute(builder: (context) => log));
                   },
                   child: Text(
                     'Test Button',
@@ -77,8 +73,6 @@ class Onboarding extends StatelessWidget {
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
                 ),
-
-                //-----------------------------------------------------------------------
               ],
             ),
           ),
