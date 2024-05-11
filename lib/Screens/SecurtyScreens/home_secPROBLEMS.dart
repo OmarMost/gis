@@ -372,7 +372,7 @@ class _Home_SecState extends State<Home_Sec3> {
                                                 padding:
                                                     const EdgeInsets.all(0.0),
                                                 child: Text(
-                                                  '             State :',
+                                                  '           State :',
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
