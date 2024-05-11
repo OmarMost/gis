@@ -231,7 +231,7 @@ class _Home_SecState extends State<Home_Sec3> {
                               ],
                             ),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ElevatedButton(
                                   onPressed: () {
@@ -257,10 +257,11 @@ class _Home_SecState extends State<Home_Sec3> {
                           height: 120,
                           width: 170,
                           decoration: const BoxDecoration(
+                            color: Colors.red,
                             image: DecorationImage(
                               image: AssetImage('assets/LogoPNG.png'),
                               fit: BoxFit.contain,
-                              alignment: Alignment.centerRight,
+                              alignment: Alignment.center,
                             ),
                           ),
                         ),
