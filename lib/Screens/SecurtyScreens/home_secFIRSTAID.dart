@@ -269,6 +269,7 @@ class _Home_SecState extends State<Home_Sec2> {
                         child: StreamBuilder<QuerySnapshot>(
                           stream: FirebaseFirestore.instance
                               .collection('Reports')
+                              .orderBy('Date')
                               .snapshots(),
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
