@@ -64,7 +64,7 @@ class Onboarding extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MTIMAP(),
+                          builder: (context) => Home_Sec(),
                         ));
                   },
                   child: Text(
