@@ -238,33 +238,6 @@ class _ReportSOSState extends State<ReportSOSm> {
               ],
             ),
             Spacer(),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: widget.state != "Responded"
-                  ? ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        backgroundColor:
-                            isResponded ? Colors.orangeAccent : Colors.green,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                      ),
-                      onPressed: () {
-                        updateStateToX();
-                      },
-                      child: Text(
-                        isResponded ? 'In My Way ..' : 'Responded',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 255, 255, 255),
-                        ),
-                      ),
-                    )
-                  : SizedBox(),
-            ),
           ],
         ),
       ),

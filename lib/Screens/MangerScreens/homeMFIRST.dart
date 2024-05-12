@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gis/Screens/MangerScreens/homeMFIRST.dart';
 import 'package:gis/Screens/MangerScreens/homeMPROBLEM.dart';
 import 'package:gis/Screens/MangerScreens/homeMSOS.dart';
+import 'package:gis/Screens/MangerScreens/home_manger.dart';
 import 'package:gis/Screens/MangerScreens/reportFirstAIDMAN.dart';
 import 'package:gis/Screens/MangerScreens/reportPROMANGER.dart';
 import 'package:gis/Screens/MangerScreens/reportSOSMANGER.dart';
@@ -15,14 +15,14 @@ String? titel;
 String? description;
 String? sec_name;
 
-class Home_Manger extends StatelessWidget {
+class Home_MangerF extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 133, 148, 161),
       appBar: AppBar(
         title: Text(
-          'All Reports',
+          'First Aid Reports',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
@@ -140,7 +140,7 @@ class Home_Manger extends StatelessWidget {
 
                       // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
                       final filteredReports = reports
-                          .where((report) => report['Type'] != 'oz')
+                          .where((report) => report['Type'] == 'First Aid')
                           .toList();
 
                       return ListView.builder(

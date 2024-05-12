@@ -67,6 +67,7 @@ flutter:
   assets:
     - assets/Logo1.jpg
     - assets/name.jpg
+    - assets/name.png
     - assets/firstaid.png
     - assets/sos.png
     - assets/problem.png
