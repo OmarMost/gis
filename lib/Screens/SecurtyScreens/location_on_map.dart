@@ -1,5 +1,5 @@
 import 'dart:async'; //to Completer
-import 'dart:ffi';
+// import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
@@ -30,9 +30,7 @@ class _locationOnMapState extends State<locationOnMap> {
   @override
   void initState() {
     super.initState();
-
     _getUserLocation(); // Get current location of Sec.
-
 
     if(widget.type == 'SOS') {
       _marker.add(Marker(
@@ -64,15 +62,30 @@ class _locationOnMapState extends State<locationOnMap> {
     }
   }
 
-  void _addSecurityMarker(double lat, double long) {
-    _marker.add(Marker(
-      markerId: MarkerId('securityloc'), // Unique identifier for the marker
-      position: LatLng(lat, long), // Security location
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
-      infoWindow: InfoWindow(
-        title: 'Security Location !!',
-      ),
-    ));
+  void _addSecurityMarker(double lat, double long) { //sec_Logo2.png
+    // _marker.add(Marker(
+    //   markerId: MarkerId('securityloc'), // Unique identifier for the marker
+    //   position: LatLng(lat, long), // Security location
+    //   icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+    //   infoWindow: InfoWindow(
+    //     title: 'Security Location !!',
+    //   ),
+    // ));
+    BitmapDescriptor.fromAssetImage(
+      ImageConfiguration(size: Size(30,30)),
+      'assets/iconsec.png', // 'assets/iconsec.png'
+    ).then((icon) {
+      setState(() {
+        _marker.add(Marker(
+          markerId: MarkerId('securityloc'),
+          position: LatLng(lat, long),
+          icon: icon,
+          infoWindow: InfoWindow(
+            title: 'Your Location',
+          ),
+        ));
+      });
+    });
   }
 
   void _getUserLocation() async {

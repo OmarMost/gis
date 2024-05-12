@@ -90,6 +90,7 @@ flutter:
     - assets/notfinshed.png
     - assets/LogoPNG.png
     - assets/appLogo.jpg
+    - assets/iconsec.png
 
   fonts:
     - family: Didact_Gothic
