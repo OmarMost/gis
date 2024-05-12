@@ -79,194 +79,201 @@ class _ReportSOSState extends State<ReportSOS> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 251, 246, 246),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.reporttype,
-              style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Report ID : ${widget.reportId}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.person),
-                SizedBox(width: 8),
-                Text(
-                  widget.name,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.quick_contacts_mail_outlined),
-                SizedBox(width: 8),
-                Text(
-                  'ID : ${widget.userid}',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.phone),
-                SizedBox(width: 8),
-                Text("Phone : ${widget.phoneNumber}",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.business),
-                SizedBox(width: 8),
-                Text('Building  : ${widget.buildingName}',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.layers),
-                SizedBox(width: 8),
-                Text('Floor Number  : ${widget.floorNumber}',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.date_range_outlined),
-                SizedBox(width: 8),
-                Text(
-                  "Date :${widget.Date} ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.access_time),
-                SizedBox(width: 8),
-                Text("Date :${widget.time} ",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.add_task_rounded),
-                SizedBox(width: 8),
-                Text(widget.state,
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.location_on),
-                SizedBox(width: 8),
-                Text('LAT :${widget.lat}',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.location_on),
-                SizedBox(width: 8),
-                Text('LONG :${widget.long}',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.add_task_rounded),
-                SizedBox(width: 8),
-                Text(widget.state,
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                // openmap(widget.lat, widget.long);
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => locationOnMap(
-                        lat: widget.lat,
-                        long: widget.long,
-                        type: 'SOS',
+      body: CustomScrollView( //Enable Scroll من أخوك الجمّال
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.reporttype,
+                    style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Report ID : ${widget.reportId}',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  SizedBox(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.person),
+                      SizedBox(width: 8),
+                      Text(
+                        widget.name,
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                    ));
-              },
-              icon: Icon(
-                Icons.map,
-                color: Colors.red,
-              ),
-              label: Text('See Location',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.red)),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 200,
-                  width: 200,
-                  child: widget.state == "No Response Yet .."
-                      ? Image.asset('assets/False.jpg')
-                      : Image.asset('assets/True.jpg'),
-                ),
-              ],
-            ),
-            Spacer(),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: widget.state != "Responded"
-                  ? ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        backgroundColor:
-                            isResponded ? Colors.orangeAccent : Colors.green,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.quick_contacts_mail_outlined),
+                      SizedBox(width: 8),
+                      Text(
+                        'ID : ${widget.userid}',
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      onPressed: () {
-                        updateStateToX();
-                      },
-                      child: Text(
-                        isResponded ? 'In My Way ..' : 'Responded',
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.phone),
+                      SizedBox(width: 8),
+                      Text("Phone : ${widget.phoneNumber}",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.business),
+                      SizedBox(width: 8),
+                      Text('Building  : ${widget.buildingName}',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.layers),
+                      SizedBox(width: 8),
+                      Text('Floor Number  : ${widget.floorNumber}',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.date_range_outlined),
+                      SizedBox(width: 8),
+                      Text(
+                        "Date :${widget.Date} ",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.access_time),
+                      SizedBox(width: 8),
+                      Text("Date :${widget.time} ",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.add_task_rounded),
+                      SizedBox(width: 8),
+                      Text(widget.state,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.location_on),
+                      SizedBox(width: 8),
+                      Text('LAT :${widget.lat}',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.location_on),
+                      SizedBox(width: 8),
+                      Text('LONG :${widget.long}',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.add_task_rounded),
+                      SizedBox(width: 8),
+                      Text(widget.state,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      // openmap(widget.lat, widget.long);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => locationOnMap(
+                              lat: widget.lat,
+                              long: widget.long,
+                              type: 'SOS',
+                            ),
+                          ));
+                    },
+                    icon: Icon(
+                      Icons.map,
+                      color: Colors.red,
+                    ),
+                    label: Text('See Location',
                         style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 255, 255, 255),
-                        ),
+                            fontWeight: FontWeight.bold, color: Colors.red)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 200,
+                        width: 200,
+                        child: widget.state == "No Response Yet .."
+                            ? Image.asset('assets/False.jpg')
+                            : Image.asset('assets/True.jpg'),
                       ),
-                    )
-                  : SizedBox(),
+                    ],
+                  ),
+                  Spacer(),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: widget.state != "Responded"
+                        ? ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              backgroundColor:
+                                  isResponded ? Colors.orangeAccent : Colors.green,
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                            ),
+                            onPressed: () {
+                              updateStateToX();
+                            },
+                            child: Text(
+                              isResponded ? 'In My Way ..' : 'Responded',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                              ),
+                            ),
+                          )
+                        : SizedBox(),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

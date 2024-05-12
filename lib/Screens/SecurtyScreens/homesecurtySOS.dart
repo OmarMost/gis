@@ -255,7 +255,7 @@ class _Home_SecState extends State<Home_Sec> {
                         Container(
                           alignment: Alignment.centerLeft,
                           height: 120,
-                          width: 170,
+                          width: 164, // متغيرش الرقم دا بقا يباشا (مظبوط بالبيكسل)
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage('assets/LogoPNG.png'),

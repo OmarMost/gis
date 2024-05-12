@@ -255,9 +255,8 @@ class _Home_SecState extends State<Home_Sec3> {
                         ),
                         Container(
                           height: 120,
-                          width: 170,
+                          width: 164, //Don't Change
                           decoration: const BoxDecoration(
-                            color: Colors.red,
                             image: DecorationImage(
                               image: AssetImage('assets/LogoPNG.png'),
                               fit: BoxFit.contain,
@@ -442,7 +441,7 @@ class _Home_SecState extends State<Home_Sec3> {
                                                             '${report['Time']}',
                                                         State:
                                                             '${report['State']}',
-                                                        Descriotion:
+                                                        Description:
                                                             '${report['Description']}',
                                                         Photo:
                                                             '${report['ReportImage']}',

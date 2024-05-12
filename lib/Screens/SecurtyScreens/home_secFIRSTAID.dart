@@ -251,10 +251,9 @@ class _Home_SecState extends State<Home_Sec2> {
                           ],
                         ),
                         Container(
-                          height: 100,
-                          width: 180,
+                          height: 120,
+                          width: 164, //Don't Change
                           decoration: const BoxDecoration(
-                            color: Colors.yellow,
                             image: DecorationImage(
                               image: AssetImage('assets/LogoPNG.png'),
                               fit: BoxFit.contain,
@@ -370,7 +369,7 @@ class _Home_SecState extends State<Home_Sec2> {
                                                 padding:
                                                     const EdgeInsets.all(0.0),
                                                 child: Text(
-                                                  '              State :',
+                                                  '            State :',//Don't Change
                                                   style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
