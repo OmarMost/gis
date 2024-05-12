@@ -38,6 +38,7 @@ dependencies:
   fluttertoast: ^8.2.4
   geolocator: ^11.0.0
   google_maps_flutter: ^2.6.1 #Google Map
+  google_maps: ^7.1.0
   image_picker: ^1.0.7
   pull_to_refresh: ^2.0.0
   url_launcher: ^6.1.0

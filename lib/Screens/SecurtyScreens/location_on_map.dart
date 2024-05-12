@@ -2,6 +2,7 @@ import 'dart:async'; //to Completer
 import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 
 class locationOnMap extends StatefulWidget {
   double lat, long;
@@ -24,10 +25,14 @@ class _locationOnMapState extends State<locationOnMap> {
 
   //To Add Pins (Markers)
   Set<Marker> _marker = Set(); // Set to store marker
+  Set<Polyline> _polylines = {};
 
   @override
   void initState() {
     super.initState();
+
+    _getUserLocation(); // Get current location of Sec.
+
 
     if(widget.type == 'SOS') {
       _marker.add(Marker(
@@ -59,6 +64,37 @@ class _locationOnMapState extends State<locationOnMap> {
     }
   }
 
+  void _addSecurityMarker(double lat, double long) {
+    _marker.add(Marker(
+      markerId: MarkerId('securityloc'), // Unique identifier for the marker
+      position: LatLng(lat, long), // Security location
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+      infoWindow: InfoWindow(
+        title: 'Security Location !!',
+      ),
+    ));
+  }
+
+  void _getUserLocation() async {
+    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    setState(() {
+
+      _addSecurityMarker(position.latitude, position.longitude);
+      _addPolyline(position.latitude, position.longitude, widget.lat, widget.long);
+    });
+  }
+
+  void _addPolyline(double secLat, double secLong, double studentLat, double studentLong) {
+    _polylines.add(Polyline(
+      polylineId: PolylineId('path'),
+      points: [
+        LatLng(secLat, secLong), // Security location
+        LatLng(studentLat, studentLong), // Student location
+      ],
+      color: Colors.blue,
+      width: 5,
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +120,7 @@ class _locationOnMapState extends State<locationOnMap> {
                   _controller.complete(controller);
                 },
                 markers: _marker, // Set of Pin (Marker) to be displayed on the map
+                polylines: _polylines,
                 myLocationEnabled: true,
                 myLocationButtonEnabled: true, // Enable my location button
               ),
