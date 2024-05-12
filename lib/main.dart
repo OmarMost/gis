@@ -2,7 +2,6 @@ import 'dart:collection';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/MangerScreens/home_manger.dart';
 import 'package:gis/firebase_options.dart';
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 
@@ -45,7 +44,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home_Manger(), //Put Onboarding to normal Start.
+      home: Onboarding(), //Put Onboarding to normal Start.
       theme: ThemeData(fontFamily: 'DidactGothic-Regular'),
     );
   }
