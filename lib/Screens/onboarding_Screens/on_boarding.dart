@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gis/Screens/LoginScreens/loginScreen.dart';
-import 'package:gis/Screens/SecurtyScreens/home_manger.dart';
+import 'package:gis/Screens/MangerScreens/home_manger.dart';
 import 'package:gis/Screens/SecurtyScreens/homesecurtySOS.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import 'package:gis/Screens/StudentScreens/last_first_aid.dart';
@@ -64,7 +64,7 @@ class Onboarding extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Home_Sec(),
+                          builder: (context) => Home_Manger(),
                         ));
                   },
                   child: Text(

@@ -251,9 +251,10 @@ class _Home_SecState extends State<Home_Sec2> {
                           ],
                         ),
                         Container(
-                          height: 120,
-                          width: 170,
+                          height: 100,
+                          width: 180,
                           decoration: const BoxDecoration(
+                            color: Colors.yellow,
                             image: DecorationImage(
                               image: AssetImage('assets/LogoPNG.png'),
                               fit: BoxFit.contain,
