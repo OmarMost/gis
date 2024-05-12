@@ -19,62 +19,72 @@ class Onboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            flex: 2,
-            child: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/Logo1.jpg'),
-                  fit: BoxFit.contain,
-                  alignment: Alignment.bottomCenter,
+      body: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+          child: Column(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/LogoPNG.png'),
+                      fit: BoxFit.contain,
+                      alignment: Alignment.bottomCenter,
+                    ),
+                  ),
+                ),),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Welcome to Safe Campus',
+                      style: const TextStyle(
+                        color: Colors.orange,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Onboarding2()));
+                      },
+                      child: Text(
+                        'Get Started',
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    // Test Button ___
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     // FirebaseAuth.instance.signOut();
+                    //     Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //           builder: (context) => Home_Manger(),
+                    //         ));
+                    //   },
+                    //   child: Text(
+                    //     'Test Button',
+                    //     style: TextStyle(
+                    //         color: Colors.black, fontWeight: FontWeight.bold),
+                    //   ),
+                    // ),
+                  ],
                 ),
               ),
-            ),
+            ],
           ),
-          Expanded(
-            flex: 1,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Welcome to Safe Campus',
-                  style: const TextStyle(
-                    color: Colors.orange,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Onboarding2()));
-                  },
-                  child: Text(
-                    'Get Started',
-                    style: TextStyle(
-                        color: Colors.blue, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // FirebaseAuth.instance.signOut();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Home_Manger(),
-                        ));
-                  },
-                  child: Text(
-                    'Test Button',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
-            ),
           ),
         ],
       ),
