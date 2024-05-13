@@ -85,7 +85,6 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
         backgroundColor: const Color.fromARGB(255, 251, 246, 246),
       ),
       body: CustomScrollView(
-        //Enable Scroll من أخوك الجمّال
         slivers: [
           SliverFillRemaining(
             hasScrollBody: false,
@@ -157,6 +156,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -178,6 +178,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -187,6 +188,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -196,6 +198,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -205,6 +208,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -214,6 +218,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -225,6 +230,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -234,6 +240,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   ElevatedButton.icon(
                       onPressed: () {
                         // openmap(widget.lat, widget.long);
@@ -257,6 +264,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                             color: Colors.green[800],
                             fontWeight: FontWeight.bold),
                       )),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

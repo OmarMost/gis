@@ -79,7 +79,8 @@ class _ReportSOSState extends State<ReportSOS> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 251, 246, 246),
       ),
-      body: CustomScrollView( //Enable Scroll من أخوك الجمّال
+      body: CustomScrollView(
+        //Enable Scroll من أخوك الجمّال
         slivers: [
           SliverFillRemaining(
             hasScrollBody: false,
@@ -163,6 +164,7 @@ class _ReportSOSState extends State<ReportSOS> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -172,6 +174,7 @@ class _ReportSOSState extends State<ReportSOS> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -181,6 +184,7 @@ class _ReportSOSState extends State<ReportSOS> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -190,6 +194,7 @@ class _ReportSOSState extends State<ReportSOS> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -199,6 +204,7 @@ class _ReportSOSState extends State<ReportSOS> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -208,6 +214,7 @@ class _ReportSOSState extends State<ReportSOS> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   ElevatedButton.icon(
                     onPressed: () {
                       // openmap(widget.lat, widget.long);
@@ -229,6 +236,7 @@ class _ReportSOSState extends State<ReportSOS> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.red)),
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -250,10 +258,11 @@ class _ReportSOSState extends State<ReportSOS> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              backgroundColor:
-                                  isResponded ? Colors.orangeAccent : Colors.green,
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                              backgroundColor: isResponded
+                                  ? Colors.orangeAccent
+                                  : Colors.green,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 100, vertical: 15),
                             ),
                             onPressed: () {
                               updateStateToX();

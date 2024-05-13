@@ -7,6 +7,7 @@ import 'package:gis/Screens/LoginScreens/loginScreen.dart';
 import 'package:gis/Screens/StudentScreens/choose_bulding.dart';
 import 'package:gis/Screens/StudentScreens/help.dart';
 import 'package:gis/Screens/StudentScreens/location_details.dart';
+import 'package:gis/Screens/StudentScreens/old_reports.dart';
 import 'package:gis/Screens/StudentScreens/profile.dart';
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 
@@ -88,7 +89,8 @@ class _StudentHomeState extends State<StudentHome> {
                                 ),
                               ),
                               Divider(
-                                color: Colors.grey[200], // Set slightly lighter gray for divider
+                                color: Colors.grey[
+                                    200], // Set slightly lighter gray for divider
                                 thickness: 0.0, // Adjust thickness as needed
                               ),
                               ListTile(
@@ -116,6 +118,21 @@ class _StudentHomeState extends State<StudentHome> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => ProfileScreen(),
+                                      ));
+                                },
+                              ),
+                              ListTile(
+                                leading: Icon(Icons.folder_copy_outlined,
+                                    color: Colors.black), // help icon
+                                title: Text('My Reports',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black)),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Old_Reports(),
                                       ));
                                 },
                               ),
@@ -175,7 +192,9 @@ class _StudentHomeState extends State<StudentHome> {
                   ),
                 ),
               ),
-              const SizedBox(height: 15.0), // Add some space between image and other content
+              const SizedBox(
+                  height:
+                      15.0), // Add some space between image and other content
               Padding(
                 padding: EdgeInsets.only(left: 10.0),
                 child: Text(
@@ -199,10 +218,10 @@ class _StudentHomeState extends State<StudentHome> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Building(type: 'sos'),
-                            ));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Building(type: 'sos'),
+                      ));
                 },
                 child: Container(
                   width: double.infinity, // 100% width
@@ -281,7 +300,7 @@ class _StudentHomeState extends State<StudentHome> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                   Building(type: 'first aid')));
+                                      Building(type: 'first aid')));
                         },
                         child: Container(
                           color: Colors.green, // Green color
@@ -315,6 +334,6 @@ class _StudentHomeState extends State<StudentHome> {
               ),
             ],
           ),
-         ));
+        ));
   }
 }

@@ -69,11 +69,11 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 251, 246, 246),
       ),
-      body: CustomScrollView( //Enable Scroll من أخوك الجمّال
+      body: CustomScrollView(
         slivers: [
           SliverFillRemaining(
             hasScrollBody: false,
-            child: Padding (
+            child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,6 +159,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -170,6 +171,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -179,6 +181,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -188,6 +191,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -199,6 +203,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -210,6 +215,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   ElevatedButton.icon(
                       onPressed: () {
                         // openmap(widget.lat, widget.long);
@@ -229,7 +235,9 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                       ),
                       label: Text('See Location',
                           style: TextStyle(
-                              color: Colors.blue[800], fontWeight: FontWeight.bold))),
+                              color: Colors.blue[800],
+                              fontWeight: FontWeight.bold))),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -241,7 +249,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                             )
                           : Text("No Photo Taken !!")
                     ],
-                  ),
+                  ),                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -263,10 +271,11 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              backgroundColor:
-                                  isResponded ? Colors.orangeAccent : Colors.green,
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                              backgroundColor: isResponded
+                                  ? Colors.orangeAccent
+                                  : Colors.green,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 100, vertical: 15),
                             ),
                             onPressed: () {
                               updateStateToX();
@@ -281,13 +290,13 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                             ),
                           )
                         : SizedBox(),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+            ),
           ),
         ],
-      ), 
+      ),
     );
   }
 }

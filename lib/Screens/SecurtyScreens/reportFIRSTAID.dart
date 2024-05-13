@@ -84,7 +84,8 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 251, 246, 246),
       ),
-      body: CustomScrollView( //Enable Scroll من أخوك الجمّال
+      body: CustomScrollView(
+        //Enable Scroll من أخوك الجمّال
         slivers: [
           SliverFillRemaining(
             hasScrollBody: false,
@@ -156,6 +157,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -177,16 +179,17 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(Icons.question_mark_rounded),
                       SizedBox(width: 8),
-                      Text(
-                          'Reporting for you? ${widget.isReportingForSelf}',
+                      Text('Reporting for you? ${widget.isReportingForSelf}',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -196,6 +199,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -205,6 +209,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -214,6 +219,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -225,6 +231,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -234,6 +241,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   ElevatedButton.icon(
                       onPressed: () {
                         // openmap(widget.lat, widget.long);
@@ -254,8 +262,10 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                       label: Text(
                         'See Location',
                         style: TextStyle(
-                            color: Colors.green[800], fontWeight: FontWeight.bold),
+                            color: Colors.green[800],
+                            fontWeight: FontWeight.bold),
                       )),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -277,10 +287,11 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              backgroundColor:
-                                  isResponded ? Colors.orangeAccent : Colors.green,
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                              backgroundColor: isResponded
+                                  ? Colors.orangeAccent
+                                  : Colors.green,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 100, vertical: 15),
                             ),
                             onPressed: () {
                               updateStateToX();

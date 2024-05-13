@@ -70,7 +70,6 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMSm> {
         backgroundColor: const Color.fromARGB(255, 251, 246, 246),
       ),
       body: CustomScrollView(
-        //Enable Scroll من أخوك الجمّال
         slivers: [
           SliverFillRemaining(
             hasScrollBody: false,
@@ -160,6 +159,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMSm> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -171,6 +171,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMSm> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -180,6 +181,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMSm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -189,6 +191,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMSm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -200,6 +203,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMSm> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -211,6 +215,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMSm> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   ElevatedButton.icon(
                       onPressed: () {
                         // openmap(widget.lat, widget.long);
@@ -232,6 +237,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMSm> {
                           style: TextStyle(
                               color: Colors.blue[800],
                               fontWeight: FontWeight.bold))),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -244,6 +250,7 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMSm> {
                           : Text("No Photo Taken !!")
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
