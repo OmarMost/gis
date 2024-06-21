@@ -193,13 +193,22 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                   ),
                   SizedBox(height: 8),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(Icons.textsms_rounded),
                       SizedBox(width: 8),
-                      Text(
-                        "Description :${widget.Description} ",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      Container(
+                        height: 100,
+                        width: 320,
+                        color: const Color.fromARGB(255, 251, 246, 246),
+                        child: SingleChildScrollView(
+                          child: Text(
+                            "Description :${widget.Description} ",
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -249,7 +258,8 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMS> {
                             )
                           : Text("No Photo Taken !!")
                     ],
-                  ),                  SizedBox(height: 8),
+                  ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
