@@ -26,11 +26,6 @@ class Home_MangerS extends StatelessWidget {
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            }),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
