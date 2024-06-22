@@ -226,15 +226,19 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                     children: [
                       Icon(Icons.textsms_rounded),
                       SizedBox(width: 8),
-                      Container(
-                        height: 100,
-                        width: 320,
-                        color: const Color.fromARGB(255, 251, 246, 246),
-                        child: SingleChildScrollView(
-                          child: Text(
-                            "Description :${widget.Descriotion} ",
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                      Flexible( //adjust its height and width based on the content inside it
+                        child: IntrinsicHeight(
+                          child: Container(
+                            color: const Color.fromARGB(255, 251, 246, 246),
+                            child: SingleChildScrollView(
+                              child: Padding(
+                                padding: const EdgeInsets.all(0),
+                                child: Text(
+                                  "Description :${widget.Descriotion} ",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),

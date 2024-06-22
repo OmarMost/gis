@@ -163,6 +163,7 @@ class _ReportSOSState extends State<ReportSOSm> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -172,6 +173,7 @@ class _ReportSOSState extends State<ReportSOSm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -181,6 +183,7 @@ class _ReportSOSState extends State<ReportSOSm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -190,6 +193,7 @@ class _ReportSOSState extends State<ReportSOSm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -199,6 +203,7 @@ class _ReportSOSState extends State<ReportSOSm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -208,6 +213,7 @@ class _ReportSOSState extends State<ReportSOSm> {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
+                  SizedBox(height: 8),
                   ElevatedButton.icon(
                     onPressed: () {
                       // openmap(widget.lat, widget.long);

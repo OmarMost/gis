@@ -220,13 +220,26 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                   ),
                   SizedBox(height: 8),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(Icons.textsms_rounded),
                       SizedBox(width: 8),
-                      Text(
-                        "Description :${widget.Descriotion} ",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      Flexible( //adjust its height and width based on the content inside it
+                        child: IntrinsicHeight(
+                          child: Container(
+                            color: const Color.fromARGB(255, 251, 246, 246),
+                            child: SingleChildScrollView(
+                              child: Padding(
+                                padding: const EdgeInsets.all(0),
+                                child: Text(
+                                  "Description :${widget.Descriotion} ",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
