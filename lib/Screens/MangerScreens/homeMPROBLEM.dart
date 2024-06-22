@@ -69,8 +69,11 @@ class _Home_MangerPState extends State<Home_MangerP> {
               ),
               child: Row(
                 children: [
-                  Icon(
-                    Icons.search,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: Icon(
+                      Icons.search,
+                    ),
                   ),
                   SizedBox(
                     width: 10,
@@ -80,7 +83,7 @@ class _Home_MangerPState extends State<Home_MangerP> {
                       controller: searchController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'search for report by date (YYYY-MM-DD)',
+                        hintText: 'Search for report by date (DD-MM-YYYY)',
                       ),
                       onChanged: (value) {
                         setState(() {

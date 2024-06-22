@@ -281,7 +281,7 @@ class _Home_SecState extends State<Home_Sec3> {
                               // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
                               final filteredReports = reports
                                   .where((report) =>
-                                      report['Type'] == 'Report A Problem')
+                                      report['Type'] == 'Report A Problem' && report['State'] != 'Responded')
                                   .toList();
 
                               return ListView.builder(

@@ -25,6 +25,7 @@ class Home_Sec extends StatefulWidget {
 class _Home_SecState extends State<Home_Sec> {
   final user = FirebaseAuth.instance.currentUser!;
   Map<String, dynamic> data = {};
+  
   Future getdata() async {
     data.clear();
     await FirebaseFirestore.instance
@@ -280,7 +281,7 @@ class _Home_SecState extends State<Home_Sec> {
 
                               // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
                               final filteredReports = reports
-                                  .where((report) => report['Type'] == 'SOS')
+                                  .where((report) => report['Type'] == 'SOS' && report['State'] != 'Responded')
                                   .toList();
 
                               return ListView.builder(
@@ -333,8 +334,6 @@ class _Home_SecState extends State<Home_Sec> {
                                                 color: Colors.red,
                                                 fontWeight: FontWeight.bold),
                                           ),
-
-                                          ///////////////////
                                           Row(
                                             children: [
                                               Padding(
@@ -349,8 +348,6 @@ class _Home_SecState extends State<Home_Sec> {
                                               ),
                                             ],
                                           ),
-
-                                          ////////////////
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -408,7 +405,6 @@ class _Home_SecState extends State<Home_Sec> {
                                               ),
                                             ],
                                           ),
-
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.end,
