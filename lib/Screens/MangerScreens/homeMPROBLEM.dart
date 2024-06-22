@@ -29,7 +29,7 @@ class Home_MangerP extends StatelessWidget {
         ),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
 
-        IconButton(
+        leading: IconButton(
             icon: Icon(Icons.logout),
             onPressed: () {
               FirebaseAuth.instance.signOut();
