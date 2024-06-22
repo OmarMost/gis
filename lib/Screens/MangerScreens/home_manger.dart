@@ -25,16 +25,27 @@ class Home_Manger extends StatefulWidget {
 class _Home_MangerState extends State<Home_Manger> {
   TextEditingController searchController = TextEditingController();
   String searchDate = "";
+  String selectedReportType = "All"; //1
+
+  Text _getAppBarTitle() {
+    switch (selectedReportType) {
+      case "SOS":
+        return Text("SOS Reports", style: TextStyle(color: const Color.fromARGB(255, 73, 6, 2), fontWeight: FontWeight.bold));
+      case "First Aid":
+        return Text("First Aid Reports", style: TextStyle(color: const Color.fromARGB(255, 0, 90, 3), fontWeight: FontWeight.bold));
+      case "Report A Problem":
+        return Text("Report A Problem Reports", style: TextStyle(color: const Color.fromARGB(255, 2, 61, 109), fontWeight: FontWeight.bold));
+      default:
+        return Text("All Reports", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 133, 148, 161),
       appBar: AppBar(
-        title: Text(
-          'All Reports',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
+        title: _getAppBarTitle(),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
         leading: IconButton(
             icon: Icon(Icons.logout),
@@ -100,8 +111,9 @@ class _Home_MangerState extends State<Home_Manger> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home_Manger()));
+                      setState(() {
+                        selectedReportType = "All"; //1
+                      });
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey[800]),
@@ -113,10 +125,9 @@ class _Home_MangerState extends State<Home_Manger> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Home_MangerS()));
+                      setState(() {
+                        selectedReportType = "SOS"; //1
+                      });
                     },
                     style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                     child: Text(
@@ -127,10 +138,9 @@ class _Home_MangerState extends State<Home_Manger> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Home_MangerF()));
+                      setState(() {
+                        selectedReportType = "First Aid";//1
+                      });
                     },
                     style:
                         ElevatedButton.styleFrom(backgroundColor: Colors.green),
@@ -142,10 +152,9 @@ class _Home_MangerState extends State<Home_Manger> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Home_MangerP()));
+                      setState(() {
+                        selectedReportType = "Report A Problem";//1
+                      });
                     },
                     style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                     child: Text(
@@ -171,9 +180,9 @@ class _Home_MangerState extends State<Home_Manger> {
 
                       // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
                       final filteredReports = reports
-                          .where((report) => report['Type'] != 'oz')
-                          .where((report) => searchDate.isEmpty || report['Date'].toString().contains(searchDate))
-                          .toList();
+                          .where((report) => (selectedReportType == "All" || report['Type'] == selectedReportType) && (searchDate.isEmpty || report['Date'].toString().contains(searchDate)))
+                          .toList(); //1
+                          
 
                       return ListView.builder(
                         reverse: true,
@@ -228,7 +237,6 @@ class _Home_MangerState extends State<Home_Manger> {
                                                   : Colors.grey[800],
                                     ),
                                   ),
-                                  ///////////////////
                                   Row(
                                     children: [
                                       Padding(
@@ -243,8 +251,6 @@ class _Home_MangerState extends State<Home_Manger> {
                                       ),
                                     ],
                                   ),
-
-                                  ////////////////
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -295,7 +301,6 @@ class _Home_MangerState extends State<Home_Manger> {
                                       ),
                                     ],
                                   ),
-
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
