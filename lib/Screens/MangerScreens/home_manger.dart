@@ -17,7 +17,15 @@ String? titel;
 String? description;
 String? sec_name;
 
-class Home_Manger extends StatelessWidget {
+class Home_Manger extends StatefulWidget {
+  @override
+  _Home_MangerState createState() => _Home_MangerState();
+}
+
+class _Home_MangerState extends State<Home_Manger> {
+  TextEditingController searchController = TextEditingController();
+  String searchDate = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,9 +74,19 @@ class Home_Manger extends StatelessWidget {
                   SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    'search for report ',
-                    style: TextStyle(),
+                  Expanded(
+                    child: TextField(
+                      controller: searchController,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'search for report by date (YYYY-MM-DD)',
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          searchDate = value;
+                        });
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -151,6 +169,7 @@ class Home_Manger extends StatelessWidget {
                       // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
                       final filteredReports = reports
                           .where((report) => report['Type'] != 'oz')
+                          .where((report) => searchDate.isEmpty || report['Date'].toString().contains(searchDate))
                           .toList();
 
                       return ListView.builder(
@@ -405,85 +424,6 @@ class Home_Manger extends StatelessWidget {
                 ),
               ),
             ),
-            // Expanded(
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(1.0),
-            //     child: Row(
-            //       children: [
-            //         Expanded(
-            //           child: ListView.builder(
-            //             itemCount: 12,
-            //             scrollDirection: Axis.horizontal,
-            //             itemExtent: 200,
-            //             itemBuilder: (context, index) => Padding(
-            //               padding: const EdgeInsets.all(3.0),
-            //               child: Container(
-            //                 decoration: BoxDecoration(
-            //                   borderRadius: BorderRadius.circular(10.0),
-            //                   color: Color.fromARGB(255, 255, 255, 255),
-            //                 ),
-            //                 child: Column(
-            //                   mainAxisAlignment: MainAxisAlignment.center,
-            //                   children: [
-            //                     Center(
-            //                       child: Text(
-            //                         '$sec_name',
-            //                         style: TextStyle(
-            //                           fontSize: 18,
-            //                           fontWeight: FontWeight.bold,
-            //                         ),
-            //                       ),
-            //                     ),
-            //                     Center(
-            //                       child: CircleAvatar(
-            //                         radius: 50,
-            //                         backgroundImage: NetworkImage(
-            //                             'https://play-lh.googleusercontent.com/EX6jTQW25Tg17OrbeQJk7OjELqK0Un1RaJsYavBQKZFXMnABy2bokpHnSi2gkhVGdY9g=w240-h480-rw'),
-            //                       ),
-            //                     ),
-            //                     SizedBox(
-            //                       height: 20,
-            //                       width: 60,
-            //                     ),
-            //                     Row(
-            //                       mainAxisAlignment: MainAxisAlignment.center,
-            //                       children: [
-            //                         Text(
-            //                           'Available or busy:',
-            //                           style: TextStyle(
-            //                             fontSize: 19,
-            //                             fontWeight: FontWeight.bold,
-            //                           ),
-            //                         ),
-            //                       ],
-            //                     ),
-            //                     Image(
-            //                       width: 30,
-            //                       height: 30,
-            //                       image: AssetImage('assets/not_finshed.png'),
-            //                     ),
-            //                     SizedBox(
-            //                       height: 50,
-            //                     ),
-            //                     Text(
-            //                       'Report ID : ',
-            //                       style: TextStyle(
-            //                         fontSize: 20,
-            //                       ),
-            //                     ),
-            //                   ],
-            //                 ),
-            //               ),
-            //             ),
-            //           ),
-            //         ),
-            //         SizedBox(
-            //           width: 15,
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),

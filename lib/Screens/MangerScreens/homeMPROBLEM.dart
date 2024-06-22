@@ -17,7 +17,15 @@ String? titel;
 String? description;
 String? sec_name;
 
-class Home_MangerP extends StatelessWidget {
+class Home_MangerP extends StatefulWidget {
+  @override
+  _Home_MangerPState createState() => _Home_MangerPState();
+}
+
+class _Home_MangerPState extends State<Home_MangerP> {
+  TextEditingController searchController = TextEditingController();
+  String searchDate = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,9 +75,19 @@ class Home_MangerP extends StatelessWidget {
                   SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    'search for report ',
-                    style: TextStyle(),
+                  Expanded(
+                    child: TextField(
+                      controller: searchController,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'search for report by date (YYYY-MM-DD)',
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          searchDate = value;
+                        });
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -151,8 +169,8 @@ class Home_MangerP extends StatelessWidget {
 
                       // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
                       final filteredReports = reports
-                          .where(
-                              (report) => report['Type'] == 'Report A Problem')
+                          .where((report) => report['Type'] == 'Report A Problem')
+                          .where((report) => searchDate.isEmpty || report['Date'].toString().contains(searchDate))
                           .toList();
 
                       return ListView.builder(
