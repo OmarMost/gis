@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -9,6 +10,7 @@ import 'package:gis/Screens/MangerScreens/reportFirstAIDMAN.dart';
 import 'package:gis/Screens/MangerScreens/reportPROMANGER.dart';
 import 'package:gis/Screens/MangerScreens/reportSOSMANGER.dart';
 import 'package:gis/Screens/SecurtyScreens/reportSOS.dart';
+import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 
 String? R_ID;
 String? titel;
@@ -27,9 +29,14 @@ class Home_Manger extends StatelessWidget {
         ),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.logout),
             onPressed: () {
-              Navigator.pop(context);
+              FirebaseAuth.instance.signOut();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Onboarding(),
+                  ));
             }),
       ),
       body: Padding(
