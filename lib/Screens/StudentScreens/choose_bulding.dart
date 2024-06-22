@@ -26,6 +26,25 @@ class _BuildingState extends State<Building> {
   String image_report_url = "";
   String State = "No Response Yet ..";
 
+  ///////////////////////////
+  // final user = FirebaseAuth.instance.currentUser;
+/////////////////////
+
+  // Map<String, dynamic> data = {};
+  // Future getdata() async {
+  //   data.clear();
+  //   await FirebaseFirestore.instance
+  //       .collection('Users')
+  //       .where('Email', isEqualTo: user!.email)
+  //       .get()
+  //       .then((value) => value.docs.forEach((element) {
+  //             data.addAll(element.data());
+
+  //             print("---------------------------------------");
+  //             print(data);
+  //           }));
+  // }
+
   Future addDat() async {
     // current date and time
     DateTime now = DateTime.now();
@@ -51,7 +70,9 @@ class _BuildingState extends State<Building> {
       'lat': lat,
       'long': long,
       'Date': formattedDate,
-      'Time': formattedTime
+      'Time': formattedTime,
+      'Email': dat['Email']
+
       //without ( 'Floor Num': "" )
     }) //Make ID
         .then((documentReference) {
@@ -72,7 +93,9 @@ class _BuildingState extends State<Building> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => SOSPage(id: RIDSOS!,),
+          builder: (context) => SOSPage(
+            id: RIDSOS!,
+          ),
         ),
       );
     });
@@ -154,8 +177,10 @@ class _BuildingState extends State<Building> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              floor(type: 'sos', BuildingName: 'Lectures',),
+                          builder: (context) => floor(
+                            type: 'sos',
+                            BuildingName: 'Lectures',
+                          ),
                         ));
                   } else if (widget.type == 'problem') {
                     Navigator.push(

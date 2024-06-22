@@ -61,7 +61,8 @@ class _ReportAProblemState extends State<ReportAProblem> {
       'lat': lat,
       'long': long,
       'Date': formattedDate,
-      'Time': formattedTime
+      'Time': formattedTime,
+      'Email': dat['Email']
     }) //Make ID
         .then((documentReference) {
       setState(() {

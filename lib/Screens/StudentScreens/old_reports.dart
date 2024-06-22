@@ -17,6 +17,27 @@ String? titel;
 String? description;
 String? sec_name;
 
+//////////////////////////
+
+final user = FirebaseAuth.instance.currentUser;
+
+Future<List<Map<String, dynamic>>> getReports() async {
+  List<Map<String, dynamic>> reports = [];
+
+  await FirebaseFirestore.instance
+      .collection('Reports')
+      .where('UserID', isEqualTo: user!.uid)
+      .get()
+      .then((value) {
+    value.docs.forEach((element) {
+      reports.add(element.data());
+    });
+  });
+
+  return reports;
+}
+/////////////////////
+
 class Old_Reports extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -119,12 +140,15 @@ class Old_Reports extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       final reports = snapshot.data!.docs;
+                      final user = FirebaseAuth.instance.currentUser;
 
-                      User? currentUser = FirebaseAuth.instance.currentUser;
-                      String? currentUserID = currentUser?.uid;
+                      // User? currentUser = FirebaseAuth.instance.currentUser;
+                      // String? currentUserID = currentUser?.uid;
 
                       final filteredReports = reports
-                          .where((report) => report['UserID'] == "94403")
+                          .where(
+                            (report) => report['Email'] == user!.email,
+                          )
                           .toList();
 
                       return ListView.builder(

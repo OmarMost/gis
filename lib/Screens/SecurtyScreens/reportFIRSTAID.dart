@@ -221,13 +221,22 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
                   ),
                   SizedBox(height: 8),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(Icons.textsms_rounded),
                       SizedBox(width: 8),
-                      Text(
-                        "Description :${widget.Descriotion} ",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      Container(
+                        height: 100,
+                        width: 320,
+                        color: const Color.fromARGB(255, 251, 246, 246),
+                        child: SingleChildScrollView(
+                          child: Text(
+                            "Description :${widget.Descriotion} ",
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
                       ),
                     ],
                   ),
