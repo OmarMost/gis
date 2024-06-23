@@ -74,15 +74,9 @@ class Old_Reports extends StatelessWidget {
                     if (snapshot.hasData) {
                       final reports = snapshot.data!.docs;
                       final user = FirebaseAuth.instance.currentUser;
-
-                      // User? currentUser = FirebaseAuth.instance.currentUser;
-                      // String? currentUserID = currentUser?.uid;
-
                       final filteredReports = reports
                           .where(
-                            (report) => report['Email'] == user!.email,
-                          )
-                          .toList();
+                            (report) => report['Email'] == user!.email,).toList();
 
                       return ListView.builder(
                         reverse: true,
@@ -181,19 +175,24 @@ class Old_Reports extends StatelessWidget {
                                             : Image.asset('assets/finshed.png'),
                                       ),
                                     ],
-                                  ),
-                                  
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Text(                                          
-                                        'Description :${report['Description']}',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.normal,
+                                  ),                                  
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'Description :${report['Description']}',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
                                   ),
                                 ],

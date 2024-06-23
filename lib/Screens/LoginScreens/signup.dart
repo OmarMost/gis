@@ -176,39 +176,48 @@ class _Sign_upState extends State<Sign_up> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Row(
+            SizedBox(height: 15.0,),
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Checkbox(
-                  value: status,
-                  onChanged: (val){
-                    setState(() {
-                      status = val!;
-                    });
-                  },
-                ),
-                Text(
-                  'I have read & agreed to DayTask',
-                  style: TextStyle(
-                    fontSize: 10.0,
-                    color: Colors.blueAccent,
-                  ),
-                ),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Privacy(onPressed: () {  },)));
-                    },
-                  child: Text(
-                    'Privacy Policy" Terms & Condition',
-                    style: TextStyle(
-                      fontSize: 10.0,
-                      color: Colors.orange,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Checkbox(
+                      value: status,
+                      onChanged: (val) {
+                        setState(() {
+                          status = val!;
+                        });
+                      },
                     ),
-                  ),
-                )
+                    Text(
+                      'I have read and agreed to the SafeCampus',
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 0.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Privacy(onPressed: () {})));
+                      },
+                      child: Text(
+                        'Privacy Policy Terms & Condition',
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: Colors.orange,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             )
           ]),
