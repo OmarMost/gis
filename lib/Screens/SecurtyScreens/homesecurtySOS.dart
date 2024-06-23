@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gis/Screens/SecurtyScreens/home_secFIRSTAID.dart';
-import 'package:gis/Screens/SecurtyScreens/home_secPROBLEMS.dart';
 import 'package:gis/Screens/SecurtyScreens/map.dart';
 import 'package:gis/Screens/SecurtyScreens/profilesec.dart';
 import 'package:gis/Screens/SecurtyScreens/reportFIRSTAID.dart';
@@ -49,15 +47,25 @@ class _Home_SecState extends State<Home_Sec> {
     super.initState();
   }
 
+  Text _getAppBarTitle() {
+    switch (selectedType) {
+      case "SOS":
+        return Text("Reports Of Emergency", style: TextStyle(color: const Color.fromARGB(255, 73, 6, 2), fontWeight: FontWeight.bold));
+      case "First Aid":
+        return Text("Reports Of First Aid", style: TextStyle(color: const Color.fromARGB(255, 0, 90, 3), fontWeight: FontWeight.bold));
+      case "Report A Problem":
+        return Text("Reports Of Problems", style: TextStyle(color: const Color.fromARGB(255, 2, 61, 109), fontWeight: FontWeight.bold));
+      default:
+        return Text("All Reports", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 133, 148, 161),
       appBar: AppBar(
-        title: Text(
-          'Reports of Emergency',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
+        title: _getAppBarTitle(),
         backgroundColor: Color.fromARGB(255, 133, 148, 161),
       ),
       drawer: FutureBuilder(
