@@ -71,9 +71,8 @@ class _BuildingState extends State<Building> {
       'long': long,
       'Date': formattedDate,
       'Time': formattedTime,
-      'Email': dat['Email']
-
-      //without ( 'Floor Num': "" )
+      'Email': dat['Email'],
+      'securityName': ""
     }) //Make ID
         .then((documentReference) {
       setState(() {

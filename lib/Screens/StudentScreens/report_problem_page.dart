@@ -62,7 +62,8 @@ class _ReportAProblemState extends State<ReportAProblem> {
       'long': long,
       'Date': formattedDate,
       'Time': formattedTime,
-      'Email': dat['Email']
+      'Email': dat['Email'],
+      'securityName': ""
     }) //Make ID
         .then((documentReference) {
       setState(() {

@@ -291,7 +291,6 @@ class _Home_SecState extends State<Home_Sec> {
                               final filteredReports = reports
                                   .where((report) => (report['Type'] == selectedType) && (report['State'] != 'Responded'))
                                   .toList();
-                                  //.where((report) => report['Type'] == 'SOS' && report['State'] != 'Responded')
 
                               return ListView.builder(
                                 reverse: true,
@@ -456,7 +455,8 @@ class _Home_SecState extends State<Home_Sec> {
                                                             Photo:
                                                                 '${report['Type']}',
                                                             lat: report['lat'],
-                                                            long: report['long']),
+                                                            long: report['long'],
+                                                            securityName: data['Name']), //Testttttttttttttttttttttttt
                                                       ),
                                                     );
                                                   } else if (report['Type'] == 'First Aid') {
@@ -490,8 +490,8 @@ class _Home_SecState extends State<Home_Sec> {
                                                         isReportingForSelf:
                                                             '${report['isReportingForSelf']}',
                                                         lat: report['lat'],
-                                                        long: report['long'],                                                      
-                                                      ),
+                                                        long: report['long'],
+                                                        securityName: data['Name']),
                                                     ),
                                                     );
                                                   } else if (report['Type'] == 'Report A Problem') {
@@ -522,7 +522,7 @@ class _Home_SecState extends State<Home_Sec> {
                                                               '${report['ReportImage']}',
                                                           lat: report['lat'],
                                                           long: report['long'],
-                                                        ),
+                                                          securityName: data['Name']),
                                                       ),
                                                     );
                                                   }

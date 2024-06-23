@@ -22,6 +22,7 @@ class ReportFIRSTAID extends StatefulWidget {
   final double long;
   final isReportingForSelf;
   final hasChronicDiseases;
+  final String securityName;
 
   ReportFIRSTAID(
       {required this.reporttype,
@@ -39,7 +40,8 @@ class ReportFIRSTAID extends StatefulWidget {
       required this.lat,
       required this.State,
       required this.isReportingForSelf,
-      required this.hasChronicDiseases});
+      required this.hasChronicDiseases, 
+      required this.securityName});
 
   @override
   _ReportFIRSTAIDState createState() => _ReportFIRSTAIDState();
@@ -57,7 +59,7 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAID> {
     FirebaseFirestore.instance
         .collection('Reports')
         .doc(widget.reportId)
-        .update({'State': newState});
+        .update({'State': newState, 'securityName': widget.securityName});
 
     if (!isFirstClick) {
       Navigator.pop(context);

@@ -20,6 +20,7 @@ class ReportSOS extends StatefulWidget {
   final double long;
   final String Date;
   final String time;
+  final String securityName;
 
   ReportSOS(
       {required this.state,
@@ -35,7 +36,8 @@ class ReportSOS extends StatefulWidget {
       required this.time,
       required this.lat,
       required this.Date,
-      required this.long});
+      required this.long,
+      required this.securityName});
 
   @override
   State<ReportSOS> createState() => _ReportSOSState();
@@ -52,7 +54,7 @@ class _ReportSOSState extends State<ReportSOS> {
     FirebaseFirestore.instance
         .collection('Reports')
         .doc(widget.reportId)
-        .update({'State': newState});
+        .update({'State': newState, 'securityName': widget.securityName});
 
     if (!isFirstClick) {
       Navigator.pop(context);

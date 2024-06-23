@@ -22,6 +22,7 @@ class ReportFIRSTAIDm extends StatefulWidget {
   final double long;
   final isReportingForSelf;
   final hasChronicDiseases;
+  final String securityName;
 
   ReportFIRSTAIDm(
       {required this.reporttype,
@@ -39,7 +40,8 @@ class ReportFIRSTAIDm extends StatefulWidget {
       required this.lat,
       required this.State,
       required this.isReportingForSelf,
-      required this.hasChronicDiseases});
+      required this.hasChronicDiseases, 
+      required this.securityName});
 
   @override
   _ReportFIRSTAIDState createState() => _ReportFIRSTAIDState();
@@ -250,6 +252,16 @@ class _ReportFIRSTAIDState extends State<ReportFIRSTAIDm> {
                       Icon(Icons.add_task_rounded),
                       SizedBox(width: 8),
                       Text(widget.State,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.security),
+                      SizedBox(width: 8),
+                      Text('Security Name : ${widget.securityName}',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),

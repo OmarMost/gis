@@ -124,7 +124,7 @@ class _StudentHomeState extends State<StudentHome> {
                               ListTile(
                                 leading: Icon(Icons.folder_copy_outlined,
                                     color: Colors.black), // help icon
-                                title: Text('My Reports',
+                                title: Text('Old Reports',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black)),

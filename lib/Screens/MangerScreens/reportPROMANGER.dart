@@ -18,6 +18,7 @@ class ReportBROBLEMSm extends StatefulWidget {
   final String Date;
   final double lat;
   final double long;
+  final String securityName;
 
   ReportBROBLEMSm(
       {required this.State,
@@ -33,7 +34,8 @@ class ReportBROBLEMSm extends StatefulWidget {
       required this.time,
       required this.Date,
       required this.lat,
-      required this.long});
+      required this.long, 
+      required this.securityName});
 
   @override
   _ReportBROBLEMSState createState() => _ReportBROBLEMSState();
@@ -226,6 +228,16 @@ class _ReportBROBLEMSState extends State<ReportBROBLEMSm> {
                         "State :${widget.State} ",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.security),
+                      SizedBox(width: 8),
+                      Text('Security Name : ${widget.securityName}',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
                   SizedBox(height: 8),

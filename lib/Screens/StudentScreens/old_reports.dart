@@ -14,8 +14,6 @@ String? titel;
 String? description;
 String? sec_name;
 
-//////////////////////////
-
 final user = FirebaseAuth.instance.currentUser;
 
 Future<List<Map<String, dynamic>>> getReports() async {
@@ -30,10 +28,8 @@ Future<List<Map<String, dynamic>>> getReports() async {
       reports.add(element.data());
     });
   });
-
   return reports;
 }
-/////////////////////
 
 class Old_Reports extends StatelessWidget {
   @override
@@ -66,66 +62,6 @@ class Old_Reports extends StatelessWidget {
                 )
               ],
             ),
-            // Row(
-            //   children: [
-            //     ElevatedButton(
-            //       onPressed: () {
-            //         Navigator.push(context,
-            //             MaterialPageRoute(builder: (context) => Home_Manger()));
-            //       },
-            //       style: ElevatedButton.styleFrom(
-            //           backgroundColor: Colors.grey[800]),
-            //       child: Text(
-            //         'See All ',
-            //         style: TextStyle(
-            //             color: Colors.white, fontWeight: FontWeight.bold),
-            //       ),
-            //     ),
-            //     ElevatedButton(
-            //       onPressed: () {
-            //         Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //                 builder: (context) => Home_MangerS()));
-            //       },
-            //       style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            //       child: Text(
-            //         'SOS',
-            //         style: TextStyle(
-            //             color: Colors.white, fontWeight: FontWeight.bold),
-            //       ),
-            //     ),
-            //     ElevatedButton(
-            //       onPressed: () {
-            //         Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //                 builder: (context) => Home_MangerF()));
-            //       },
-            //       style:
-            //           ElevatedButton.styleFrom(backgroundColor: Colors.green),
-            //       child: Text(
-            //         'First Aid',
-            //         style: TextStyle(
-            //             color: Colors.white, fontWeight: FontWeight.bold),
-            //       ),
-            //     ),
-            //     ElevatedButton(
-            //       onPressed: () {
-            //         Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //                 builder: (context) => Home_MangerP()));
-            //       },
-            //       style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-            //       child: Text(
-            //         'Problems',
-            //         style: TextStyle(
-            //             color: Colors.white, fontWeight: FontWeight.bold),
-            //       ),
-            //     ),
-            //   ],
-            // ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
@@ -191,8 +127,7 @@ class Old_Reports extends StatelessWidget {
                                       decoration: TextDecoration.underline,
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold,
-                                      color: report['Type'] ==
-                                              'Report A Problem'
+                                      color: report['Type'] == 'Report A Problem'
                                           ? Colors.blue
                                           : report['Type'] == 'SOS'
                                               ? Colors.red
@@ -201,7 +136,6 @@ class Old_Reports extends StatelessWidget {
                                                   : Colors.grey[800],
                                     ),
                                   ),
-                                  ///////////////////
                                   Row(
                                     children: [
                                       Padding(
@@ -216,11 +150,8 @@ class Old_Reports extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-
-                                  ////////////////
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -245,141 +176,26 @@ class Old_Reports extends StatelessWidget {
                                       Container(
                                         height: 50,
                                         width: 50,
-                                        child: '${report['State']}' ==
-                                                "No Response Yet .."
-                                            ? Image.asset(
-                                                'assets/notfinshed.png')
+                                        child: '${report['State']}' == "No Response Yet .."
+                                            ? Image.asset('assets/notfinshed.png')
                                             : Image.asset('assets/finshed.png'),
                                       ),
                                     ],
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Description :${report['Description']}',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.normal,
-                                          ),
+                                  
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Text(                                          
+                                        'Description :${report['Description']}',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.normal,
                                         ),
                                       ),
-                                    ],
+                                    ),
                                   ),
-
-                                  // Row(
-                                  //   mainAxisAlignment: MainAxisAlignment.end,
-                                  //   children: [
-                                  //     TextButton(
-                                  //       onPressed: () {
-                                  //         if (report['Type'] == 'SOS') {
-                                  //           Navigator.push(
-                                  //             context,
-                                  //             MaterialPageRoute(
-                                  //               builder: (context) => ReportSOSm(
-                                  //                   buildingName:
-                                  //                       '${report['BuildingName']}',
-                                  //                   floorNumber:
-                                  //                       '${report['FloorNum']}',
-                                  //                   userid:
-                                  //                       '${report['UserID']}',
-                                  //                   name:
-                                  //                       '${report['Username']}',
-                                  //                   phoneNumber:
-                                  //                       '${report['PhoneNum']}',
-                                  //                   reportId:
-                                  //                       '${report['RID']}',
-                                  //                   reporttype:
-                                  //                       '${report['Type']}',
-                                  //                   time: '${report['Time']}',
-                                  //                   Date: '${report['Date']}',
-                                  //                   state: '${report['State']}',
-                                  //                   Descriotion:
-                                  //                       '${report['Description']}',
-                                  //                   Photo: '${report['Type']}',
-                                  //                   lat: report['lat'],
-                                  //                   long: report['long']),
-                                  //             ),
-                                  //           );
-                                  //         } else if (report['Type'] ==
-                                  //             'First Aid') {
-                                  //           Navigator.push(
-                                  //             context,
-                                  //             MaterialPageRoute(
-                                  //               builder: (context) =>
-                                  //                   ReportFIRSTAIDm(
-                                  //                 buildingName:
-                                  //                     '${report['BuildingName']}',
-                                  //                 floorNumber:
-                                  //                     '${report['FloorNum']}',
-                                  //                 userid: '${report['UserID']}',
-                                  //                 name: '${report['Username']}',
-                                  //                 phoneNumber:
-                                  //                     '${report['PhoneNum']}',
-                                  //                 reportId: '${report['RID']}',
-                                  //                 reporttype:
-                                  //                     '${report['Type']}',
-                                  //                 time: '${report['Time']}',
-                                  //                 Date: '${report['Date']}',
-                                  //                 State: '${report['State']}',
-                                  //                 Descriotion:
-                                  //                     '${report['Description']}',
-                                  //                 Photo: '${report['Type']}',
-                                  //                 hasChronicDiseases:
-                                  //                     '${report['hasChronicDiseases']}',
-                                  //                 isReportingForSelf:
-                                  //                     '${report['isReportingForSelf']}',
-                                  //                 lat: report['lat'],
-                                  //                 long: report['long'],
-                                  //               ),
-                                  //             ),
-                                  //           );
-                                  //         } else if (report['Type'] ==
-                                  //             'Report A Problem') {
-                                  //           Navigator.push(
-                                  //             context,
-                                  //             MaterialPageRoute(
-                                  //               builder: (context) =>
-                                  //                   ReportBROBLEMSm(
-                                  //                 buildingName:
-                                  //                     '${report['BuildingName']}',
-                                  //                 floorNumber:
-                                  //                     '${report['FloorNum']}',
-                                  //                 userid: '${report['UserID']}',
-                                  //                 name: '${report['Username']}',
-                                  //                 phoneNumber:
-                                  //                     '${report['PhoneNum']}',
-                                  //                 reportId: '${report['RID']}',
-                                  //                 reporttype:
-                                  //                     '${report['Type']}',
-                                  //                 Date: '${report['Date']}',
-                                  //                 time: '${report['Time']}',
-                                  //                 State: '${report['State']}',
-                                  //                 Description:
-                                  //                     '${report['Description']}',
-                                  //                 Photo:
-                                  //                     '${report['ReportImage']}',
-                                  //                 lat: report['lat'],
-                                  //                 long: report['long'],
-                                  //               ),
-                                  //             ),
-                                  //           );
-                                  //         }
-                                  //       },
-                                  //       child: Text(
-                                  //         'See More Details',
-                                  //         style: TextStyle(
-                                  //           decoration:
-                                  //               TextDecoration.underline,
-                                  //           fontSize: 20,
-                                  //           color: Colors.black,
-                                  //         ),
-                                  //       ),
-                                  //     ),
-                                  //   ],
-                                  // ),
                                 ],
                               ),
                             ),

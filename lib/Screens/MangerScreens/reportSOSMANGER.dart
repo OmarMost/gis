@@ -20,6 +20,7 @@ class ReportSOSm extends StatefulWidget {
   final double long;
   final String Date;
   final String time;
+  final String securityName;
 
   ReportSOSm(
       {required this.state,
@@ -35,7 +36,8 @@ class ReportSOSm extends StatefulWidget {
       required this.time,
       required this.lat,
       required this.Date,
-      required this.long});
+      required this.long, 
+      required this.securityName});
 
   @override
   State<ReportSOSm> createState() => _ReportSOSState();
@@ -210,6 +212,16 @@ class _ReportSOSState extends State<ReportSOSm> {
                       Icon(Icons.add_task_rounded),
                       SizedBox(width: 8),
                       Text(widget.state,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.security),
+                      SizedBox(width: 8),
+                      Text('Security Name : ${widget.securityName}',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),

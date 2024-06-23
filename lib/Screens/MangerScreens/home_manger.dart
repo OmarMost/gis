@@ -329,7 +329,8 @@ class _Home_MangerState extends State<Home_Manger> {
                                                         '${report['Description']}',
                                                     Photo: '${report['Type']}',
                                                     lat: report['lat'],
-                                                    long: report['long']),
+                                                    long: report['long'],
+                                                    securityName: report['securityName']),
                                               ),
                                             );
                                           } else if (report['Type'] ==
@@ -362,6 +363,7 @@ class _Home_MangerState extends State<Home_Manger> {
                                                       '${report['isReportingForSelf']}',
                                                   lat: report['lat'],
                                                   long: report['long'],
+                                                  securityName: report['securityName']
                                                 ),
                                               ),
                                             );
@@ -392,6 +394,7 @@ class _Home_MangerState extends State<Home_Manger> {
                                                       '${report['ReportImage']}',
                                                   lat: report['lat'],
                                                   long: report['long'],
+                                                  securityName: report['securityName']
                                                 ),
                                               ),
                                             );
