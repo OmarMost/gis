@@ -5,6 +5,8 @@ import 'package:gis/Screens/SecurtyScreens/home_secFIRSTAID.dart';
 import 'package:gis/Screens/SecurtyScreens/home_secPROBLEMS.dart';
 import 'package:gis/Screens/SecurtyScreens/map.dart';
 import 'package:gis/Screens/SecurtyScreens/profilesec.dart';
+import 'package:gis/Screens/SecurtyScreens/reportFIRSTAID.dart';
+import 'package:gis/Screens/SecurtyScreens/reportPROBLEMS.dart';
 import 'package:gis/Screens/SecurtyScreens/reportSOS.dart';
 import 'package:gis/Screens/onboarding_Screens/on_boarding.dart';
 
@@ -24,8 +26,9 @@ class Home_Sec extends StatefulWidget {
 
 class _Home_SecState extends State<Home_Sec> {
   final user = FirebaseAuth.instance.currentUser!;
+  String selectedType = "SOS"; //1
+
   Map<String, dynamic> data = {};
-  
   Future getdata() async {
     data.clear();
     await FirebaseFirestore.instance
@@ -193,10 +196,9 @@ class _Home_SecState extends State<Home_Sec> {
                               children: [
                                 ElevatedButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Home_Sec()));
+                                    setState(() {
+                                      selectedType = "SOS"; //1
+                                    });
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.red),
@@ -214,10 +216,9 @@ class _Home_SecState extends State<Home_Sec> {
                               children: [
                                 ElevatedButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Home_Sec2()));
+                                    setState(() {
+                                      selectedType = "First Aid"; //1
+                                    });
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.greenAccent),
@@ -235,10 +236,9 @@ class _Home_SecState extends State<Home_Sec> {
                               children: [
                                 ElevatedButton(
                                   onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Home_Sec3()));
+                                    setState(() {
+                                      selectedType = "Report A Problem"; //1
+                                    });
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blue),
@@ -281,8 +281,9 @@ class _Home_SecState extends State<Home_Sec> {
 
                               // هناااا الشرط الي هنحدد فيه الريبورتات الي هتتعرض
                               final filteredReports = reports
-                                  .where((report) => report['Type'] == 'SOS' && report['State'] != 'Responded')
+                                  .where((report) => (report['Type'] == selectedType) && (report['State'] != 'Responded'))
                                   .toList();
+                                  //.where((report) => report['Type'] == 'SOS' && report['State'] != 'Responded')
 
                               return ListView.builder(
                                 reverse: true,
@@ -328,11 +329,18 @@ class _Home_SecState extends State<Home_Sec> {
                                           Text(
                                             '${report['Type']}',
                                             style: TextStyle(
-                                                decoration:
-                                                    TextDecoration.underline,
+                                                decoration: TextDecoration.underline,
                                                 fontSize: 25,
-                                                color: Colors.red,
-                                                fontWeight: FontWeight.bold),
+                                                fontWeight: FontWeight.bold,
+                                                color: report['Type'] ==
+                                                        'Report A Problem'
+                                                    ? Colors.blue
+                                                    : report['Type'] == 'SOS'
+                                                        ? Colors.red
+                                                        : report['Type'] == 'First Aid'
+                                                            ? Colors.green
+                                                            : Colors.grey[800],
+                                                ),
                                           ),
                                           Row(
                                             children: [
@@ -406,15 +414,80 @@ class _Home_SecState extends State<Home_Sec> {
                                             ],
                                           ),
                                           Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
+                                            mainAxisAlignment: MainAxisAlignment.end,
                                             children: [
                                               TextButton(
                                                 onPressed: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) => ReportSOS(
+                                                  if (report['Type'] == 'SOS') {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) => ReportSOS(
+                                                            buildingName:
+                                                                '${report['BuildingName']}',
+                                                            floorNumber:
+                                                                '${report['FloorNum']}',
+                                                            userid:
+                                                                '${report['UserID']}',
+                                                            name:
+                                                                '${report['Username']}',
+                                                            phoneNumber:
+                                                                '${report['PhoneNum']}',
+                                                            reportId:
+                                                                '${report['RID']}',
+                                                            reporttype:
+                                                                '${report['Type']}',
+                                                            time:
+                                                                '${report['Time']}',
+                                                            Date:
+                                                                '${report['Date']}',
+                                                            state:
+                                                                '${report['State']}',
+                                                            Descriotion:
+                                                                '${report['Description']}',
+                                                            Photo:
+                                                                '${report['Type']}',
+                                                            lat: report['lat'],
+                                                            long: report['long']),
+                                                      ),
+                                                    );
+                                                  } else if (report['Type'] == 'First Aid') {
+                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => ReportFIRSTAID(
+                                                        buildingName:
+                                                            '${report['BuildingName']}',
+                                                        floorNumber:
+                                                            '${report['FloorNum']}',
+                                                        userid:
+                                                            '${report['UserID']}',
+                                                        name:
+                                                            '${report['Username']}',
+                                                        phoneNumber:
+                                                            '${report['PhoneNum']}',
+                                                        reportId:
+                                                            '${report['RID']}',
+                                                        reporttype:
+                                                            '${report['Type']}',
+                                                        time:
+                                                            '${report['Time']}',
+                                                        Date:
+                                                            '${report['Date']}',
+                                                        State:
+                                                            '${report['State']}',
+                                                        Descriotion:
+                                                            '${report['Description']}',
+                                                        Photo:
+                                                            '${report['Type']}',
+                                                        hasChronicDiseases:
+                                                            '${report['hasChronicDiseases']}',
+                                                        isReportingForSelf:
+                                                            '${report['isReportingForSelf']}',
+                                                        lat: report['lat'],
+                                                        long: report['long'],                                                      
+                                                      ),
+                                                    ),
+                                                    );
+                                                  } else if (report['Type'] == 'Report A Problem') {
+                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => ReportBROBLEMS(
                                                           buildingName:
                                                               '${report['BuildingName']}',
                                                           floorNumber:
@@ -429,20 +502,22 @@ class _Home_SecState extends State<Home_Sec> {
                                                               '${report['RID']}',
                                                           reporttype:
                                                               '${report['Type']}',
-                                                          time:
-                                                              '${report['Time']}',
                                                           Date:
                                                               '${report['Date']}',
-                                                          state:
+                                                          time:
+                                                              '${report['Time']}',
+                                                          State:
                                                               '${report['State']}',
-                                                          Descriotion:
+                                                          Description:
                                                               '${report['Description']}',
                                                           Photo:
-                                                              '${report['Type']}',
+                                                              '${report['ReportImage']}',
                                                           lat: report['lat'],
-                                                          long: report['long']),
-                                                    ),
-                                                  );
+                                                          long: report['long'],
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
                                                 },
                                                 child: Text(
                                                   'See More Details',

@@ -136,7 +136,7 @@ class _Home_MangerState extends State<Home_Manger> {
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        selectedReportType = "First Aid";//1
+                        selectedReportType = "First Aid"; //1
                       });
                     },
                     style:
@@ -150,7 +150,7 @@ class _Home_MangerState extends State<Home_Manger> {
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        selectedReportType = "Report A Problem";//1
+                        selectedReportType = "Report A Problem"; //1
                       });
                     },
                     style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
